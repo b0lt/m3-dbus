@@ -1,0 +1,57 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.audiosettings">
+  <method name="BLM_GetSettingInfo">
+    <annotation name="async" value="client" />
+    <arg name="setting_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BLM_SetVolume">
+    <annotation name="async" value="client" />
+    <arg name="setting_type" direction="in" type="i" />
+    <arg name="absolute" direction="in" type="i" />
+    <arg name="step" direction="in" type="i" />
+    <arg name="string_to_play" direction="in" type="s" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Exit">
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BLM_Exit">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BLM_BeepPlay">
+    <arg name="beep_type" direction="in" type="i" />
+  </method>
+  <method name="BLM_BeepPlay_Async">
+    <annotation name="async" value="client" />
+    <arg name="beep_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BLM_GetEnableDisableInfo">
+    <annotation name="async" value="client" />
+    <arg name="setting_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="BLM_SettingInfo">
+    <arg name="setting_type" type="i" />
+    <arg name="enabled" type="i" />
+    <arg name="currentstep" type="i" />
+    <arg name="min" type="i" />
+    <arg name="max" type="i" />
+  </signal>
+  <signal name="BLM_VolumeLevel">
+    <arg name="setting_type" type="i" />
+    <arg name="absolute" type="i" />
+    <arg name="step" type="i" />
+    <arg name="currentstep" type="i" />
+  </signal>
+  <signal name="BLM_EnableDisableSettingsType">
+    <arg name="setting_type" type="i" />
+    <arg name="status" type="b" />
+  </signal>
+</interface>

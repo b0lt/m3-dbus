@@ -1,0 +1,291 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.pb">
+  <annotation name="header_include" value="pb_common.h" />
+  <annotation name="header_include" value="status.h" />
+  <method name="Import">
+    <annotation name="typeof.import_request"
+    value="PB_PHBOOK_APPL_import_requestId_t" />
+    <annotation name="typeof.import_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.filter_type"
+    value="PB_PHBOOK_APPL_filter_type_t" />
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.import_request_reply"
+    value="PB_PHBOOK_APPL_import_requestId_t" />
+    <annotation name="typeof.import_error"
+    value="PB_PHBOOK_APPL_import_error_t" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <arg name="import_request" direction="in" type="u" />
+    <arg name="import_type" direction="in" type="i" />
+    <arg name="filter_type" direction="in" type="u" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="import_request_reply" direction="out" type="u" />
+    <arg name="import_error" direction="out" type="i" />
+  </method>
+  <method name="AutoDownloadSetting">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.import_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.setting_type"
+    value="PB_PHBOOK_APPL_autodownload_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="import_type" direction="in" type="i" />
+    <arg name="setting_type" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="settingsValue" direction="out" type="b" />
+  </method>
+  <method name="ContactNameOrderSetting">
+    <annotation name="typeof.setting_type"
+    value="PB_PHBOOK_APPL_contactNameOrder_t" />
+    <annotation name="typeof.settingsValue"
+    value="PB_PHBOOK_APPL_contactNameOrder_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <arg name="setting_type" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="settingsValue" direction="out" type="i" />
+  </method>
+  <method name="AllSettingsToFactoryDefault">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_server" value="no" />
+    <annotation name="async_client" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetStringVoiced">
+    <annotation name="typeof.audio_focus_behaviour"
+    value="PB_AUDIO_FOCUS_BEHAVIOUR_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="audio_focus_behaviour" direction="in" type="i" />
+    <arg name="text_string" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="StopStringVoiced">
+    <annotation name="typeof.audio_focus_behaviour"
+    value="PB_AUDIO_FOCUS_BEHAVIOUR_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="audio_focus_behaviour" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="TalkEvent">
+    <annotation name="typeof.audio_focus_behaviour"
+    value="PB_AUDIO_FOCUS_BEHAVIOUR_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="audio_focus_behaviour" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="RecentMissedCallsCounterGet">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="async_server" value="yes" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="counter_value" direction="out" type="u" />
+  </method>
+  <method name="RecentMissedCallsCounterReset">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="async_server" value="yes" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="Debug">
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_client" value="both" />
+    <annotation name="async_server" value="yes" />
+    <arg name="debug_info_out_to_file" direction="in" type="b" />
+    <arg name="debug_info_out_to_log" direction="in" type="b" />
+    <arg name="cfg_param_name" direction="in" type="s" />
+    <arg name="cfg_param_valstring" direction="in" type="s" />
+    <arg name="cfg_param_valbool" direction="in" type="b" />
+    <arg name="cfg_param_valint" direction="in" type="i" />
+    <arg name="debug_info_filepath" direction="out" type="s" />
+  </method>
+  <method name="ContactDelete">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_client" value="both" />
+    <arg name="contact_order_id" direction="in" type="u" />
+    <arg name="contact_id" direction="in" type="u" />
+    <arg name="display_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="CallHistoryDelete">
+    <annotation name="typeof.call_history_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_client" value="both" />
+    <arg name="call_history_type" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="DeletePhonebookData">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.phonebook_data_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="phonebook_data_type" direction="in" type="i" />
+    <arg name="entry_order_id" direction="in" type="u" />
+    <arg name="entry_id" direction="in" type="u" />
+    <arg name="display_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetPhonebookDatabaseInfo">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="return_value" value="status" />
+    <annotation name="with_error_string" value="yes" />
+    <annotation name="async_server" value="yes" />
+    <annotation name="async_client" value="both" />
+    <arg name="phonebook_database_type" direction="in" type="i" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <signal name="AutoDownloadSettingChanged">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.import_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typedef_callback"
+    value="PB_AutoDownloadSettingChanged_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="device_id" type="u" />
+    <arg name="import_type" type="i" />
+    <arg name="settingsValue" type="b" />
+  </signal>
+  <signal name="ContactNameOrderSettingChanged">
+    <annotation name="typeof.settingsValue"
+    value="PB_PHBOOK_APPL_contactNameOrder_t" />
+    <annotation name="typedef_callback"
+    value="PB_ContactNameOrderSettingChanged_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="settingsValue" type="i" />
+  </signal>
+  <signal name="StringVoicedCompleted">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="typedef_callback"
+    value="PB_StringVoicedCompleted_signal_callback_t" />
+    <annotation name="always_broadcast" value="no" />
+    <arg name="status" type="i" />
+  </signal>
+  <signal name="RecentMissedCallsCounterSignal">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typedef_callback"
+    value="PB_RecentMissedCallsCounterSignal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="device_id" type="u" />
+    <arg name="counter_value" type="u" />
+  </signal>
+  <signal name="PhonebookDataDeleted">
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.phonebook_data_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typedef_callback"
+    value="PB_PhonebookDataDeleted_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="device_id" type="u" />
+    <arg name="phonebook_data_type" type="i" />
+    <arg name="entry_id" type="u" />
+    <arg name="display_name" type="s" />
+    <arg name="first_name" type="s" />
+    <arg name="last_name" type="s" />
+    <arg name="phonetic_first_name" type="s" />
+    <arg name="phonetic_last_name" type="s" />
+  </signal>
+  <signal name="ImportStatus">
+    <annotation name="typeof.import_request"
+    value="PB_PHBOOK_APPL_import_requestId_t" />
+    <annotation name="typeof.import_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.filter_type"
+    value="PB_PHBOOK_APPL_filter_type_t" />
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.import_status"
+    value="PB_PHBOOK_APPL_import_status_t" />
+    <annotation name="typeof.import_error"
+    value="PB_PHBOOK_APPL_import_error_t" />
+    <annotation name="typedef_callback"
+    value="PB_ImportStatus_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="import_request" type="u" />
+    <arg name="import_type" type="i" />
+    <arg name="filter_type" type="u" />
+    <arg name="device_id" type="u" />
+    <arg name="dbAlias" type="s" />
+    <arg name="extract_key" type="u" />
+    <arg name="import_status" type="i" />
+    <arg name="import_error" type="i" />
+    <arg name="numEntriesImported" type="u" />
+    <arg name="numEntriesTotal" type="u" />
+  </signal>
+  <signal name="ContactDeleted">
+    <annotation name="typedef_callback"
+    value="PB_ContactDeleted_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="contact_id" type="u" />
+    <arg name="display_name" type="s" />
+  </signal>
+  <signal name="CallHistoryDeleted">
+    <annotation name="typeof.call_history_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typedef_callback"
+    value="PB_CallHistoryDeleted_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="call_history_type" direction="in" type="i" />
+  </signal>
+  <signal name="PhonebookDatabaseInfo">
+    <annotation name="typeof.phonebook_database_type"
+    value="PB_PHBOOK_APPL_import_type_t" />
+    <annotation name="typeof.device_id" value="PB_DeviceId_t" />
+    <annotation name="typeof.import_status"
+    value="PB_PHBOOK_APPL_import_status_t" />
+    <annotation name="typeof.import_error"
+    value="PB_PHBOOK_APPL_import_error_t" />
+    <annotation name="typedef_callback"
+    value="PB_PhonebookDatabaseInfo_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="phonebook_database_type" type="i" />
+    <arg name="device_id" type="u" />
+    <arg name="dbAlias" type="s" />
+    <arg name="import_status" type="i" />
+    <arg name="import_error" type="i" />
+    <arg name="contactsCount" type="u" />
+    <arg name="callhistCount" type="u" />
+    <arg name="missedCount" type="u" />
+    <arg name="time_dbModified" type="t" />
+  </signal>
+</interface>

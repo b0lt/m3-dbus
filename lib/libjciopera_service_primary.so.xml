@@ -1,0 +1,36 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.opera_IHU_PRIMARY">
+  <method name="TerminateOpera">
+    <annotation name="async_client" value="true" />
+    <doc line="TerminateOpera = This method informs Opera that it needs to close." />
+  </method>
+  <method name="Navigate">
+    <annotation name="async_client" value="true" />
+    <arg name="URL" type="s">
+      <doc line="full url : e.g. http://www.google.com or file:///jci/index.html" />
+    </arg>
+    <doc line="Navigate = This method informs opera engine to navigate to a desired URL." />
+  </method>
+  <method name="GoBack">
+    <annotation name="async_client" value="true" />
+    <doc line="GoBack = This method specifies opera to go back to the previous URL" />
+  </method>
+  <method name="GoForward">
+    <annotation name="async_client" value="true" />
+    <doc line="GoForward = This method specifies opera to go to the forward URL" />
+  </method>
+  <method name="Refresh">
+    <annotation name="async_client" value="true" />
+    <doc line="Refresh = This method specifies opera to refres/reload the current page" />
+  </method>
+  <signal name="ReportError">
+    <arg name="errorData" type="s">
+      <doc line="errorData = The actual error" />
+    </arg>
+    <doc line="This signals is sending error messages to whatever client listens" />
+  </signal>
+</interface>

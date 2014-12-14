@@ -1,0 +1,67 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.dvd">
+  <annotation name="with_error_string" value="yes" />
+  <annotation name="def_struct_names.dvdStatus_st"
+  value="statusProgress,deviceType,lastError,diskType,subtitles,multiangles,parentalCheck,parentalPin,parentalRating,aspectRatio" />
+  <annotation name="def_struct_types.dvdStatus_st"
+  value="u, u, u, u, u, u, u, i, i, u" />
+  <annotation name="def_struct_names.PlayingStatus_desc"
+  value="Track,Angle,Total_Hours,Total_Minutes,Total_Seconds,Elapsed_Hours,Elapsed_Minutes,Elapsed_Seconds" />
+  <annotation name="def_struct_types.PlayingStatus_desc"
+  value="q, y, y, y, y, y, y, y" />
+  <method name="SwitchState">
+    <annotation name="async" value="client" />
+    <arg name="state" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ChangeSetting">
+    <annotation name="async" value="client" />
+    <arg name="setting" direction="in" type="u" />
+    <arg name="value" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetSetting">
+    <annotation name="async" value="both" />
+    <arg name="setting" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="PinOperation">
+    <annotation name="async" value="both" />
+    <arg name="cmd" direction="in" type="u" />
+    <arg name="pin" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeviceCommand">
+    <annotation name="async" value="client" />
+    <arg name="cmd" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ScrubberBarControl">
+    <annotation name="async" value="client" />
+    <arg name="percentage" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDvdStatus">
+    <annotation name="type_ref.dvdStatusData"
+    value="dvdStatus_st" />
+    <annotation name="async" value="both" />
+    <arg name="dvdStatusData" direction="out"
+    type="(uuuuuuuiiu)" />
+  </method>
+  <signal name="DeviceStatusEvent">
+    <arg name="event" type="u" />
+  </signal>
+  <signal name="PlayingStatusEvent">
+    <annotation name="type_ref.PlayingStatusData"
+    value="PlayingStatus_desc" />
+    <arg name="PlayingStatusData" type="(qyyyyyyy)" />
+  </signal>
+  <signal name="MetadataNotificationEvent">
+    <arg name="metatype" type="u" />
+    <arg name="metadata" type="s" />
+  </signal>
+</interface>

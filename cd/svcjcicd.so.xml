@@ -1,0 +1,144 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.CD">
+  <annotation name="com.jci.force_interface_visibility"
+  value="client" />
+  <annotation name="def_struct_names.CD_status_desc"
+  value="Cd_Ready_Status, Operation_status, Operation_errors, Disc_type" />
+  <annotation name="def_struct_types.CD_status_desc"
+  value="y, y, y, y" />
+  <annotation name="def_struct_names.CD_Item_Desc"
+  value="item_Index, item_Type, item_Name" />
+  <annotation name="def_struct_types.CD_Item_Desc"
+  value="y, y, s" />
+  <annotation name="def_struct_names.CD_Item_List"
+  value="item_List" />
+  <annotation name="def_struct_types.CD_Item_List"
+  value="CD_Item_Desc" />
+  <annotation name="def_struct_names.Metadata_Info_desc"
+  value="TrackTitle, AlbumName, ArtistName, Genre, FolderName, DiscTitle" />
+  <annotation name="def_struct_types.Metadata_Info_desc"
+  value="s, s, s, s, s, s" />
+  <annotation name="def_struct_names.Track_Play_Status_desc"
+  value="Current_Track_Number,Total_Track_Time_Hours,Total_Track_Time_Minutes,Total_Track_Time_Seconds,Elapsed_Track_Time_Hours,Elapsed_Track_Time_Minutes,Elapsed_Track_Time_Seconds" />
+  <annotation name="def_struct_types.Track_Play_Status_desc"
+  value="q, y, y, y, y, y, y" />
+  <annotation name="def_struct_names.User_Selection_Response"
+  value="Request_Type,Selection_Name,Total_Items_Count, isRoot, isCdDa" />
+  <annotation name="def_struct_types.User_Selection_Response"
+  value="y, s, y, b, b" />
+  <method name="SourceChange_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Eject_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Play_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Pause_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Previous_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Next_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetRepeat_Req">
+    <annotation name="async" value="client" />
+    <arg name="repeat" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetRandom_Req">
+    <annotation name="async" value="client" />
+    <arg name="random" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Scan_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="FastForward_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="FastRewind_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetCDReadyStatus_Req">
+    <annotation name="async" value="both" />
+    <arg name="CD_Ready_Status" direction="out" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetCDStatus_Req">
+    <annotation name="type_ref.CD_status" value="CD_status_desc" />
+    <annotation name="async" value="both" />
+    <arg name="CD_status" direction="out" type="(yyyy)" />
+  </method>
+  <method name="Get_Availability_Req">
+    <annotation name="async" value="both" />
+    <arg name="CD_RoutineTest_Response" direction="out" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="UserSelection_Req">
+    <annotation name="type_ref.return_value"
+    value="User_Selection_Response" />
+    <annotation name="async" value="both" />
+    <arg name="itemType" direction="in" type="y" />
+    <arg name="index" direction="in" type="q" />
+    <arg name="return_value" direction="out" type="(ysybb)" />
+  </method>
+  <method name="GetFolderContents_Req">
+    <annotation name="type_ref.itemList" value="CD_Item_List" />
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <arg name="index" direction="in" type="y" />
+    <arg name="itemsCount" direction="in" type="q" />
+    <arg name="itemList" direction="out" type="(a(yys))" />
+    <arg name="listSize" direction="out" type="n" />
+    <arg name="totalItemsInFolder" direction="out" type="n" />
+  </method>
+  <signal name="Status">
+    <annotation name="type_ref.CD_status" value="CD_status_desc" />
+    <arg name="CD_status" type="(yyyy)" />
+  </signal>
+  <signal name="Ready_Status">
+    <arg name="ready_status" type="y" />
+  </signal>
+  <signal name="Repeat_Settings_Status">
+    <arg name="repeat_status" type="y" />
+  </signal>
+  <signal name="Random_Settings_Status">
+    <arg name="random_status" type="y" />
+  </signal>
+  <signal name="Track_Play_Status">
+    <annotation name="type_ref.CD_Track_Play_Status"
+    value="Track_Play_Status_desc" />
+    <arg name="CD_Track_Play_Status" type="(qyyyyyy)" />
+  </signal>
+  <signal name="Metadata_Response">
+    <annotation name="type_ref.Metadata_Response"
+    value="Metadata_Info_desc" />
+    <arg name="Metadata_Response" type="(ssssss)" />
+  </signal>
+  <signal name="SourceChange_Response">
+    <arg name="change_Response" type="y" />
+  </signal>
+  <signal name="RoutineTest_Response">
+    <arg name="routineTest_Response" type="y" />
+  </signal>
+  <signal name="Total_Track_Number">
+    <arg name="total_track_number" type="q" />
+  </signal>
+</interface>

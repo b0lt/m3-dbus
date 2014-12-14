@@ -1,0 +1,47 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.natgui">
+  <annotation name="def_struct_names.imageData_st"
+  value="iarr, ivalue1, ivalue2" />
+  <annotation name="def_struct_types.imageData_st"
+  value="u, u, u" />
+  <method name="SetDisplay">
+    <annotation name="async" value="client" />
+    <annotation name="type_ref.imageData" value="imageData_st" />
+    <arg name="imageData" direction="in" type="(auuu)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DisplayCommand">
+    <annotation name="async" value="client" />
+    <arg name="command" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDisplayMode">
+    <annotation name="sync" value="client" />
+    <arg name="currentDisplayMode" direction="out" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDisplayMode_async">
+    <annotation name="async" value="client" />
+    <arg name="currentDisplayMode" direction="out" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetLanguage_async">
+    <annotation name="async" value="client" />
+    <arg name="currentLanguage" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="DisplayMode">
+    <arg name="currentDisplayMode" type="u" />
+  </signal>
+  <signal name="CommandResponse">
+    <arg name="cmdRespomse" type="u" />
+  </signal>
+  <signal name="LanguageSetStatus">
+    <arg name="currentLanguage" type="u" />
+    <arg name="status" type="u" />
+  </signal>
+</interface>

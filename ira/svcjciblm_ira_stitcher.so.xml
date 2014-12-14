@@ -1,0 +1,66 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include" value="status.h" />
+<annotation name="com.jci.header_include" value="irs_defs.h" />
+<annotation name="com.jci.c_name_prefix" value="BlmStitcher" />
+<annotation name="com.jci.c_name_prefix_object"
+value="BlmStitcher" />
+<interface name="com.jci.blm.stitcher">
+  <annotation name="com.jci.c_name_prefix" value="BlmStitcher" />
+  <annotation name="com.jci.with_error_string" value="yes" />
+  <method name="Connect">
+    <annotation name="com.jci.typedef_callback_client"
+    value="StitcherConnect_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="SessionId" direction="out" type="u" />
+    <arg name="KeepConnected" direction="out" type="b" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="StitcherDisconnect_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="Command">
+    <annotation name="com.jci.typeof.Command" value="IRSC_cmd_t" />
+    <annotation name="com.jci.typeof.GroupType"
+    value="IRSC_group_type_t" />
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="StitcherCommand_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Command" direction="in" type="y" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="GroupId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="Rate">
+    <annotation name="com.jci.typeof.GroupType"
+    value="IRSC_group_type_t" />
+    <annotation name="com.jci.typeof.IsRelative" value="bool_t" />
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="StitcherRate_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="Id" direction="in" type="t" />
+    <arg name="Rate" direction="in" type="y" />
+    <arg name="IsRelative" direction="in" type="b" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <signal name="Disconnected">
+    <annotation name="com.jci.typedef_callback"
+    value="StitcherSignalDisconnected_cb_t" />
+    <annotation name="com.jci.always_broadcast" value="true" />
+    <arg name="SessionId" type="u" />
+    <arg name="ReasonId" type="y" />
+  </signal>
+</interface>

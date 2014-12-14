@@ -1,0 +1,104 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" direction="out" type="s" />
+  </method>
+</interface>
+<interface name="com.jci.blmsystem.Interface">
+  <method name="OpenConnection">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="unique_connection_id" direction="out" type="u" />
+  </method>
+  <method name="CloseConnection">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SafeShutDown">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SafeReboot">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="FactoryReset">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetCurrentAccStatus">
+    <annotation name="async" value="both" />
+    <arg name="acc_state" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetCurrentSystemState">
+    <annotation name="async" value="both" />
+    <arg name="system_state" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="RegisterForStateTransitionAck">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="from_state" direction="in" type="u" />
+    <arg name="to_state" direction="in" type="u" />
+    <arg name="_from_state" direction="out" type="u" />
+    <arg name="_to_state" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="AcknowledgeStateTransition">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="from_state" direction="in" type="u" />
+    <arg name="to_state" direction="in" type="u" />
+    <arg name="_from_state" direction="out" type="u" />
+    <arg name="_to_state" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="UnregisterFromStateTransitionAck">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="from_state" direction="in" type="u" />
+    <arg name="to_state" direction="in" type="u" />
+    <arg name="_from_state" direction="out" type="u" />
+    <arg name="_to_state" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SignalSystemStateEvent">
+    <annotation name="async" value="both" />
+    <arg name="event" direction="in" type="i" />
+    <arg name="event_info" direction="in" type="i" />
+    <arg name="_event" direction="out" type="i" />
+    <arg name="_event_info" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ReportTestDiagEntering">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ReportTestDiagExiting">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ReportGuiAvailable">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <signal name="NotifyStateTransition">
+    <arg name="current_state" type="u" />
+    <arg name="target_state" type="u" />
+  </signal>
+  <signal name="NotifyAccChange">
+    <arg name="acc_state" type="i" />
+    <arg name="system_state" type="u" />
+  </signal>
+  <signal name="NotifySystemStateChange">
+    <arg name="old_state" type="u" />
+    <arg name="current_state" type="u" />
+  </signal>
+</interface>

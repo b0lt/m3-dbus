@@ -1,0 +1,160 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.xm">
+  <annotation name="com.jci.def_struct_names.XM_setParentalLockPIN_req_s_t"
+  value="Digit 1, Digit 2, Digit 3, Digit 4" />
+  <annotation name="com.jci.def_struct_types.XM_setParentalLockPIN_req_s_t"
+  value=" y, y, y, y " />
+  <annotation name="com.jci.def_struct_names.XM_tunerStatus_resp_s_t"
+  value="OperationStatus, ErrorStatus, Channel num, SID, Category, Channel Lock Status, Channel Name, Channel Index " />
+  <annotation name="com.jci.def_struct_types.XM_tunerStatus_resp_s_t"
+  value=" y, y, y, y, y, b, ay, i" />
+  <annotation name="com.jci.def_struct_names.XM_antennaStatus_resp_s_t"
+  value="AntennaState, SignalStrength " />
+  <annotation name="com.jci.def_struct_types.XM_antennaStatus_resp_s_t"
+  value=" y, y " />
+  <annotation name="com.jci.def_struct_names.XM_readParentalLockPIN_resp_s_t"
+  value="Digit 1, Digit 2, Digit 3, Digit 4 " />
+  <annotation name="com.jci.def_struct_types.XM_readParentalLockPIN_resp_s_t"
+  value=" y, y, y, y " />
+  <annotation name="com.jci.def_struct_names.XM_readDefaultParentalLockPIN_resp_s_t"
+  value="Digit 1, Digit 2, Digit 3, Digit 4 " />
+  <annotation name="com.jci.def_struct_types.XM_readDefaultParentalLockPIN_resp_s_t"
+  value=" y, y, y, y " />
+  <annotation name="com.jci.def_struct_names.XM_metadataChange_resp_s_t"
+  value="Channel_name, Category_name, Song_name, Artisit_name " />
+  <annotation name="com.jci.def_struct_types.XM_metadataChange_resp_s_t"
+  value=" b, b, b, b " />
+  <method name="GetModeStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ModeChange">
+    <annotation name="async" value="client" />
+    <arg name="xm_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="TuneRelative">
+    <annotation name="async" value="client" />
+    <arg name="tune_direction" direction="in" type="i" />
+    <arg name="tune_steps" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="TuneAbsolute">
+    <annotation name="async" value="client" />
+    <arg name="tune_value_sid" direction="in" type="y" />
+    <arg name="tune_value_ch" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="MuteReq">
+    <annotation name="async" value="client" />
+    <arg name="mute_direction" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="IsParentalLockEnabled">
+    <arg name="parental_lock_status" direction="out" type="i" />
+  </method>
+  <method name="IsParentalLockPINSet">
+    <arg name="parental_pin_status" direction="out" type="i" />
+  </method>
+  <method name="IsChannelLocked">
+    <arg name="channel_id" direction="in" type="y" />
+    <arg name="channel_lock_status" direction="out" type="i" />
+  </method>
+  <method name="GetParentalLockPIN">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDefaultParentalLockPIN">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetParentalLockPIN">
+    <annotation name="com.jci.type_ref.parental_lock_pin"
+    value="XM_setParentalLockPIN_req_s_t" />
+    <annotation name="async" value="client" />
+    <arg name="parental_lock_pin" direction="in" type="(yyyy)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetParentalLockStatus">
+    <annotation name="async" value="client" />
+    <arg name="parental_lock_status" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetChannelLock">
+    <annotation name="async" value="client" />
+    <arg name="channel_lock_status" direction="in" type="i" />
+    <arg name="channel_id" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DisplayXMSettings">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ScanReq">
+    <annotation name="async" value="client" />
+    <arg name="scan_req_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetConfigStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Fav_Seek_Req">
+    <annotation name="async" value="client" />
+    <arg name="fav_seek_dir" direction="in" type="i" />
+    <arg name="current_ch" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetInstallStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="TunerStatus">
+    <annotation name="com.jci.type_ref.Tuner_status"
+    value="XM_tunerStatus_resp_s_t" />
+    <arg name="Tuner_status" type="(yyyyybayi)" />
+  </signal>
+  <signal name="MuteStatus">
+    <arg name="mute_direction" type="i" />
+  </signal>
+  <signal name="ChannelListUpdated">
+    <arg name="channel_list_status" direction="in" type="y" />
+  </signal>
+  <signal name="AntennaStatus">
+    <annotation name="com.jci.type_ref.antenna_status"
+    value="XM_antennaStatus_resp_s_t" />
+    <arg name="antenna_status" direction="in" type="(yy)" />
+  </signal>
+  <signal name="ParentalLockPin">
+    <annotation name="com.jci.type_ref.parental_pin"
+    value="XM_readParentalLockPIN_resp_s_t" />
+    <arg name="parental_pin" direction="in" type="(yyyy)" />
+  </signal>
+  <signal name="DefaultParentalLockPin">
+    <annotation name="com.jci.type_ref.default_parental_pin"
+    value="XM_readDefaultParentalLockPIN_resp_s_t" />
+    <arg name="default_parental_pin" direction="in"
+    type="(yyyy)" />
+  </signal>
+  <signal name="MetadataAvailable">
+    <arg name="metadataType" direction="in" type="i" />
+  </signal>
+  <signal name="MetadataChange">
+    <annotation name="com.jci.type_ref.metadataStatus"
+    value="XM_metadataChange_resp_s_t" />
+    <arg name="metadataStatus" direction="in" type="(bbbb)" />
+  </signal>
+  <signal name="ModeStatus">
+    <arg name="modeStatus" direction="in" type="i" />
+  </signal>
+  <signal name="ConfigStatus">
+    <arg name="config_status" direction="in" type="i" />
+  </signal>
+  <signal name="InstallStatus">
+    <arg name="install_status" direction="in" type="i" />
+  </signal>
+</interface>

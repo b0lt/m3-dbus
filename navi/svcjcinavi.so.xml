@@ -1,0 +1,448 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.navi2IHU">
+  <method name="ShowNavigation">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="ClearStack">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="FavoriteLongPress">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="NaviButtonPress">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="NaviFocusStatusUpdate">
+    <annotation name="async_client" value="true" />
+    <arg name="status" direction="in" type="i" />
+  </method>
+  <method name="RequestShowNavigationDenied">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="GetCurrentNaviState">
+    <annotation name="async_client" value="true" />
+    <arg name="naviState" direction="out" type="i" />
+  </method>
+  <method name="NavigateToAddress">
+    <annotation name="async_client" value="true" />
+    <arg name="name" direction="in" type="s" />
+    <arg name="addressLine1" direction="in" type="s" />
+    <arg name="addressLine2" direction="in" type="s" />
+    <arg name="city" direction="in" type="s" />
+    <arg name="stateProvince" direction="in" type="s" />
+    <arg name="country" direction="in" type="s" />
+    <arg name="code" direction="in" type="s" />
+    <arg name="latitude" direction="in" type="d" />
+    <arg name="longitude" direction="in" type="d" />
+  </method>
+  <method name="SetLanguage">
+    <annotation name="async_client" value="true" />
+    <arg name="language" direction="in" type="i" />
+  </method>
+  <method name="SetLanguageEx">
+    <annotation name="async_client" value="true" />
+    <arg name="display_language" direction="in" type="i" />
+    <arg name="vr_supported" direction="in" type="b" />
+    <arg name="vr_language" direction="in" type="i" />
+    <arg name="tts_language" direction="in" type="i" />
+    <arg name="keyboard_language" direction="in" type="i" />
+  </method>
+  <method name="FactoryReset">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="GetCurrentLocationInfo">
+    <annotation name="async_client" value="true" />
+  </method>
+  <signal name="NaviStateUpdate">
+    <arg name="state" type="i" />
+  </signal>
+  <signal name="ReadyToShowNavi" />
+  <signal name="RequestShowNavigation" />
+  <signal name="NaviButtonPressed">
+    <arg name="buttonPressedID" type="i" />
+  </signal>
+  <signal name="DialPhoneNumber">
+    <arg name="phoneNumber" type="s" />
+    <arg name="name" type="s" />
+  </signal>
+  <signal name="LanguageChangeFinished">
+    <arg name="status" type="b" />
+    <arg name="language" type="i" />
+  </signal>
+  <signal name="LanguageChangeFinishedEx">
+    <arg name="status" type="b" />
+    <arg name="display_language" type="i" />
+    <arg name="vr_language" type="i" />
+    <arg name="tts_language" type="i" />
+    <arg name="keyboard_language" type="i" />
+  </signal>
+  <signal name="FactoryResetFinished">
+    <arg name="status" type="b" />
+  </signal>
+  <signal name="CurrentLocationInfo">
+    <arg name="latitude" type="d" />
+    <arg name="longitude" type="d" />
+    <arg name="altitude" type="i" />
+    <arg name="altitudeUnit" type="i" />
+    <arg name="isValidInfo" type="b" />
+    <arg name="heading" type="d" />
+    <arg name="isHeadingValid" type="b" />
+  </signal>
+</interface>
+<interface name="com.jci.navi2IHU.VR">
+  <annotation name="def_struct_names.navi2IHU_VDEListItem_t"
+  value="stateId, cityId, streetId, houseNumber" />
+  <annotation name="def_struct_types.navi2IHU_VDEListItem_t"
+  value=" u, u, u, u" />
+  <annotation name="def_struct_names.navi2IHU_VDEHypothesisList_t"
+  value="count, VDEHypothesisList" />
+  <annotation name="def_struct_types.navi2IHU_VDEHypothesisList_t"
+  value=" i, navi2IHU_VDEListItem_t" />
+  <annotation name="def_struct_names.navi2IHU_HypothesisID_t"
+  value="id" />
+  <annotation name="def_struct_types.navi2IHU_HypothesisID_t"
+  value=" u" />
+  <annotation name="def_struct_names.navi2IHU_HypothesisList_t"
+  value="count, list" />
+  <annotation name="def_struct_types.navi2IHU_HypothesisList_t"
+  value=" i, navi2IHU_HypothesisID_t" />
+  <annotation name="def_struct_names.navi2IHU_PoiName_t"
+  value="poiName" />
+  <annotation name="def_struct_types.navi2IHU_PoiName_t"
+  value=" s" />
+  <annotation name="def_struct_names.navi2IHU_PoiCategories_t"
+  value="count, poiCategories" />
+  <annotation name="def_struct_types.navi2IHU_PoiCategories_t"
+  value=" i, navi2IHU_PoiName_t" />
+  <annotation name="def_struct_names.navi2IHU_JpjHypothesis_t"
+  value="level1_id, level2_id, level3_id, level4_id, level5_id, level6_id" />
+  <annotation name="def_struct_types.navi2IHU_JpjHypothesis_t"
+  value=" u, u, u, u, u, u" />
+  <annotation name="def_struct_names.navi2IHU_JpjHypothesisList_t"
+  value="count, hypothesisList" />
+  <annotation name="def_struct_types.navi2IHU_JpjHypothesisList_t"
+  value=" i, navi2IHU_JpjHypothesis_t" />
+  <method name="VREvent">
+    <annotation name="async_client" value="true" />
+    <arg name="EventId" direction="in" type="s" />
+  </method>
+  <method name="SelectedListItem">
+    <annotation name="async_client" value="true" />
+    <arg name="SeletedItem" direction="in" type="i" />
+  </method>
+  <method name="JpjIntermediateHypothesis">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.JpjHypothesis"
+    value="navi2IHU_JpjHypothesis_t" />
+    <arg name="JpjHypothesis" direction="in" type="(uuuuuu)" />
+  </method>
+  <method name="JpjVDEHypothesisList">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.JpjHypothesisList"
+    value="navi2IHU_JpjHypothesisList_t" />
+    <arg name="JpjHypothesisList" direction="in"
+    type="(ia(uuuuuu))" />
+  </method>
+  <method name="VDEHypothesisList">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.VDEList"
+    value="navi2IHU_VDEHypothesisList_t" />
+    <arg name="VDEList" direction="in" type="(ia(uuuu))" />
+  </method>
+  <method name="NavigateToPOI">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.PoiCategoryName"
+    value="navi2IHU_PoiCategories_t" />
+    <arg name="PoiCategoryName" direction="in" type="(ia(s))" />
+  </method>
+  <method name="AddWaypointPOI">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.PoiCategoryName"
+    value="navi2IHU_PoiCategories_t" />
+    <arg name="PoiCategoryName" direction="in" type="(ia(s))" />
+  </method>
+  <method name="SimpleHypothesisList">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.IdList"
+    value="navi2IHU_HypothesisList_t" />
+    <arg name="IdList" direction="in" type="(ia(u))" />
+  </method>
+  <method name="ModeChanged">
+    <annotation name="async_client" value="true" />
+    <arg name="Modality" direction="in" type="i" />
+  </method>
+</interface>
+<interface name="com.jci.navi2IHU.HUDSettings">
+  <method name="GetHUDIsInstalled">
+    <arg name="HUDInstalled" direction="out" type="b" />
+  </method>
+  <method name="GetHUDIsInstalled_async">
+    <annotation name="async_client" value="true" />
+    <arg name="HUDInstalled" direction="out" type="b" />
+  </method>
+  <method name="SetHUDSetting">
+    <arg name="HUDSettingType" direction="in" type="i" />
+    <arg name="HUDSettingValue" direction="in" type="i" />
+  </method>
+  <method name="SetHUDSetting_Async">
+    <annotation name="async_client" value="true" />
+    <arg name="HUDSettingType" direction="in" type="i" />
+    <arg name="HUDSettingValue" direction="in" type="i" />
+  </method>
+  <method name="GetHUDSetting">
+    <arg name="HUDSettingType" direction="in" type="i" />
+    <arg name="HUDSettingValue" direction="out" type="i" />
+  </method>
+  <method name="ResetHUDSettings">
+    <annotation name="async_client" value="true" />
+  </method>
+  <method name="GetHUDControlAllowed">
+    <annotation name="async_client" value="true" />
+    <arg name="bAllowed" direction="out" type="i" />
+  </method>
+  <signal name="HUDInstalledChanged">
+    <arg name="HUDInstalled" type="b" />
+  </signal>
+  <signal name="SetHUDSettingFailed">
+    <arg name="HUDSettingType" type="i" />
+    <arg name="err" type="i" />
+  </signal>
+  <signal name="HUDControlAllowed">
+    <arg name="bAllowed" type="b" />
+  </signal>
+  <signal name="HUDSettingChanged">
+    <arg name="HUDSettingType" type="i" />
+    <arg name="value" type="i" />
+  </signal>
+</interface>
+<interface name="com.jci.navi2IHU.NaviFavorites">
+  <annotation name="def_struct_names.NAVI2IHU_Favorite_t"
+  value="id, name" />
+  <annotation name="def_struct_types.NAVI2IHU_Favorite_t"
+  value=" u, s" />
+  <annotation name="def_struct_names.NAVI2IHU_FavoriteList_t"
+  value="count, favoriteList" />
+  <annotation name="def_struct_types.NAVI2IHU_FavoriteList_t"
+  value="i, NAVI2IHU_Favorite_t" />
+  <method name="AddFavorite">
+    <annotation name="async_client" value="true" />
+    <arg name="Name" direction="in" type="s" />
+    <arg name="CountryName" direction="in" type="s" />
+    <arg name="StateName" direction="in" type="s" />
+    <arg name="CityName" direction="in" type="s" />
+    <arg name="StreetName" direction="in" type="s" />
+    <arg name="ZipCode" direction="in" type="s" />
+    <arg name="Latitude" direction="in" type="d" />
+    <arg name="Longitude" direction="in" type="d" />
+  </method>
+  <method name="ReplaceFavoriteWithAddress">
+    <arg name="ID" direction="in" type="u" />
+    <arg name="Name" direction="in" type="s" />
+    <arg name="CountryName" direction="in" type="s" />
+    <arg name="StateName" direction="in" type="s" />
+    <arg name="CityName" direction="in" type="s" />
+    <arg name="StreetName" direction="in" type="s" />
+    <arg name="ZipCode" direction="in" type="s" />
+    <arg name="Latitude" direction="in" type="d" />
+    <arg name="Longitude" direction="in" type="d" />
+  </method>
+  <method name="DeleteFavorite">
+    <annotation name="async_client" value="true" />
+    <arg name="ID" direction="in" type="u" />
+  </method>
+  <method name="DeleteAllFavorites" />
+  <method name="NavigateToFavorite">
+    <arg name="ID" direction="in" type="u" />
+  </method>
+  <method name="SetHome" />
+  <method name="UnsetHome" />
+  <method name="RenameFavorite">
+    <annotation name="async_client" value="true" />
+    <arg name="ID" direction="in" type="u" />
+    <arg name="Name" direction="in" type="s" />
+  </method>
+  <method name="MoveFavorite">
+    <annotation name="async_client" value="true" />
+    <arg name="ID1" direction="in" type="u" />
+    <arg name="ID2" direction="in" type="u" />
+  </method>
+  <method name="SwapFavorite">
+    <annotation name="async_client" value="true" />
+    <arg name="ID1" direction="in" type="u" />
+    <arg name="ID2" direction="in" type="u" />
+  </method>
+  <method name="AddCurrentPositionToFavorites" />
+  <method name="ReplaceFavoriteWithCurrentPosition">
+    <arg name="ID" direction="in" type="u" />
+  </method>
+  <method name="AddCurrentDestinationToFavorites" />
+  <method name="ReplaceFavoriteWithCurrentDestination">
+    <arg name="ID" direction="in" type="u" />
+  </method>
+  <method name="NavigatedRouteExists">
+    <arg name="Result" direction="out" type="i" />
+  </method>
+  <method name="GetFavoriteList">
+    <annotation name="type_ref.FavoriteList"
+    value="NAVI2IHU_FavoriteList_t" />
+    <annotation name="async_client" value="true" />
+    <arg name="StartIndex" direction="in" type="i" />
+    <arg name="MaxItems" direction="in" type="i" />
+    <arg name="FavoriteList" direction="out" type="(ia(us))" />
+  </method>
+  <method name="GetFavoritesCount">
+    <annotation name="async_client" value="true" />
+    <arg name="count" direction="out" type="i" />
+  </method>
+  <signal name="FavoriteButtonPressed" />
+  <signal name="FavoriteOperationResult">
+    <arg name="Result" type="i" />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.navi2NNG" alias="jci2NNG">
+  <annotation name="def_struct_names.navi2NNG_VDEListItem_t"
+  value="stateId, cityId, streetId, houseNumber" />
+  <annotation name="def_struct_types.navi2NNG_VDEListItem_t"
+  value=" u, u, u, u" />
+  <annotation name="def_struct_names.navi2NNG_VDEHypothesisList_t"
+  value="count, VDEHypothesisList" />
+  <annotation name="def_struct_types.navi2NNG_VDEHypothesisList_t"
+  value=" i, navi2NNG_VDEListItem_t" />
+  <annotation name="def_struct_names.navi2NNG_HypothesisID_t"
+  value="id" />
+  <annotation name="def_struct_types.navi2NNG_HypothesisID_t"
+  value=" u" />
+  <annotation name="def_struct_names.navi2NNG_HypothesisList_t"
+  value="count, list" />
+  <annotation name="def_struct_types.navi2NNG_HypothesisList_t"
+  value=" i, navi2NNG_HypothesisID_t" />
+  <annotation name="def_struct_names.navi2NNG_PoiName_t"
+  value="poiName" />
+  <annotation name="def_struct_types.navi2NNG_PoiName_t"
+  value=" s" />
+  <annotation name="def_struct_names.navi2NNG_PoiCategories_t"
+  value="count, poiCategories" />
+  <annotation name="def_struct_types.navi2NNG_PoiCategories_t"
+  value=" i, navi2NNG_PoiName_t" />
+  <annotation name="def_struct_names.navi2NNG_DisplayedTime_t"
+  value="year, month, day, hour, minute, second" />
+  <annotation name="def_struct_types.navi2NNG_DisplayedTime_t"
+  value=" n, y, y, y, y, y" />
+  <annotation name="def_struct_names.navi2NNG_LayoutID_t"
+  value="id" />
+  <annotation name="def_struct_types.navi2NNG_LayoutID_t"
+  value=" i" />
+  <annotation name="def_struct_names.navi2NNG_LayoutsList_t"
+  value="count, list" />
+  <annotation name="def_struct_types.navi2NNG_LayoutsList_t"
+  value=" i, navi2NNG_LayoutID_t" />
+  <annotation name="def_struct_names.navi2NNG_JpjHypothesis_t"
+  value="level1_id, level2_id, level3_id, level4_id, level5_id, level6_id" />
+  <annotation name="def_struct_types.navi2NNG_JpjHypothesis_t"
+  value=" u, u, u, u, u, u" />
+  <annotation name="def_struct_names.navi2NNG_JpjHypothesisList_t"
+  value="count, hypothesisList" />
+  <annotation name="def_struct_types.navi2NNG_JpjHypothesisList_t"
+  value=" i, navi2NNG_JpjHypothesis_t" />
+  <method name="GetVDELang">
+    <arg name="language" direction="out" type="s">
+      <doc line="The Nuance LLC code of the VR (VDE) language currently in use." />
+    </arg>
+    <doc line="This method is used to retrieve the VR language currently used by the OS." />
+  </method>
+  <method name="GetTTSLang">
+    <arg name="language" direction="out" type="i">
+      <doc line="The LCID of the TTS language currently in use." />
+    </arg>
+    <doc line="This method returns the LCID of the current TTS language in the OS" />
+  </method>
+  <method name="GetLanguage">
+    <annotation name="async_client" value="true" />
+    <arg name="language" direction="out" type="i">
+      <doc line="language = the Microsoft LCID of the language that should be used by the navigation engine" />
+    </arg>
+    <doc line="GetLanguage = This method returns the system language to EmNavi." />
+  </method>
+  <method name="GetVIN">
+    <annotation name="async_client" value="true" />
+    <arg name="VIN" direction="out" type="s">
+      <doc line="The unique VIN of the car" />
+    </arg>
+    <doc line="Returns the Vehicle Identification Number of the vehicle as a string." />
+  </method>
+  <method name="GetRegionAndBranding">
+    <annotation name="async_client" value="true" />
+    <arg name="Region" direction="out" type="s">
+      <doc line="Region description" />
+    </arg>
+    <arg name="Branding" direction="out" type="s">
+      <doc line="Branding description" />
+    </arg>
+    <doc line="Returns the region and branding information of the vehicle." />
+  </method>
+  <method name="GetTemperatureUnit">
+    <annotation name="async_client" value="true" />
+    <arg name="TempUnit" direction="out" type="i">
+      <doc line="TempUnit enum( TEMP_UNIT_CELSIUS=0, TEMP_UNIT_FAHRENHEIT=1 )" />
+    </arg>
+    <doc line="This function returns the unit in which the temperature should be displayed." />
+  </method>
+  <method name="GetDayNightMode">
+    <annotation name="async_client" value="true" />
+    <arg name="mode" direction="out" type="i">
+      <doc line="mode = enum( DAYNIGHTMODE_DAY=0x00, DAYNIGHTMODE_NIGHT=0x01, DAYNIGHTMODE_AUTO=0x02 )" />
+    </arg>
+    <doc line="GetDayNightMode = This method returns the day/night mode to EmNavi." />
+  </method>
+  <method name="GetTimeFormat">
+    <annotation name="async_client" value="true" />
+    <arg name="format" direction="out" type="i">
+      <doc line="format = enum( TIMEFORMAT_12H=0x00, TIMEFORMAT_24H=0x01 )" />
+    </arg>
+    <doc line="GetTimeFormat = This method returns the time format to EmNavi." />
+  </method>
+  <method name="GetLengthUnit">
+    <annotation name="async_client" value="true" />
+    <arg name="unit" direction="out" type="i">
+      <doc line="unit = enum( UNIT_MILES_YARD=0, UNIT_KM=1, UNIT_MILES_FEET=2 )" />
+    </arg>
+    <doc line="GetLengthUnit = This method returns the length unit to EmNavi." />
+  </method>
+  <method name="GetPhoneConnectionStatus">
+    <annotation name="async_client" value="true" />
+    <arg name="PhoneStatus" direction="out" type="i">
+      <doc line="PhoneStatus = enum( PHONE_DISCONNECTED=0x00, PHONE_CONNECTED=0x01 )" />
+    </arg>
+    <doc line="This method tells whether the phone is connected" />
+  </method>
+  <method name="GetFuelType">
+    <annotation name="async_client" value="true" />
+    <arg name="FuelType" direction="out" type="i">
+      <doc line="FuelType = enum( Fuel_Unknown (0), Fuel_Gasoline_DISI (1), Fuel_Gasoline_EFI (2), Fuel_Diesel_DI (3), Fuel_Diesel_IDI (4), Fuel_EV_HEV (5), Fuel_NaturalGas_CFI (6), Fuel_NaturealGas_EFI (7), Fuel_FlexibleFuel_CFI (8), Fuel_FlexibleFuel_EFI (9), Fuel_Gasoline_iStop (10), Fuel_Diesel_iStop (11) )" />
+    </arg>
+    <doc line="This method returns the type of fuel used in the car." />
+  </method>
+  <method name="GetNetworkConnectionStatus">
+    <annotation name="async_client" value="true" />
+    <arg name="NetworkConnectionStatus" direction="out" type="i">
+      <doc line="NetworkConnectionStatus = enum( NETWORK_AVAILABLE=0x00, NETWORK_NOT_AVAILABLE=0x01 )" />
+    </arg>
+    <doc line="This method tells whether network is available ." />
+  </method>
+  <method name="GetAvailableLayouts">
+    <annotation name="type_ref.Layouts"
+    value="navi2NNG_LayoutsList_t" />
+    <arg name="Layouts" direction="out" type="(ia(i))">
+      <doc line=""></doc>
+    </arg>
+  </method>
+</interface>

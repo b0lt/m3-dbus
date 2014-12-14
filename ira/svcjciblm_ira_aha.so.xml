@@ -1,0 +1,180 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include" value="status.h" />
+<annotation name="com.jci.header_include" value="ahaDefs.h" />
+<annotation name="com.jci.c_name_prefix" value="BlmAha" />
+<annotation name="com.jci.c_name_prefix_object" value="BlmAha" />
+<interface name="com.jci.blm.aha">
+  <annotation name="com.jci.c_name_prefix" value="BlmAha" />
+  <annotation name="com.jci.with_error_string" value="yes" />
+  <method name="Connect">
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaConnect_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="SessionId" direction="out" type="u" />
+    <arg name="KeepConnected" direction="out" type="b" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaDisconnect_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="ChangeClientPlaybackState">
+    <annotation name="com.jci.typeof.PlaybackState"
+    value="AhaChangePlaybackState" />
+    <annotation name="com.jci.typeof.PlayState"
+    value="AhaPlaybackState" />
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaChangeClientPlaybackState_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="PlaybackState" direction="in" type="y" />
+    <arg name="ContentId" direction="out" type="t" />
+    <arg name="PlayState" direction="out" type="y" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="SelectContentForPlayback">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaSelectContentForPlayback_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="SelectStationForPlayback">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaSelectStationForPlayback_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationId" direction="in" type="t" />
+    <arg name="PlaybackFromBegin" direction="in" type="y" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="TimeShiftContent">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaTimeShiftContent_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="NOSecondsToTimeShift" direction="in" type="n" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionVoteLike">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionVoteLike_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionRetweet">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionRetweet_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionTweetCurrentLocation">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionTweetCurrentLocation_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionVoteDislike">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionVoteDislike_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionUnvote">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionUnvote_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionUploadCurrentLocationToFacebook">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionUploadCurrentLocationToFacebook_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionLogNavigate">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionLogNavigate_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="PerformActionLogCallAction">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaPerformActionLogCallAction_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="RecordingStart">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaRecordingStart_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="MaxRecordingTime" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="RecordingCancel">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaRecordingCancel_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="RecordingPost">
+    <annotation name="com.jci.typeof.StatusId" value="status_t" />
+    <annotation name="com.jci.typedef_callback_client"
+    value="AhaRecordingPost_cb_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <signal name="RecordingCancelled">
+    <annotation name="com.jci.typedef_callback"
+    value="RecordingCancelled_cb_t" />
+    <annotation name="com.jci.always_broadcast" value="true" />
+    <arg name="SessionId" type="u" />
+  </signal>
+  <signal name="Disconnected">
+    <annotation name="com.jci.typedef_callback"
+    value="SignalDisconnected_cb_t" />
+    <annotation name="com.jci.always_broadcast" value="true" />
+    <arg name="SessionId" type="u" />
+    <arg name="ReasonId" type="y" />
+  </signal>
+</interface>

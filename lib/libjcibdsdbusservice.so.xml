@@ -1,0 +1,518 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.bds">
+  <annotation name="def_struct_names.bds_msg_1_t" value="data" />
+  <annotation name="def_struct_types.bds_msg_1_t" value="i" />
+  <method name="SendCommand">
+    <annotation name="async" value="client" />
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="TestMethod">
+    <annotation name="async" value="client" />
+    <arg name="type" direction="in" type="u" />
+  </method>
+  <signal name="Signaltest_cb">
+    <arg name="type" direction="in" type="u" />
+  </signal>
+  <signal name="SignalReady_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalNotReady_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDeleteInProgress_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDeleted_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDeleteAllInProgress_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDeleteAll_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDisconnectedAll_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceDisconnectionProgress_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceInquiryResult_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceNameStarted_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceNameSet_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceNameGet_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceAccessibilityGet_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDevicePair_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceServiceDiscovery_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceWrittenAll_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceAuthenticate_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalRemoteSupportedFeatures_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceGetConnectedDevices_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceLocalOobData_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceExtendedSearchResult_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceEnableStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceDisableStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalConnected_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDisconnected_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceFeatures_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceConfiguration_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkAppChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBatteryStatusChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBiased_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseConnect_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseDisonnect_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseFolderChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseFolderContent_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseFolderContents_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseSearch_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkBrowseUidsChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkContentAddToNowPlaying_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkContentAttributes_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkContentPlay_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkMediaPosition_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPanelOperation_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlaybackStatusChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerAddressedChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerBrowsedChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerItem_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerItems_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerItemsChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerNowContentChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkPlayerVolumeChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkStreamClosed_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkStreamConfigured_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkStreamLine_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkStreamMuted_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkStreamOpened_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkSupportedChanges_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkSupportedPlayerSetting_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkSystemStatusChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkTrackChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkTrackEnd_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkTrackMetaData_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalAudioSinkTrackStart_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientCallList_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientAudioConnect_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientAudioDisconnect_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientIndicator_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientOperator_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientSubscriber_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientMicVolumeChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientSpeakerVolumeChange_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientActivateVoiceDial_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientDeActivateVoiceDial_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientSiriSupportStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientSiriEyesFreeMode_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientSiriDisableNoiseReduction_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalPhoneStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientCmdError_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalCallClientScoCodecId_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientConfigured_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientFolderListing_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessageDeleted_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessageGotten_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessageListing_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessageNotification_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessagePushed_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalMessageClientMessageSetStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalNetworkClientConnected_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalNetworkClientDisconnected_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalPimClientImportStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalFileServerInfoEvent_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalFileServerFileAcceptanceStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalFileServerDataFileInProgressStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceLessAudioConnectStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceLessAudioDisconnectStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceLessAclConnectStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalServiceLessAclDisconnectStatus_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalBTChipFailure_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SignalDeviceAddressGet_cb">
+    <annotation name="type_ref.data" value="bds_msg_1_t" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="data" direction="in" type="(ay)" />
+  </signal>
+</interface>

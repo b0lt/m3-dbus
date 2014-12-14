@@ -1,0 +1,125 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include"
+value="vuicore_common_interface.h" />
+<annotation name="com.jci.header_include"
+value="uiacommon_defs.h" />
+<annotation name="com.jci.userdata_passed_to_client_callbacks"
+value="false" />
+<interface name="com.jci.vuicore">
+  <annotation name="com.jci.def_struct_names.VUICORE_UIA_Context_t"
+  value=" uiaId, contextId, contextSeq, extraDataLen, extraData" />
+  <annotation name="com.jci.def_struct_types.VUICORE_UIA_Context_t"
+  value=" i, i, u, u, y" />
+  <annotation name="com.jci.def_struct_names.VUICORE_UIA_Message_t"
+  value=" uiaId, messageId, extraDataLen, extraData" />
+  <annotation name="com.jci.def_struct_types.VUICORE_UIA_Message_t"
+  value=" i, i, u, y" />
+  <annotation name="com.jci.def_struct_names.VUICORE_UIA_Alert_t"
+  value=" uiaId, alertId, extraDataLen, extraData" />
+  <annotation name="com.jci.def_struct_types.VUICORE_UIA_Alert_t"
+  value=" i, i, u, y" />
+  <annotation name="com.jci.def_struct_names.VUICORE_UIA_Event_t"
+  value=" uiaId, eventId, extraDataLen, extraData, currentUiaId, currentContextId" />
+  <annotation name="com.jci.def_struct_types.VUICORE_UIA_Event_t"
+  value=" i, i, u, y, i, i" />
+  <annotation name="com.jci.def_struct_names.VUICORE_UIA_AlertComplete_t"
+  value=" uiaId, alertId, alertCompletionStatus" />
+  <annotation name="com.jci.def_struct_types.VUICORE_UIA_AlertComplete_t"
+  value=" i, i, i" />
+  <method name="SetParadigm">
+    <annotation name="com.jci.typeof.paradigm"
+    value="VUICORE_Paradigm_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="paradigm" direction="in" type="i" />
+  </method>
+  <method name="SetAppContext">
+    <annotation name="com.jci.type_ref.appContext"
+    value="VUICORE_UIA_Context_t" />
+    <annotation name="com.jci.typeof.action"
+    value="VUICORE_Action_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="appContext" direction="in" type="(iiuuay)" />
+    <arg name="action" direction="in" type="i" />
+  </method>
+  <method name="SendMessage">
+    <annotation name="com.jci.type_ref.message"
+    value="VUICORE_UIA_Message_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="message" direction="in" type="(iiuay)" />
+  </method>
+  <method name="StartReco">
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="startOfSession" direction="in" type="b" />
+  </method>
+  <method name="AbortSession">
+    <annotation name="com.jci.typeof.action"
+    value="VUICORE_Action_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="action" direction="in" type="i" />
+  </method>
+  <method name="SetLang">
+    <annotation name="com.jci.typeof.language"
+    value="LANGS_language_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="language" direction="in" type="i" />
+  </method>
+  <method name="SendAlert">
+    <annotation name="com.jci.type_ref.alert"
+    value="VUICORE_UIA_Alert_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="alert" direction="in" type="(iiuay)" />
+    <arg name="alertAction" direction="in" type="i" />
+  </method>
+  <method name="SetTestMode">
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="enableTestMode" direction="in" type="b" />
+    <arg name="enableNLU" direction="in" type="b" />
+  </method>
+  <method name="SetPrerecordedAudioFiles">
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="AudioFileAttempt1" direction="in" type="s" />
+    <arg name="AudioFileAttempt2" direction="in" type="s" />
+    <arg name="AudioFileAttempt3" direction="in" type="s" />
+  </method>
+  <method name="AlertQueueEmpty">
+    <annotation name="com.jci.async_client" value="true" />
+  </method>
+  <signal name="AppEventCallback">
+    <annotation name="com.jci.type_ref.event"
+    value="VUICORE_UIA_Event_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="AppEventCallback" />
+    <arg name="event" type="(iiuayii)" />
+  </signal>
+  <signal name="LanguageChangedCallback">
+    <annotation name="com.jci.typeof.language"
+    value="LANGS_language_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="LanguageChangedCallback" />
+    <arg name="language" type="i" />
+  </signal>
+  <signal name="StateChangeCallback">
+    <ANNOTATION name="com.jci.typeof.newState"
+    value="VUICORE_States_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="StateChangeCallback" />
+    <arg name="newState" type="i" />
+  </signal>
+  <signal name="AlertCompleteCallback">
+    <annotation name="com.jci.type_ref.alertComplete"
+    value="VUICORE_UIA_AlertComplete_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="AlertCompleteCallback" />
+    <arg name="alertComplete" type="(iii)" />
+  </signal>
+  <signal name="MicLevelCallback">
+    <annotation name="com.jci.typeof.micLevel" value="S32" />
+    <annotation name="com.jci.typedef_callback"
+    value="MicLevelCallback" />
+    <arg name="micLevel" type="i" />
+  </signal>
+</interface>

@@ -1,0 +1,18 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.BACKUPCAM">
+  <method name="GetReveseStatus">
+    <annotation name="async" value="client" />
+    <arg name="reverseStatus" direction="out" type="i" />
+  </method>
+  <method name="GetVideoDecoderStatus">
+    <annotation name="sync" value="client" />
+    <arg name="videoStatus" direction="out" type="i" />
+  </method>
+  <signal name="ReverseStatusChanged">
+    <arg name="reverseStatus" type="i" />
+  </signal>
+</interface>

@@ -1,0 +1,731 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.usbms">
+  <annotation name="com.jci.def_struct_names.usbms_dev_info_t"
+  value="id, type, name, newDev, normalData, devReady, identifier, last_mod_time" />
+  <annotation name="com.jci.def_struct_types.usbms_dev_info_t"
+  value="u, u, s, u, u, b, s, s" />
+  <annotation name="com.jci.def_struct_names.usbms_dev_list_t"
+  value="dev_list" />
+  <annotation name="com.jci.def_struct_types.usbms_dev_list_t"
+  value="usbms_dev_info_t" />
+  <annotation name="com.jci.def_struct_names.usbms_io_info_t"
+  value="type, subtype, id, role, name" />
+  <annotation name="com.jci.def_struct_types.usbms_io_info_t"
+  value="u, u, u, u, s" />
+  <annotation name="com.jci.def_struct_names.usbms_metadata_types_t"
+  value="types_list" />
+  <annotation name="com.jci.def_struct_types.usbms_metadata_types_t"
+  value="u" />
+  <annotation name="com.jci.def_struct_names.usbms_metadata_info_t"
+  value="value, type, item_id" />
+  <annotation name="com.jci.def_struct_types.usbms_metadata_info_t"
+  value="s, u, u" />
+  <annotation name="com.jci.def_struct_names.usbms_metadata_info_list_t"
+  value="metadata_info" />
+  <annotation name="com.jci.def_struct_types.usbms_metadata_info_list_t"
+  value="usbms_metadata_info_t" />
+  <annotation name="com.jci.def_struct_names.usbms_sort_settings_t"
+  value="metadata_type, sort_order" />
+  <annotation name="com.jci.def_struct_types.usbms_sort_settings_t"
+  value="u, u" />
+  <annotation name="com.jci.def_struct_names.usbms_sort_settings_list_t"
+  value="sort_settings" />
+  <annotation name="com.jci.def_struct_types.usbms_sort_settings_list_t"
+  value="usbms_sort_settings_t" />
+  <annotation name="com.jci.def_struct_names.usbms_prop_list_dbus_t"
+  value="prop_info_list" />
+  <annotation name="com.jci.def_struct_types.usbms_prop_list_dbus_t"
+  value="usbms_metadata_info_list_t" />
+  <annotation name="com.jci.def_struct_names.usbms_obj_index_info_t"
+  value="obj_index, title, artist, album, genre" />
+  <annotation name="com.jci.def_struct_types.usbms_obj_index_info_t"
+  value="u, s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.usbms_media_desc_t"
+  value="sample_rate, bitrate, channels_count, sample_depth, media_format" />
+  <annotation name="com.jci.def_struct_types.usbms_media_desc_t"
+  value="u, u, u, u, i" />
+  <annotation name="com.jci.def_struct_names.usbms_feature_data_t"
+  value="data" />
+  <annotation name="com.jci.def_struct_types.usbms_feature_data_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.usbms_item_t"
+  value="name, type" />
+  <annotation name="com.jci.def_struct_types.usbms_item_t"
+  value="s, i" />
+  <annotation name="com.jci.def_struct_names.usbms_items_t"
+  value="item" />
+  <annotation name="com.jci.def_struct_types.usbms_items_t"
+  value="usbms_item_t" />
+  <annotation name="com.jci.def_struct_names.usbms_itm_t"
+  value="name, type, id" />
+  <annotation name="com.jci.def_struct_types.usbms_itm_t"
+  value="s, i, u" />
+  <annotation name="com.jci.def_struct_names.usbms_itms_t"
+  value="item" />
+  <annotation name="com.jci.def_struct_types.usbms_itms_t"
+  value="usbms_itm_t" />
+  <annotation name="com.jci.def_struct_names.usbms_fld_inf_t"
+  value="name, id" />
+  <annotation name="com.jci.def_struct_types.usbms_fld_inf_t"
+  value="s, u" />
+  <annotation name="com.jci.def_struct_names.usbms_song_info_t"
+  value="title, artist, album, genre" />
+  <annotation name="com.jci.def_struct_types.usbms_song_info_t"
+  value="s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.usbms_song_info_list_t"
+  value="song_info" />
+  <annotation name="com.jci.def_struct_types.usbms_song_info_list_t"
+  value="usbms_song_info_t" />
+  <annotation name="com.jci.def_struct_names.usbms_obj_info_t"
+  value="curr_index, total_time, sec" />
+  <annotation name="com.jci.def_struct_types.usbms_obj_info_t"
+  value="u, u, u" />
+  <annotation name="com.jci.def_struct_names.usbms_more_like_this_cfg_t"
+  value="set_random, track_limit, max_per_artist, max_per_album, max_minutes_limit" />
+  <annotation name="com.jci.def_struct_types.usbms_more_like_this_cfg_t"
+  value="b, u, u, u, u" />
+  <annotation name="com.jci.def_struct_names.usbms_metadata_unknown_t"
+  value="title, album, artist, composer, genre" />
+  <annotation name="com.jci.def_struct_types.usbms_metadata_unknown_t"
+  value="s, s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.usbms_bod_resume_data_t"
+  value="view, file_id, fld_id, fld_name, parent_fld_id" />
+  <annotation name="com.jci.def_struct_types.usbms_bod_resume_data_t"
+  value="u, u, u, s, u" />
+  <annotation name="com.jci.def_struct_names.usbms_alphabet_t"
+  value="id, index, letter" />
+  <annotation name="com.jci.def_struct_types.usbms_alphabet_t"
+  value="u, i, s" />
+  <annotation name="com.jci.def_struct_names.usbms_alphabet_list_t"
+  value="item" />
+  <annotation name="com.jci.def_struct_types.usbms_alphabet_list_t"
+  value="usbms_alphabet_t" />
+  <annotation name="com.jci.def_struct_names.usbms_resume_data_t"
+  value="shuffle_out, repeat_out, sel_id_out, songs_count_out, parent_handle_out, mode_out, song_path_out, song_path_status_out, morelikethis_pending" />
+  <annotation name="com.jci.def_struct_types.usbms_resume_data_t"
+  value="i, i, i, u, i, u, i, u, b" />
+  <annotation name="com.jci.def_struct_names.usbms_player_parameters_t"
+  value="playerState, shuffle, repeat" />
+  <annotation name="com.jci.def_struct_types.usbms_player_parameters_t"
+  value="i, i, i" />
+  <method name="CreateInstance">
+    <annotation name="return" value="return_value" />
+    <arg name="dev_h" direction="in" type="u" />
+    <arg name="instance_h" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeleteInstance">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetStorageDevicesList">
+    <annotation name="com.jci.type_ref.dev_list"
+    value="usbms_dev_list_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="dev_list" direction="out" type="(a(uusuubss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetIODeviceList">
+    <annotation name="com.jci.type_ref.dev_list"
+    value="usbms_dev_list_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="dev_list" direction="out" type="(a(uusuubss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StartExtract">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CancelExtract">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetStorageDeviceInfo">
+    <annotation name="com.jci.type_ref.sd_info"
+    value="usbms_dev_info_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="sd_info" direction="out" type="(uusuubss)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetIODeviceInfo">
+    <annotation name="com.jci.type_ref.io_info"
+    value="usbms_io_info_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="io_info" direction="out" type="(uuuus)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetSongsCount">
+    <annotation name="return" value="return_value" />
+    <arg name="selection" direction="in" type="u" />
+    <arg name="songs_count" direction="out" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="PlaySelection">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="sink_dev" direction="in" type="i" />
+    <arg name="storage_dev" direction="in" type="i" />
+    <arg name="selection" direction="in" type="u" />
+    <arg name="song_index" direction="in" type="u" />
+    <arg name="song_path" direction="in" type="i" />
+    <arg name="store_pausing" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Pause">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Resume">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Stop">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Current">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Next">
+    <annotation name="timeout" value="48000" />
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Prev">
+    <annotation name="timeout" value="48000" />
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetShuffleMode">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="shuffle_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetDefaultShuffleMode">
+    <annotation name="return" value="return_value" />
+    <arg name="shuffle_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetShuffleMode">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="shuffle_mode" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetRepeatMode">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="repeat_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetDefaultRepeatMode">
+    <annotation name="return" value="return_value" />
+    <arg name="repeat_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetRepeatMode">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="repeat_mode" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetNormalization">
+    <annotation name="return" value="return_value" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="normalization" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StartSeeking">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="sec_step" direction="in" type="u" />
+    <arg name="seek_dir" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SaveResumeData">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="morelikethis_pending" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeleteResumeData">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="LoadResumeData">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SaveDB">
+    <annotation name="return" value="return_value" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetServiceStatus">
+    <annotation name="return" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDeviceFeatures">
+    <arg name="dev_id" direction="in" type="u" />
+    <arg name="dev_features" direction="out" type="u" />
+  </method>
+  <method name="DbSelectionNew">
+    <annotation name="return" value="return_value" />
+    <arg name="dummy" direction="in" type="i" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="sel_h" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DbSelectionGetData">
+    <annotation name="return" value="return_value" />
+    <arg name="sel_h" direction="in" type="u" />
+    <arg name="sel_type" direction="in" type="i" />
+    <arg name="offset" direction="in" type="u" />
+    <arg name="limit" direction="in" type="u" />
+    <arg name="fpath" direction="in" type="s" />
+    <arg name="data_count" direction="out" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DbSelectionFree">
+    <annotation name="return" value="return_value" />
+    <arg name="sel_h" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DbSelectionAddFilter">
+    <annotation name="return" value="return_value" />
+    <arg name="sel_h" direction="in" type="u" />
+    <arg name="filter_type" direction="in" type="i" />
+    <arg name="filter_value" direction="in" type="s" />
+    <arg name="bReset" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DbSelectionRemoveFilter">
+    <annotation name="return" value="return_value" />
+    <arg name="sel_h" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetPropertyInfoListAsync">
+    <annotation name="com.jci.type_ref.metadataTypes"
+    value="usbms_metadata_types_t" />
+    <annotation name="com.jci.type_ref.metadataInfoList"
+    value="usbms_metadata_info_list_t" />
+    <annotation name="com.jci.type_ref.sortSettingsList"
+    value="usbms_sort_settings_list_t" />
+    <annotation name="com.jci.type_ref.propInfoList"
+    value="usbms_prop_list_dbus_t" />
+    <annotation name="async" value="both" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="metadataTypes" direction="in" type="(au)" />
+    <arg name="metadataInfoList" direction="in" type="(a(suu))" />
+    <arg name="sortSettingsList" direction="in" type="(a(uu))" />
+    <arg name="maxListSize" direction="in" type="u" />
+    <arg name="offset" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="bUseAsBOD" direction="in" type="b" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="offset_out" direction="out" type="u" />
+    <arg name="resultCount" direction="out" type="u" />
+    <arg name="totalCount" direction="out" type="u" />
+    <arg name="sel_id_out" direction="out" type="u" />
+    <arg name="propInfoList" direction="out" type="(a(a(suu)))" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetPropertyInfoListReleaseQueryHandle">
+    <annotation name="async" value="both" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetPropertyInfoListCount">
+    <annotation name="com.jci.type_ref.metadataTypes"
+    value="usbms_metadata_types_t" />
+    <annotation name="com.jci.type_ref.metadataInfoList"
+    value="usbms_metadata_info_list_t" />
+    <annotation name="async" value="both" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="metadataTypes" direction="in" type="(au)" />
+    <arg name="metadataInfoList" direction="in" type="(a(suu))" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="sel_id_out" direction="out" type="u" />
+    <arg name="resultCount" direction="out" type="u" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetObjectInfo">
+    <annotation name="com.jci.type_ref.objInfo"
+    value="usbms_obj_index_info_t" />
+    <annotation name="com.jci.type_ref.mediaDesc"
+    value="usbms_media_desc_t" />
+    <annotation name="async" value="both" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="objIndex" direction="in" type="u" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="objInfo" direction="out" type="(ussss)" />
+    <arg name="mediaDesc" direction="out" type="(uuuui)" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetSongsInfoList">
+    <annotation name="com.jci.type_ref.songsInfo"
+    value="usbms_song_info_list_t" />
+    <annotation name="async" value="both" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="start_index" direction="in" type="u" />
+    <arg name="end_index" direction="in" type="u" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="songsInfo" direction="out" type="(a(ssss))" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetCoverArt">
+    <annotation name="async" value="both" />
+    <arg name="requestId_in" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="index_in" direction="in" type="u" />
+    <arg name="source_type" direction="in" type="i" />
+    <arg name="devID" direction="in" type="i" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="index_out" direction="out" type="u" />
+    <arg name="fileName" direction="out" type="s" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="ReleaseCoverArt">
+    <annotation name="async" value="both" />
+    <arg name="requestId_in" direction="in" type="u" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="index" direction="out" type="u" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="GetAlbumArt">
+    <annotation name="async" value="both" />
+    <arg name="requestId_in" direction="in" type="u" />
+    <arg name="devId" direction="in" type="u" />
+    <arg name="albumName_in" direction="in" type="s" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="albumName_out" direction="out" type="s" />
+    <arg name="fileName" direction="out" type="s" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="ReleaseAlbumArt">
+    <annotation name="async" value="both" />
+    <arg name="requestId_in" direction="in" type="u" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="u" />
+  </method>
+  <method name="ChangeLanguage">
+    <annotation name="com.jci.type_ref.metadata_unknown"
+    value="usbms_metadata_unknown_t" />
+    <annotation name="timeout" value="48000" />
+    <annotation name="return" value="return_value" />
+    <arg name="lang_id" direction="in" type="i" />
+    <arg name="metadata_unknown" direction="in" type="(sssss)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetiPodFreeSpace">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="free_space" direction="out" type="t" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetiPodStorageCaps">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="total_space" direction="out" type="t" />
+    <arg name="max_file_size" direction="out" type="u" />
+    <arg name="max_write_size" direction="out" type="q" />
+    <arg name="major_version" direction="out" type="y" />
+    <arg name="minor_version" direction="out" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="OpeniPodFeatureFile">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="file_handle" direction="out" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WriteiPodFeatureFile">
+    <annotation name="com.jci.type_ref.featureData"
+    value="usbms_feature_data_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="u" />
+    <arg name="featureData" direction="in" type="(ay)" />
+    <arg name="file_handle" direction="in" type="y" />
+    <arg name="max_write_size" direction="in" type="q" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CloseiPodFeatureFile">
+    <annotation name="return" value="return_value" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="file_handle" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BODStart">
+    <annotation name="com.jci.type_ref.items"
+    value="usbms_items_t" />
+    <annotation name="async" value="both" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="getNumItems" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="parent" direction="out" type="i" />
+    <arg name="items" direction="out" type="(a(si))" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="bod_handle" direction="out" type="i" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODEnterFolder">
+    <annotation name="com.jci.type_ref.items"
+    value="usbms_items_t" />
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="itemIndex" direction="in" type="u" />
+    <arg name="getNumItems" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="newParent" direction="out" type="i" />
+    <arg name="items" direction="out" type="(a(si))" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODExitFolder">
+    <annotation name="com.jci.type_ref.items"
+    value="usbms_items_t" />
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="getNumItems" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="newParent" direction="out" type="i" />
+    <arg name="items" direction="out" type="(a(si))" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODEnd">
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="bod_handle" direction="in" type="i" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODPlayFile">
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="file_index" direction="in" type="u" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="sink_dev" direction="in" type="i" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODGetItems">
+    <annotation name="com.jci.type_ref.items"
+    value="usbms_items_t" />
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="itemIndex" direction="in" type="u" />
+    <arg name="getNumItems" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="items" direction="out" type="(a(si))" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="BODGetFirstPlayableFileIndex">
+    <annotation name="async" value="both" />
+    <arg name="parent" direction="in" type="i" />
+    <arg name="context_in" direction="in" type="i" />
+    <arg name="file_index" direction="out" type="i" />
+    <arg name="result" direction="out" type="i" />
+    <arg name="context_out" direction="out" type="i" />
+  </method>
+  <method name="iPO_EnableIOut">
+    <annotation name="return" value="result" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="iPO_DisableIOut">
+    <annotation name="return" value="result" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="iPO_ButtonPress">
+    <annotation name="return" value="result" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="cmd_type" direction="in" type="u" />
+    <arg name="cmd_id" direction="in" type="u" />
+    <arg name="rotation_step" direction="in" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="MoreLikeThis">
+    <annotation name="com.jci.type_ref.mlt_cfg"
+    value="usbms_more_like_this_cfg_t" />
+    <annotation name="return" value="result" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="song_ix" direction="in" type="u" />
+    <arg name="dev_id" direction="in" type="u" />
+    <arg name="mlt_cfg" direction="in" type="(buuuu)" />
+    <arg name="pl_name" direction="out" type="s" />
+    <arg name="sel_id_out" direction="out" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="PlayResumeData">
+    <annotation name="com.jci.type_ref.resume_data_out"
+    value="usbms_resume_data_t" />
+    <annotation name="com.jci.type_ref.filters_out"
+    value="usbms_metadata_info_list_t" />
+    <annotation name="com.jci.type_ref.bod_resume_data"
+    value="usbms_bod_resume_data_t" />
+    <annotation name="timeout" value="48000" />
+    <annotation name="return" value="result" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="sink_dev" direction="in" type="i" />
+    <arg name="resume_data_out" direction="out"
+    type="(iiiuiuiub)" />
+    <arg name="filters_out" direction="out" type="(a(suu))" />
+    <arg name="bod_resume_data" direction="out" type="(uuusu)" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="PlaybackJumpToPosition">
+    <annotation name="return" value="result" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="new_pb_position" direction="in" type="u" />
+    <arg name="instance_h" direction="in" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="GetAlphabet">
+    <annotation name="com.jci.type_ref.alphabet_list"
+    value="usbms_alphabet_list_t" />
+    <annotation name="async" value="both" />
+    <arg name="requestId_in" direction="in" type="u" />
+    <arg name="sel_id" direction="in" type="u" />
+    <arg name="md_type" direction="in" type="i" />
+    <arg name="requestId_out" direction="out" type="u" />
+    <arg name="alphabet_list" direction="out" type="(a(uis))" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="BOD_GetFolderItems">
+    <annotation name="com.jci.type_ref.folder_inf"
+    value="usbms_fld_inf_t" />
+    <annotation name="com.jci.type_ref.itms"
+    value="usbms_itms_t" />
+    <annotation name="async" value="both" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="view_t" direction="in" type="u" />
+    <arg name="folder_id" direction="in" type="u" />
+    <arg name="offset" direction="in" type="u" />
+    <arg name="get_num_items" direction="in" type="u" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="folder_inf" direction="out" type="(su)" />
+    <arg name="parent_id" direction="out" type="u" />
+    <arg name="itms" direction="out" type="(a(siu))" />
+    <arg name="total_items" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="BOD_PlayFileId">
+    <annotation name="async" value="both" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="request_id_in" direction="in" type="u" />
+    <arg name="device_id" direction="in" type="u" />
+    <arg name="view_t" direction="in" type="u" />
+    <arg name="folder_id" direction="in" type="u" />
+    <arg name="file_id" direction="in" type="u" />
+    <arg name="store_pausing" direction="in" type="b" />
+    <arg name="request_id_out" direction="out" type="u" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="StartRenormalization">
+    <annotation name="return" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="StorageAttached">
+    <annotation name="com.jci.type_ref.dev_info"
+    value="usbms_dev_info_t" />
+    <arg name="dev_info" direction="in" type="(uusuubss)" />
+    <arg name="devFeatures" direction="in" type="u" />
+  </signal>
+  <signal name="StorageDetached">
+    <arg name="device" direction="in" type="i" />
+  </signal>
+  <signal name="IODeviceAttached">
+    <annotation name="com.jci.type_ref.dev_info"
+    value="usbms_dev_info_t" />
+    <arg name="dev_info" direction="in" type="(uusuubss)" />
+  </signal>
+  <signal name="IODeviceDetached">
+    <arg name="device" direction="in" type="i" />
+  </signal>
+  <signal name="StorageExtractDone">
+    <arg name="device" direction="in" type="i" />
+    <arg name="extractStatus" direction="in" type="i" />
+    <arg name="last_mod_time" direction="in" type="s" />
+  </signal>
+  <signal name="TrackChanged">
+    <annotation name="com.jci.type_ref.song_info"
+    value="usbms_song_info_t" />
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="selection" direction="in" type="u" />
+    <arg name="new_index" direction="in" type="u" />
+    <arg name="song_info" direction="in" type="(ssss)" />
+  </signal>
+  <signal name="PlaybackStatus">
+    <annotation name="com.jci.type_ref.obj_info"
+    value="usbms_obj_info_t" />
+    <arg name="playbackType" type="i" />
+    <arg name="selection" direction="in" type="u" />
+    <arg name="obj_info" type="(uuu)" />
+  </signal>
+  <signal name="SeekingComplete">
+    <arg name="instance_h" direction="in" type="i" />
+    <arg name="seek_dir" direction="in" type="i" />
+  </signal>
+  <signal name="DatabaseSaved" />
+  <signal name="DeviceError">
+    <arg name="device" direction="in" type="i" />
+    <arg name="devError" direction="in" type="i" />
+  </signal>
+  <signal name="BODCatalogDone">
+    <arg name="device" direction="in" type="i" />
+    <arg name="status" direction="in" type="u" />
+  </signal>
+  <signal name="PlayerParametersChange">
+    <annotation name="com.jci.type_ref.playerParams"
+    value="usbms_player_parameters_t" />
+    <arg name="playerParams" direction="in" type="(iii)" />
+  </signal>
+</interface>

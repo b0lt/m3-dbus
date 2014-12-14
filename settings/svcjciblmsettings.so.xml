@@ -1,0 +1,257 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.settings">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="with_error_string" value="yes" />
+  <method name="Connect">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="Get_Settings_U8">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val" direction="out" type="y" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Set_Settings_U8">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="val" direction="in" type="y" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val_ret" direction="out" type="y" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="OnChange_Settings_U8">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_signalcb_fun" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Reset_Settings_U8">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Get_Settings_S16">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val" direction="out" type="n" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Set_Settings_S16">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="val" direction="in" type="n" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val_ret" direction="out" type="n" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="OnChange_Settings_S16">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_signalcb_fun" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Reset_Settings_S16">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Get_Settings_U32">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val" direction="out" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Set_Settings_U32">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="val" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val_ret" direction="out" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="OnChange_Settings_U32">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_signalcb_fun" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Reset_Settings_U32">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Get_Settings_BLM_Settings_pChar">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val" direction="out" type="s" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Set_Settings_BLM_Settings_pChar">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="val" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="val_ret" direction="out" type="s" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="OnChange_Settings_BLM_Settings_pChar">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_signalcb_fun" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Reset_Settings_BLM_Settings_pChar">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_path" direction="in" type="s" />
+    <arg name="key_group" direction="in" type="s" />
+    <arg name="key_name" direction="in" type="s" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="key_actions" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Reset_SettingsGroup">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="key_group" direction="in" type="n" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="Settings_RPC">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="settings_cmd" direction="in" type="u" />
+    <arg name="user_fun" direction="in" type="u" />
+    <arg name="user_fun_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <signal name="OnChangeSignal_Settings_U8">
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="val" type="y" />
+    <arg name="user_fun_out" type="u" />
+    <arg name="status" type="u" />
+  </signal>
+  <signal name="OnChangeSignal_Settings_S16">
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="val" type="n" />
+    <arg name="user_fun_out" type="u" />
+    <arg name="status" type="u" />
+  </signal>
+  <signal name="OnChangeSignal_Settings_U32">
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="val" type="u" />
+    <arg name="user_fun_out" type="u" />
+    <arg name="status" type="u" />
+  </signal>
+  <signal name="OnChangeSignal_Settings_BLM_Settings_pChar">
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="val" type="s" />
+    <arg name="user_fun_out" type="u" />
+    <arg name="status" type="u" />
+  </signal>
+</interface>

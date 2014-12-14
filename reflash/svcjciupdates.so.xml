@@ -1,0 +1,98 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.UPDATES_Ipc_Client_Sys.Interface">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="header_include" value="updates.h" />
+  <method name="Connect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="IsPresentFailSafeOS">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_isPresent" direction="out" type="b" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="GetPackageInfo">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.out_type" value="UPDATES_up_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="in_upLocation" direction="in" type="s" />
+    <arg name="out_name" direction="out" type="s" />
+    <arg name="out_type" direction="out" type="i" />
+    <arg name="out_version" direction="out" type="s" />
+    <arg name="out_compatible" direction="out" type="b" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="ValidateUP">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.out_type" value="UPDATES_up_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="in_upLocation" direction="in" type="s" />
+    <arg name="out_name" direction="out" type="s" />
+    <arg name="out_type" direction="out" type="i" />
+    <arg name="out_version" direction="out" type="s" />
+    <arg name="out_compatible" direction="out" type="b" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="CancelValidate">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="InstallUP">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="in_upLocation" direction="in" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="CancelInstall">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="GetUpdateStatus">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.out_state"
+    value="UPDATES_state_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_state" direction="out" type="i" />
+    <arg name="out_progress" direction="out" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <signal name="update_status_event">
+    <annotation name="typeof.result" value="status_t" />
+    <annotation name="typeof.state" value="UPDATES_state_type_t" />
+    <arg name="state" type="i" />
+    <arg name="progress" type="u" />
+    <arg name="result" type="i" />
+    <arg name="connId" type="u" />
+  </signal>
+</interface>

@@ -1,0 +1,241 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.bthf">
+  <annotation name="def_struct_names.bthf_msg_1_t" value="data" />
+  <annotation name="def_struct_types.bthf_msg_1_t" value="i" />
+  <method name="Dial">
+    <annotation name="type_ref.dialNumber" value="bthf_msg_1_t" />
+    <annotation name="async" value="client" />
+    <arg name="dialNumber" direction="in" type="(ay)" />
+    <arg name="dialPrompt" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="EmergencyDial">
+    <annotation name="type_ref.dialNumber" value="bthf_msg_1_t" />
+    <annotation name="async" value="client" />
+    <arg name="dialNumber" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Redial">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="HangupCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RejectCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AcceptCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="MuteCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="UnmuteCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SwapCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="HeldCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="UnHeldCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="JoinCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="TransferCall">
+    <annotation name="async" value="client" />
+    <arg name="transferType" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SendDtmf">
+    <annotation name="type_ref.dtmfDigits" value="bthf_msg_1_t" />
+    <annotation name="async" value="client" />
+    <arg name="dtmfDigits" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StartPhoneVr">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StopPhoneVr">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StartBargein">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StopBargein">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CallSettings">
+    <annotation name="async" value="client" />
+    <arg name="isIncallAutoXferEnabled" direction="in" type="u" />
+    <arg name="isOutCallAutoXferEnabled" direction="in" type="u" />
+    <arg name="isActiveCallAutoXferEnabled" direction="in"
+    type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RingToneSettings">
+    <annotation name="async" value="client" />
+    <arg name="ringToneTypeSupported" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AutoAnswerSettings">
+    <annotation name="async" value="client" />
+    <arg name="autoAnswerValue" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RampupRingToneSettings">
+    <annotation name="async" value="client" />
+    <arg name="isRampUpRingToneSupported" direction="in"
+    type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DoNotDisturbSettings">
+    <annotation name="async" value="client" />
+    <arg name="isDoNotDisturbEnabled" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="QueryCallStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="EmergencyCallStart">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="EmergencyCallStop">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetBthfSettingData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ResetBthfCommunicationSettings">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="CallStatus">
+    <annotation name="type_ref.call1Number" value="bthf_msg_1_t" />
+    <annotation name="type_ref.call2Number" value="bthf_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="BTHF_CallStatus_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="bthfstate" direction="in" type="u" />
+    <arg name="call1status" direction="in" type="u" />
+    <arg name="call2status" direction="in" type="u" />
+    <arg name="call1Number" direction="in" type="(ay)" />
+    <arg name="call2Number" direction="in" type="(ay)" />
+  </signal>
+  <signal name="BatteryIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_BatteryIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="minValue" direction="in" type="u" />
+    <arg name="maxValue" direction="in" type="u" />
+    <arg name="currentValue" direction="in" type="u" />
+  </signal>
+  <signal name="SignalStrength">
+    <annotation name="typedef_callback"
+    value="BTHF_SignalStrength_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="minValue" direction="in" type="u" />
+    <arg name="maxValue" direction="in" type="u" />
+    <arg name="currentValue" direction="in" type="u" />
+  </signal>
+  <signal name="RoamIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_RoamIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="u" />
+  </signal>
+  <signal name="NewServiceIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_NewServiceIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="b" />
+  </signal>
+  <signal name="PhoneChargeIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_PhoneChargeIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="u" />
+  </signal>
+  <signal name="SmsPresentIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_SmsPresentIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="b" />
+  </signal>
+  <signal name="VoiceMailIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_VoiceMailIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="b" />
+  </signal>
+  <signal name="LowBatteryIndicator">
+    <annotation name="typedef_callback"
+    value="BTHF_LowBatteryIndicator_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="value" direction="in" type="b" />
+  </signal>
+  <signal name="BthfReadyStatus">
+    <annotation name="typedef_callback"
+    value="BTHF_BthfReadyStatus_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="hftReady" direction="in" type="u" />
+    <arg name="reasonCode" direction="in" type="u" />
+  </signal>
+  <signal name="BthfBusyReason">
+    <annotation name="typedef_callback"
+    value="BTHF_BthfBusyReason_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="busyReason" direction="in" type="u" />
+  </signal>
+  <signal name="MicStatus">
+    <annotation name="typedef_callback"
+    value="BTHF_MicStatus_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="isMicMuted" direction="in" type="b" />
+  </signal>
+  <signal name="BargeinStatus">
+    <annotation name="typedef_callback"
+    value="BTHF_BargeinStatus_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="isBargeinActive" direction="in" type="b" />
+  </signal>
+  <signal name="BthfSettingsResponse">
+    <annotation name="type_ref.callsettings"
+    value="bthf_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="BTHF_BthfSettingsResponse_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="callsettings" direction="in" type="(ay)" />
+  </signal>
+  <signal name="FailureReasonCodes">
+    <annotation name="typedef_callback"
+    value="BTHF_ErrorCodes_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="errorType" direction="in" type="u" />
+  </signal>
+</interface>

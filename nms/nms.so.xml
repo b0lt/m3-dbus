@@ -1,0 +1,1019 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.nms">
+  <annotation name="with_error_string" value="yes" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_of_IfcId_t"
+  value="ifcId_List" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_of_IfcId_t"
+  value="i" />
+  <annotation name="com.jci.def_struct_names.NMS_InterfaceParams_t"
+  value="id, type, display_name, name, ip, mac, netmask, dns1, dns2, gateway, mediaState, settingsType, upState, connectionState" />
+  <annotation name="com.jci.def_struct_types.NMS_InterfaceParams_t"
+  value="i, i, s, s, s, s, s, s, s, s, i, i, i, i" />
+  <annotation name="com.jci.def_struct_names.NMS_InterfaceSetParams_t"
+  value="display_name, ip, netmask, dns1, dns2, gateway, settingsType, upState" />
+  <annotation name="com.jci.def_struct_types.NMS_InterfaceSetParams_t"
+  value="s, s, s, s, s, s, i, i" />
+  <annotation name="com.jci.def_struct_names.NMS_WepPass_t"
+  value="key0, key1, key2, key3" />
+  <annotation name="com.jci.def_struct_types.NMS_WepPass_t"
+  value="s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.NMS_WifiSecurity_t"
+  value="keyManagement, protocol, authAlgorythm, pairwiseCipher, groupCipher" />
+  <annotation name="com.jci.def_struct_types.NMS_WifiSecurity_t"
+  value="i, i, i, i, i" />
+  <annotation name="com.jci.def_struct_names.NMS_WifiNet_t"
+  value="networkId, scan_ssid, ssid, bssid, priority, defaultKeyIndex, hidden, presharedKey, wepKeys, secSettings" />
+  <annotation name="com.jci.def_struct_types.NMS_WifiNet_t"
+  value="u, u, s, s, u, u, b, s, NMS_WepPass_t, NMS_WifiSecurity_t" />
+  <annotation name="com.jci.def_struct_names.NMS_ScannedNetwork_t"
+  value="ssid, bssid, channel, frequency, beaconInt, capabilities, signalQuality, noiseLevel, signalLevel, security" />
+  <annotation name="com.jci.def_struct_types.NMS_ScannedNetwork_t"
+  value="s, s, u, u, u, u, u, u, u, NMS_WifiSecurity_t" />
+  <annotation name="com.jci.def_struct_names.NMS_WifiConnInfo_t"
+  value="netId, wpaState, info" />
+  <annotation name="com.jci.def_struct_types.NMS_WifiConnInfo_t"
+  value="u, i, NMS_ScannedNetwork_t" />
+  <annotation name="com.jci.def_struct_names.NMS_DhcpConfig_t"
+  value="startRange, stopRange" />
+  <annotation name="com.jci.def_struct_types.NMS_DhcpConfig_t"
+  value="s, s" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_of_WifiNet_t"
+  value="WifiNet_list" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_of_WifiNet_t"
+  value="NMS_WifiNet_t" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_ScannedNetwork_t"
+  value="ScannedNetwork_list" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_ScannedNetwork_t"
+  value="NMS_ScannedNetwork_t" />
+  <annotation name="com.jci.def_struct_names.NMS_Socket_Settings_t"
+  value="mark, proc_name, ifc_type, prio" />
+  <annotation name="com.jci.def_struct_types.NMS_Socket_Settings_t"
+  value="i, s, i, i" />
+  <annotation name="com.jci.def_struct_names.NMS_DBUS_DhcpClient_t"
+  value="mac_or_bssid, ip, name, expDate" />
+  <annotation name="com.jci.def_struct_types.NMS_DBUS_DhcpClient_t"
+  value="s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_of_DhcpClient_t"
+  value="DhcpClient_list" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_of_DhcpClient_t"
+  value="NMS_DBUS_DhcpClient_t" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_of_WifiMac_t"
+  value="WifiMac_List" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_of_WifiMac_t"
+  value="s" />
+  <annotation name="com.jci.def_struct_names.NMS_AP_Profile_t"
+  value="ssid, hw_mode, channel, max_num_sta" />
+  <annotation name="com.jci.def_struct_types.NMS_AP_Profile_t"
+  value="s, u, i, i" />
+  <annotation name="com.jci.def_struct_names.NMS_Wep_Keys_t"
+  value="key0, key1, key2, key3" />
+  <annotation name="com.jci.def_struct_types.NMS_Wep_Keys_t"
+  value="s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.NMS_Wep_Profile_t"
+  value="settings, keys" />
+  <annotation name="com.jci.def_struct_types.NMS_Wep_Profile_t"
+  value="NMS_AP_Profile_t, NMS_Wep_Keys_t" />
+  <annotation name="com.jci.def_struct_names.NMS_Wpa_Config_t"
+  value="wpa, phrase" />
+  <annotation name="com.jci.def_struct_types.NMS_Wpa_Config_t"
+  value="i, s" />
+  <annotation name="com.jci.def_struct_names.NMS_Wpa_Profile_t"
+  value="settings, config" />
+  <annotation name="com.jci.def_struct_types.NMS_Wpa_Profile_t"
+  value="NMS_AP_Profile_t, NMS_Wpa_Config_t" />
+  <annotation name="com.jci.def_struct_names.NMS_ModemParams_t"
+  value="ifcId, mId, nickName, vendorUsbStr, modemUsbStr, dialNum, userName, pass, apn, connState, configured, ttyPath_list" />
+  <annotation name="com.jci.def_struct_types.NMS_ModemParams_t"
+  value="i, i, s, s, s, s, s, s, s, i, b, s " />
+  <annotation name="com.jci.def_struct_names.NMS_ModemSetParams_t"
+  value="nickName, dialNum, userName, pass, apn" />
+  <annotation name="com.jci.def_struct_types.NMS_ModemSetParams_t"
+  value="s, s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.NMS_Array_of_TtyPath_t"
+  value="ttyPath_List" />
+  <annotation name="com.jci.def_struct_types.NMS_Array_of_TtyPath_t"
+  value="s" />
+  <annotation name="com.jci.def_struct_names.NMS_TransmissionData_t"
+  value="Rx_byes, Tx_bytes" />
+  <annotation name="com.jci.def_struct_types.NMS_TransmissionData_t"
+  value="t, t" />
+  <method name="GetInterfaceList">
+    <annotation name="type_ref.ifcList"
+    value="NMS_Array_of_IfcId_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcList" direction="out" type="(ai)" />
+  </method>
+  <method name="GetInterfaceList_Async">
+    <annotation name="type_ref.ifcList"
+    value="NMS_Array_of_IfcId_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="GetInterfaceList" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcList" direction="out" type="(ai)" />
+  </method>
+  <method name="Connect">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="reqId" direction="out" type="i" />
+  </method>
+  <method name="Connect_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as" value="Connect" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="reqId" direction="out" type="i" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="Disconnect_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="Disconnect" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="Abort">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="reqId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Abort_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as" value="Abort" />
+    <arg name="reqId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetInterfaceParams">
+    <annotation name="type_ref.ifcParams"
+    value="NMS_InterfaceParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="ifcParams" direction="out"
+    type="(iissssssssiiii)" />
+  </method>
+  <method name="GetInterfaceParams_Async">
+    <annotation name="type_ref.ifcParams"
+    value="NMS_InterfaceParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="GetInterfaceParams" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="ifcParams" direction="out"
+    type="(iissssssssiiii)" />
+  </method>
+  <method name="SetInterfaceParams">
+    <annotation name="type_ref.ifcParams"
+    value="NMS_InterfaceSetParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="ifcParams" direction="in" type="(ssssssii)" />
+    <arg name="setMask" direction="in" type="i" />
+  </method>
+  <method name="SetInterfaceParams_Async">
+    <annotation name="type_ref.ifcParams"
+    value="NMS_InterfaceSetParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="SetInterfaceParams" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="ifcParams" direction="in" type="(ssssssii)" />
+    <arg name="setMask" direction="in" type="i" />
+  </method>
+  <method name="WIFI_SetMode">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mode" direction="in" type="i" />
+  </method>
+  <method name="WIFI_SetMode_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_SetMode" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mode" direction="in" type="i" />
+  </method>
+  <method name="WIFI_GetMode">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mode" direction="out" type="i" />
+  </method>
+  <method name="WIFI_GetMode_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetMode" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mode" direction="out" type="i" />
+  </method>
+  <method name="WIFI_SelectNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_SelectNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_SelectNetwork" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_GetSelectNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="out" type="i" />
+  </method>
+  <method name="WIFI_GetSelectNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetSelectNetwork" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="out" type="i" />
+  </method>
+  <method name="WIFI_AddNetwork">
+    <annotation name="type_ref.network" value="NMS_WifiNet_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="network" direction="in"
+    type="(uussuubs(ssss)(iiiii))" />
+    <arg name="networkId" direction="out" type="i" />
+  </method>
+  <method name="WIFI_AddNetwork_Async">
+    <annotation name="type_ref.network" value="NMS_WifiNet_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_AddNetwork" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="network" direction="in"
+    type="(uussuubs(ssss)(iiiii))" />
+    <arg name="networkId" direction="out" type="i" />
+  </method>
+  <method name="WIFI_RemoveConfiguredNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_RemoveConfiguredNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_RemoveConfiguredNetwork" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_UpdateConfiguredNetwork">
+    <annotation name="type_ref.network" value="NMS_WifiNet_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="network" direction="in"
+    type="(uussuubs(ssss)(iiiii))" />
+  </method>
+  <method name="WIFI_UpdateConfiguredNetwork_Async">
+    <annotation name="type_ref.network" value="NMS_WifiNet_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_UpdateConfiguredNetwork" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="network" direction="in"
+    type="(uussuubs(ssss)(iiiii))" />
+  </method>
+  <method name="WIFI_StartScan">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="refreshTime" direction="in" type="i" />
+  </method>
+  <method name="WIFI_StartScan_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_StartScan" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="refreshTime" direction="in" type="i" />
+  </method>
+  <method name="WIFI_StopScan">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_StopScan_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_StopScan" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_GetConfiguredNetworks">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="type_ref.netList"
+    value="NMS_Array_of_WifiNet_t" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="netList" direction="out"
+    type="(a(uussuubs(ssss)(iiiii)))" />
+  </method>
+  <method name="WIFI_GetConfiguredNetworks_Async">
+    <annotation name="type_ref.netList"
+    value="NMS_Array_of_WifiNet_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetConfiguredNetworks" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="netList" direction="out"
+    type="(a(uussuubs(ssss)(iiiii)))" />
+  </method>
+  <method name="WIFI_GetScanResults">
+    <annotation name="type_ref.scanList"
+    value="NMS_Array_ScannedNetwork_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="scanList" direction="out"
+    type="(a(ssuuuuuuu(iiiii)))" />
+  </method>
+  <method name="WIFI_GetScanResults_Async">
+    <annotation name="type_ref.scanList"
+    value="NMS_Array_ScannedNetwork_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetScanResults" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="scanList" direction="out"
+    type="(a(ssuuuuuuu(iiiii)))" />
+  </method>
+  <method name="WIFI_GetConnectionInfo">
+    <annotation name="type_ref.connInfo"
+    value="NMS_WifiConnInfo_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="connInfo" direction="out"
+    type="(ui(ssuuuuuuu(iiiii)))" />
+  </method>
+  <method name="WIFI_GetConnectionInfo_Async">
+    <annotation name="type_ref.connInfo"
+    value="NMS_WifiConnInfo_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetConnectionInfo" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="connInfo" direction="out"
+    type="(ui(ssuuuuuuu(iiiii)))" />
+  </method>
+  <method name="WIFI_SaveConfiguredNetworks">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="WIFI_SaveConfiguredNetworks_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_SaveConfiguredNetworks" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="AP_SelectProfile">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="profile" direction="in" type="i" />
+  </method>
+  <method name="AP_SelectProfile_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_SelectProfile" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="profile" direction="in" type="i" />
+  </method>
+  <method name="AP_GetInfo">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="AP_GetInfo_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetInfo" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="DHCP_ServerSetConfig">
+    <annotation name="type_ref.dhcpConf"
+    value="NMS_DhcpConfig_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpConf" direction="in" type="(ss)" />
+  </method>
+  <method name="DHCP_ServerSetConfig_Async">
+    <annotation name="type_ref.dhcpConf"
+    value="NMS_DhcpConfig_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="DHCP_ServerSetConfig" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpConf" direction="in" type="(ss)" />
+  </method>
+  <method name="DHCP_ServerGetConfig">
+    <annotation name="type_ref.dhcpConf"
+    value="NMS_DhcpConfig_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpConf" direction="out" type="(ss)" />
+  </method>
+  <method name="DHCP_ServerGetConfig_Async">
+    <annotation name="type_ref.dhcpConf"
+    value="NMS_DhcpConfig_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="DHCP_ServerGetConfig" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpConf" direction="out" type="(ss)" />
+  </method>
+  <method name="DHCP_ServerStart">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="DHCP_ServerStart_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="DHCP_ServerStart" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="DHCP_ServerStop">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="DHCP_ServerStop_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="DHCP_ServerStop" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="MonitorInterface">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="turn" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="MonitorInterface_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="MonitorInterface" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="turn" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SOCKET_NewConnection">
+    <annotation name="type_ref.settings"
+    value="NMS_Socket_Settings_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="settings" direction="in" type="(isii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SOCKET_NewConnection_Async">
+    <annotation name="type_ref.settings"
+    value="NMS_Socket_Settings_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="SOCKET_NewConnection" />
+    <arg name="settings" direction="in" type="(isii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AdvancedRouting">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AdvancedRouting_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AdvancedRouting" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ActivateNAT">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ActivateNAT_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="ActivateNAT" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DHCP_ServerGetClients">
+    <annotation name="type_ref.dhcpClients"
+    value="NMS_Array_of_DhcpClient_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpClients" direction="out" type="(a(ssss))" />
+  </method>
+  <method name="DHCP_ServerGetClients_Async">
+    <annotation name="type_ref.dhcpClients"
+    value="NMS_Array_of_DhcpClient_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="DHCP_ServerGetClients" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="dhcpClients" direction="out" type="(a(ssss))" />
+  </method>
+  <method name="SetHostname">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="hostname" direction="in" type="s" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetHostname_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="SetHostname" />
+    <arg name="hostname" direction="in" type="s" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetHostname">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="hostname" direction="out" type="s" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetHostname_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="GetHostname" />
+    <arg name="hostname" direction="out" type="s" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetClients">
+    <annotation name="type_ref.clients"
+    value="NMS_Array_of_DhcpClient_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="clients" direction="out" type="(a(ssss))" />
+  </method>
+  <method name="AP_GetClients_Async">
+    <annotation name="type_ref.clients"
+    value="NMS_Array_of_DhcpClient_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetClients" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="clients" direction="out" type="(a(ssss))" />
+  </method>
+  <method name="AP_AddToBlacklist">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mac" direction="in" type="s" />
+  </method>
+  <method name="AP_AddToBlacklist_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_AddToBlacklist" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mac" direction="in" type="s" />
+  </method>
+  <method name="AP_RemoveFromBlacklist">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mac" direction="in" type="s" />
+  </method>
+  <method name="AP_RemoveFromBlacklist_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_RemoveFromBlacklist" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="mac" direction="in" type="s" />
+  </method>
+  <method name="AP_ClearBlacklist">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="AP_ClearBlacklist_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_ClearBlacklist" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+  </method>
+  <method name="AP_SetOpenProfile">
+    <annotation name="type_ref.confAp" value="NMS_AP_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="confAp" direction="in" type="(suii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetOpenProfile_Async">
+    <annotation name="type_ref.confAp" value="NMS_AP_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_SetOpenProfile" />
+    <arg name="confAp" direction="in" type="(suii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetWepProfile">
+    <annotation name="type_ref.profile"
+    value="NMS_Wep_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="profile" direction="in" type="((suii)(ssss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetWepProfile_Async">
+    <annotation name="type_ref.profile"
+    value="NMS_Wep_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_SetWepProfile" />
+    <arg name="profile" direction="in" type="((suii)(ssss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetWpaProfile">
+    <annotation name="type_ref.profile"
+    value="NMS_Wpa_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="profile" direction="in" type="((suii)(is))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetWpaProfile_Async">
+    <annotation name="type_ref.profile"
+    value="NMS_Wpa_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_SetWpaProfile" />
+    <arg name="profile" direction="in" type="((suii)(is))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetOpenProfile">
+    <annotation name="type_ref.profile" value="NMS_AP_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="profile" direction="out" type="(suii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetOpenProfile_Async">
+    <annotation name="type_ref.profile" value="NMS_AP_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetOpenProfile" />
+    <arg name="profile" direction="out" type="(suii)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetWepProfile">
+    <annotation name="type_ref.profile"
+    value="NMS_Wep_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="profile" direction="out" type="((suii)(ssss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetWepProfile_Async">
+    <annotation name="type_ref.profile"
+    value="NMS_Wep_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetWepProfile" />
+    <arg name="profile" direction="out" type="((suii)(ssss))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetWpaProfile">
+    <annotation name="type_ref.profile"
+    value="NMS_Wpa_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="profile" direction="out" type="((suii)(is))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetWpaProfile_Async">
+    <annotation name="type_ref.profile"
+    value="NMS_Wpa_Profile_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetWpaProfile" />
+    <arg name="profile" direction="out" type="((suii)(is))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetSelectedProfile">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="selected" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetSelectedProfile_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetSelectedProfile" />
+    <arg name="selected" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetHiddenNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_SetHiddenNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_SetHiddenNetwork" />
+    <arg name="flag" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetHiddenNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="flag" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AP_GetHiddenNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="AP_GetHiddenNetwork" />
+    <arg name="flag" direction="out" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_GetScanResultsByMatch">
+    <annotation name="type_ref.scanList"
+    value="NMS_Array_ScannedNetwork_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="matchType" direction="in" type="i" />
+    <arg name="matchValue" direction="in" type="s" />
+    <arg name="scanList" direction="out"
+    type="(a(ssuuuuuuu(iiiii)))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_GetScanResultsByMatch_Async">
+    <annotation name="type_ref.scanList"
+    value="NMS_Array_ScannedNetwork_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_GetScanResultsByMatch" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="matchType" direction="in" type="i" />
+    <arg name="matchValue" direction="in" type="s" />
+    <arg name="scanList" direction="out"
+    type="(a(ssuuuuuuu(iiiii)))" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_EnableNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_EnableNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_EnableNetwork" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_DisableNetwork">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_DisableNetwork_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_DisableNetwork" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="networkId" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_MonitorStrength">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="turn" direction="in" type="b" />
+    <arg name="rate" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="WIFI_MonitorStrength_Async">
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="WIFI_MonitorStrength" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="turn" direction="in" type="b" />
+    <arg name="rate" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_ModemParams">
+    <annotation name="type_ref.params" value="NMS_ModemParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="mId" direction="in" type="i" />
+    <arg name="params" direction="out" type="(iisssssssibas)" />
+  </method>
+  <method name="Get_ModemParams_Async">
+    <annotation name="type_ref.params" value="NMS_ModemParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="Get_ModemParams" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="mId" direction="in" type="i" />
+    <arg name="params" direction="out" type="(iisssssssibas)" />
+  </method>
+  <method name="Set_ModemParams">
+    <annotation name="type_ref.params"
+    value="NMS_ModemSetParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="mId" direction="in" type="i" />
+    <arg name="params" direction="in" type="(sssss)" />
+    <arg name="updateMask" direction="in" type="i" />
+  </method>
+  <method name="Set_ModemParams_Async">
+    <annotation name="type_ref.params"
+    value="NMS_ModemSetParams_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <annotation name="com.jci.async" value="client" />
+    <annotation name="com.jci.service_same_as"
+    value="Set_ModemParams" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="mId" direction="in" type="i" />
+    <arg name="params" direction="in" type="(sssss)" />
+    <arg name="updateMask" direction="in" type="i" />
+  </method>
+  <method name="AddModem">
+    <annotation name="type_ref.ports"
+    value="NMS_Array_of_TtyPath_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="modemId" direction="in" type="s" />
+    <arg name="vendor" direction="in" type="s" />
+    <arg name="ports" direction="in" type="(as)" />
+  </method>
+  <method name="RemoveModem">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ModemId" direction="in" type="s" />
+    <arg name="Vendor" direction="in" type="s" />
+  </method>
+  <method name="Debug_ModemDump">
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Debug_ListDump" />
+  <method name="AP_GetBlacklist">
+    <annotation name="type_ref.list"
+    value="NMS_Array_of_WifiMac_t" />
+    <annotation name="com.jci.returns" value="return_value" />
+    <arg name="return_value" direction="out" type="i" />
+    <arg name="ifcId" direction="in" type="i" />
+    <arg name="list" direction="out" type="(as)" />
+  </method>
+  <signal name="InterfaceArrive">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="InterfaceDeparture">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="InterfaceChanged">
+    <arg name="ifcId" type="i" />
+    <arg name="changeMask" type="i" />
+  </signal>
+  <signal name="InterfaceConnecting">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="InterfaceDisconnecting">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="InterfaceConnected">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="InterfaceDisconnected">
+    <arg name="ifcId" type="i" />
+    <arg name="reason" type="i" />
+  </signal>
+  <signal name="WifiScanResultsReady">
+    <arg name="ifcId" type="i" />
+  </signal>
+  <signal name="ConnectResult">
+    <arg name="ifcId" type="i" />
+    <arg name="reqId" type="i" />
+    <arg name="result" type="i" />
+  </signal>
+  <signal name="InterfaceWiFiModeChanged">
+    <arg name="ifcId" type="i" />
+    <arg name="mode" type="i" />
+  </signal>
+  <signal name="WiFiAPClientConnected">
+    <arg name="ifcId" type="i" />
+    <arg name="bssid" type="s" />
+  </signal>
+  <signal name="WiFiAPClientDisconnected">
+    <arg name="ifcId" type="i" />
+    <arg name="bssid" type="s" />
+  </signal>
+  <signal name="APOpenInfo">
+    <annotation name="type_ref.config" value="NMS_AP_Profile_t" />
+    <arg name="ifcId" type="i" />
+    <arg name="config" type="(suii)" />
+  </signal>
+  <signal name="APWepInfo">
+    <annotation name="type_ref.config" value="NMS_Wep_Profile_t" />
+    <arg name="ifcId" type="i" />
+    <arg name="config" type="((suii)(ssss))" />
+  </signal>
+  <signal name="APWpaInfo">
+    <annotation name="type_ref.config" value="NMS_Wpa_Profile_t" />
+    <arg name="ifcId" type="i" />
+    <arg name="config" type="((suii)(is))" />
+  </signal>
+  <signal name="InterfaceMonitorData">
+    <annotation name="type_ref.statistics"
+    value="NMS_TransmissionData_t" />
+    <arg name="ifcId" type="i" />
+    <arg name="statistics" type="(tt)" />
+  </signal>
+  <signal name="WifiSignalStrength">
+    <arg name="ifcId" type="i" />
+    <arg name="strength" type="u" />
+  </signal>
+</interface>

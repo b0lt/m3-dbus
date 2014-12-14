@@ -1,0 +1,23 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.auxin">
+  <method name="Mode_Req">
+    <annotation name="async" value="client" />
+    <arg name="mode" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeviceStatus_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetAuxinStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="Status">
+    <arg name="status_value" type="y" />
+  </signal>
+</interface>

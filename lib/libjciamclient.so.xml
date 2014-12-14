@@ -1,0 +1,97 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.xsembedded.ServiceProvider">
+  <annotation name="com.jci.def_struct_names.t_result"
+  value="errCode, errName, errMsg" />
+  <annotation name="com.jci.def_struct_types.t_result"
+  value=" i, s, s" />
+  <annotation name="com.jci.def_struct_names.t_modeList"
+  value="modes, numModes" />
+  <annotation name="com.jci.def_struct_types.t_modeList"
+  value="s, i" />
+  <method name="Request">
+    <arg name="methodName" direction="in" type="s" />
+    <arg name="arguments" direction="in" type="s" />
+    <arg name="result" direction="out" type="s" />
+  </method>
+  <method name="openSession">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="busName" direction="in" type="s" />
+    <arg name="objectPath" direction="in" type="s" />
+    <arg name="destination" direction="in" type="s" />
+    <arg name="sessionId" direction="out" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="closeSession">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="registerAudioStream">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="streamName" direction="in" type="s" />
+    <arg name="streamModeName" direction="in" type="s" />
+    <arg name="streamType" direction="in" type="s" />
+    <arg name="focusType" direction="in" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="requestAudioFocus">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="requestType" direction="in" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="abandonAudioFocus">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="reason" direction="in" type="s" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="audioActive">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="playing" direction="in" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="setMode">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="newMode" direction="in" type="s" />
+    <arg name="destination" direction="in" type="s" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="getMode">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="currentMode" direction="out" type="s" />
+    <arg name="destination" direction="in" type="s" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="getModeList">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <annotation name="com.jci.type_ref.modeList"
+    value="t_modeList" />
+    <arg name="sessionId" direction="in" type="i" />
+    <arg name="modeList" direction="out" type="(asi)" />
+    <arg name="destination" direction="in" type="s" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="enableStatus">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <method name="enable">
+    <annotation name="com.jci.type_ref.result" value="t_result" />
+    <arg name="setAudioStatus" direction="in" type="i" />
+    <arg name="result" direction="out" type="(iss)" />
+  </method>
+  <signal name="Notify">
+    <arg name="signalName" type="s" />
+    <arg name="payload" type="s" />
+  </signal>
+</interface>

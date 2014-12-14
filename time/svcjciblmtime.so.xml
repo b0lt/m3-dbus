@@ -1,0 +1,25 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.BLM_TIME">
+  <method name="GetClock">
+    <annotation name="async_client" value="true" />
+    <arg name="nuHours" direction="out" type="u" />
+    <arg name="nuMins" direction="out" type="u" />
+    <arg name="u32Timestamp" direction="out" type="u" />
+    <arg name="u64CallTimestamp" direction="out" type="t" />
+  </method>
+  <method name="GetClockEx">
+    <arg name="nuHours" direction="out" type="u" />
+    <arg name="nuMins" direction="out" type="u" />
+    <arg name="u64CallTimestamp" direction="out" type="t" />
+  </method>
+  <signal name="ClockChanged">
+    <arg name="nuNewHours" type="u" />
+    <arg name="nuNewMins" type="u" />
+    <arg name="u32Timestamp" type="u" />
+    <arg name="u64CallTimestamp" type="t" />
+  </signal>
+</interface>

@@ -1,0 +1,130 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.pa">
+  <annotation name="def_struct_names.pa_msg_1_t" value="data" />
+  <annotation name="def_struct_types.pa_msg_1_t" value="y" />
+  <method name="StartPair">
+    <annotation name="async" value="client" />
+    <arg name="pairMode" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AbortPair">
+    <annotation name="async" value="client" />
+    <arg name="abortMode" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="PairToSelectedDevice">
+    <annotation name="type_ref.btaddress" value="pa_msg_1_t" />
+    <annotation name="async" value="client" />
+    <arg name="btaddress" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="PairNumericCompResponse">
+    <annotation name="async" value="client" />
+    <arg name="isPassecodeMatched" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeleteDevice">
+    <annotation name="async" value="client" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeleteAllDevices">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RequestSearchDeviceList">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetPairingPinCode">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetPairingPinCode">
+    <annotation name="type_ref.pinCode" value="pa_msg_1_t" />
+    <annotation name="async" value="client" />
+    <arg name="pinCode" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetPairingModuleSettings">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RetrieveVehicleBtInfo">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="HftReadyStatus">
+    <annotation name="typedef_callback"
+    value="PA_HftReadyStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="hftReady" direction="in" type="u" />
+    <arg name="reasonCode" direction="in" type="u" />
+  </signal>
+  <signal name="PairingStatusResp">
+    <annotation name="type_ref.paPairingStatusResp"
+    value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_PairingStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="paPairingStatusResp" direction="in" type="(ay)" />
+  </signal>
+  <signal name="DeleteStatusResp">
+    <annotation name="typedef_callback"
+    value="PA_DeleteStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="deleteStatus" direction="in" type="u" />
+    <arg name="deviceId" direction="in" type="u" />
+  </signal>
+  <signal name="SearchedDeviceListResp">
+    <annotation name="type_ref.btaddress" value="pa_msg_1_t" />
+    <annotation name="type_ref.btDeviceName" value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_SearchedDeviceListResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="numOfDevices" direction="in" type="u" />
+    <arg name="devIndex" direction="in" type="u" />
+    <arg name="deviceClass" direction="in" type="u" />
+    <arg name="btaddress" direction="in" type="(ay)" />
+    <arg name="btDeviceName" direction="in" type="(ay)" />
+  </signal>
+  <signal name="RequestedSearchListResp">
+    <annotation name="type_ref.searchedDeviceList"
+    value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_RequestedSearchListResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="totalSearchedDevices" direction="in" type="u" />
+    <arg name="searchedDeviceList" direction="in" type="(ay)" />
+  </signal>
+  <signal name="AuthenticationResp">
+    <annotation name="typedef_callback"
+    value="PA_AuthenticationResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+  </signal>
+  <signal name="PairingPinCodeResp">
+    <annotation name="type_ref.pinCode" value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_PairingPinCodeResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="pinCode" direction="in" type="(ay)" />
+  </signal>
+  <signal name="PairingModuleResp">
+    <annotation name="type_ref.paSettings" value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_PairingModuleResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="paSettings" direction="in" type="(ay)" />
+  </signal>
+  <signal name="VehicleBtInformationResp">
+    <annotation name="type_ref.paVehicleInfo" value="pa_msg_1_t" />
+    <annotation name="typedef_callback"
+    value="PA_VehicleBtInformationResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="paVehicleInfo" direction="in" type="(ay)" />
+  </signal>
+</interface>

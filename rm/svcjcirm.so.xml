@@ -1,0 +1,304 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.RM_Ipc_Cons.Interface">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="header_include" value="rm.h" />
+  <annotation name="def_struct_names.RM_CONS_IPC_DBUS_Attribute_t"
+  value="name, type, data" />
+  <annotation name="def_struct_types.RM_CONS_IPC_DBUS_Attribute_t"
+  value="s, i, y" />
+  <annotation name="def_struct_names.RM_CONS_IPC_DBUS_Attributes_t"
+  value="attributes" />
+  <annotation name="def_struct_types.RM_CONS_IPC_DBUS_Attributes_t"
+  value="RM_CONS_IPC_DBUS_Attribute_t" />
+  <method name="Connect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_consPID" direction="in" type="u" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_consPID" direction="out" type="u" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_consPID" direction="in" type="u" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_consPID" direction="out" type="u" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="AcquireResource">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.in_action"
+    value="RM_failure_action_t" />
+    <annotation name="typeof.out_action"
+    value="RM_failure_action_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_action" direction="in" type="i" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_action" direction="out" type="i" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="ReleaseResource">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.in_action"
+    value="RM_failure_action_t" />
+    <annotation name="typeof.out_action"
+    value="RM_failure_action_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_action" direction="in" type="i" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_action" direction="out" type="i" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="GetResourceInfo">
+    <annotation name="com.jci.type_ref.in_attributes"
+    value="RM_CONS_IPC_DBUS_Attributes_t" />
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.out_status"
+    value="RM_resource_status_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="in_attributes" direction="out" type="(a(siay))" />
+    <arg name="out_status" direction="out" type="i" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="SubscribeForEvent">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.in_status"
+    value="RM_resource_status_type_t" />
+    <annotation name="typeof.out_subscrStatus"
+    value="RM_resource_status_type_t" />
+    <annotation name="typeof.out_currStatus"
+    value="RM_resource_status_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_status" direction="in" type="i" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_subscrStatus" direction="out" type="i" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_currStatus" direction="out" type="i" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="UnsubscribeFromEvent">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.in_status"
+    value="RM_resource_status_type_t" />
+    <annotation name="typeof.out_status"
+    value="RM_resource_status_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_status" direction="in" type="i" />
+    <arg name="in_consName" direction="in" type="s" />
+    <arg name="in_consConn" direction="in" type="u" />
+    <arg name="in_consContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_status" direction="out" type="i" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_consName" direction="out" type="s" />
+    <arg name="out_consConn" direction="out" type="u" />
+    <arg name="out_consContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <signal name="acquire_resource_cb">
+    <annotation name="typeof.result" value="status_t" />
+    <annotation name="typeof.action" value="RM_failure_action_t" />
+    <arg name="resName" type="s" />
+    <arg name="result" type="i" />
+    <arg name="action" type="i" />
+    <arg name="consName" type="s" />
+    <arg name="consConn" type="u" />
+    <arg name="consContext" type="u" />
+    <arg name="seqId" type="u" />
+  </signal>
+  <signal name="release_command_cb">
+    <arg name="resName" type="s" />
+    <arg name="consName" type="s" />
+    <arg name="consConn" type="u" />
+    <arg name="consContext" type="u" />
+  </signal>
+  <signal name="resource_event_cb">
+    <annotation name="com.jci.type_ref.attributes"
+    value="RM_CONS_IPC_DBUS_Attributes_t" />
+    <annotation name="typeof.status"
+    value="RM_resource_status_type_t" />
+    <arg name="resName" type="s" />
+    <arg name="attributes" type="(a(siay))" />
+    <arg name="status" type="i" />
+    <arg name="consName" type="s" />
+    <arg name="consConn" type="u" />
+    <arg name="consContext" type="u" />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.RM_Ipc_Prov.Interface">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="def_struct_names.RM_PROV_IPC_DBUS_Attribute_t"
+  value="name, type, data" />
+  <annotation name="def_struct_types.RM_PROV_IPC_DBUS_Attribute_t"
+  value="s, i, y" />
+  <annotation name="def_struct_names.RM_PROV_IPC_DBUS_Attributes_t"
+  value="attributes" />
+  <annotation name="def_struct_types.RM_PROV_IPC_DBUS_Attributes_t"
+  value="RM_PROV_IPC_DBUS_Attribute_t" />
+  <method name="Connect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_provPID" direction="in" type="u" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="in_provContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_provPID" direction="out" type="u" />
+    <arg name="out_provName" direction="out" type="s" />
+    <arg name="out_provConn" direction="out" type="u" />
+    <arg name="out_provContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_force" direction="in" type="b" />
+    <arg name="in_provPID" direction="in" type="u" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="in_provContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_provPID" direction="out" type="u" />
+    <arg name="out_provName" direction="out" type="s" />
+    <arg name="out_provConn" direction="out" type="u" />
+    <arg name="out_provContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="RegisterResource">
+    <annotation name="com.jci.type_ref.in_attributes"
+    value="RM_PROV_IPC_DBUS_Attributes_t" />
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_attributes" direction="in" type="(a(siay))" />
+    <arg name="in_supportActDeactLogic" direction="in" type="b" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="in_provContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_provName" direction="out" type="s" />
+    <arg name="out_provConn" direction="out" type="u" />
+    <arg name="out_provContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="UnregisterResource">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_force" direction="in" type="b" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="in_provContext" direction="in" type="u" />
+    <arg name="in_seqId" direction="in" type="u" />
+    <arg name="out_resName" direction="out" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_provName" direction="out" type="s" />
+    <arg name="out_provConn" direction="out" type="u" />
+    <arg name="out_provContext" direction="out" type="u" />
+    <arg name="out_seqId" direction="out" type="u" />
+  </method>
+  <method name="ActivateResourceResponse">
+    <annotation name="com.jci.type_ref.in_attributes"
+    value="RM_PROV_IPC_DBUS_Attributes_t" />
+    <annotation name="typeof.in_result" value="status_t" />
+    <annotation name="typeof.return_value" value="status_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_attributes" direction="in" type="(a(siay))" />
+    <arg name="in_result" direction="in" type="i" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeactivateResourceResponse">
+    <annotation name="com.jci.type_ref.in_attributes"
+    value="RM_PROV_IPC_DBUS_Attributes_t" />
+    <annotation name="typeof.in_result" value="status_t" />
+    <annotation name="typeof.return_value" value="status_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="in_resName" direction="in" type="s" />
+    <arg name="in_attributes" direction="in" type="(a(siay))" />
+    <arg name="in_result" direction="in" type="i" />
+    <arg name="in_provName" direction="in" type="s" />
+    <arg name="in_provConn" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="activate_resource_cb">
+    <arg name="resName" type="s" />
+    <arg name="provName" type="s" />
+    <arg name="provConn" type="u" />
+    <arg name="provContext" type="u" />
+  </signal>
+  <signal name="deactivate_resource_cb">
+    <arg name="resName" type="s" />
+    <arg name="provName" type="s" />
+    <arg name="provConn" type="u" />
+    <arg name="provContext" type="u" />
+  </signal>
+</interface>

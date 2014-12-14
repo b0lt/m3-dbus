@@ -1,0 +1,168 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.idm">
+  <annotation name="header_include" value="idm_data.h" />
+  <annotation name="com.jci.def_struct_names.idm_msg_1_t"
+  value="arg1, arg2" />
+  <annotation name="com.jci.def_struct_types.idm_msg_1_t"
+  value="i,ay" />
+  <annotation name="com.jci.def_struct_names.IDM_DriverData_s_t"
+  value="drvId, drvNickname, drvName_exist" />
+  <annotation name="com.jci.def_struct_types.IDM_DriverData_s_t"
+  value="y, ay, b" />
+  <annotation name="com.jci.def_struct_names.IDM_TransitionGraph_s_t"
+  value="scoreTrans, count" />
+  <annotation name="com.jci.def_struct_types.IDM_TransitionGraph_s_t"
+  value="aq ,y" />
+  <annotation name="com.jci.def_struct_names.IDM_CurrDrvTrend_s_t"
+  value="pos_cnt, neg_cnt" />
+  <annotation name="com.jci.def_struct_types.IDM_CurrDrvTrend_s_t"
+  value="y ,y" />
+  <annotation name="com.jci.def_struct_names.IDM_StageData_s_t"
+  value="stars, stage_up" />
+  <annotation name="com.jci.def_struct_types.IDM_StageData_s_t"
+  value="y, b" />
+  <method name="Get_Config_Data">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ACK_Config_Data_Recvd">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StopScreenData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetNormalScreenData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetTrainingScreenData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetEndingScreenData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="EndingScreenSetting">
+    <annotation name="typeof.ending_scrn_sett"
+    value="IDM_EndingScrn_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="ending_scrn_sett" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="MeterAmbDispSetting">
+    <annotation name="typeof.meter_amb_sett"
+    value="IDM_Ambient_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="meter_amb_sett" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="MeterAmbDisp_Rq_Rsp">
+    <annotation name="typeof.rq_rsp_status"
+    value="IDM_Ambient_Rq_Rsp_e_t" />
+    <arg name="rq_rsp_status" direction="in" type="u" />
+  </signal>
+  <signal name="IDM_EOLNormalScreen">
+    <annotation name="typeof.eol_normal" value="IDM_Setting_e_t" />
+    <arg name="eol_normal" direction="in" type="u" />
+  </signal>
+  <signal name="EOLEndingScrn">
+    <annotation name="typeof.eol_endscrn"
+    value="IDM_Setting_e_t" />
+    <arg name="eol_endscrn" direction="in" type="u" />
+  </signal>
+  <signal name="Ending_Scrn_Setting">
+    <annotation name="typeof.endscrn_sett"
+    value="IDM_EndingScrn_e_t" />
+    <arg name="endscrn_sett" direction="in" type="u" />
+  </signal>
+  <signal name="MeterAmb_Disp_Setting">
+    <annotation name="typeof.amb_sett" value="IDM_Ambient_e_t" />
+    <arg name="amb_sett" direction="in" type="u" />
+  </signal>
+  <signal name="Current_Score">
+    <arg name="curr_score" direction="in" type="u" />
+  </signal>
+  <signal name="Average_Score">
+    <arg name="avg_score" direction="in" type="u" />
+  </signal>
+  <signal name="Stage_Number">
+    <annotation name="typeof.stage_num" value="IDM_StageNum_e_t" />
+    <arg name="stage_num" direction="in" type="u" />
+  </signal>
+  <signal name="Driver_Data">
+    <annotation name="com.jci.type_ref.drv_data"
+    value="IDM_DriverData_s_t" />
+    <arg name="drv_data" type="(yayb)" />
+  </signal>
+  <signal name="TransitionGraph_Data">
+    <annotation name="com.jci.type_ref.transGraph"
+    value="IDM_TransitionGraph_s_t" />
+    <arg name="transGraph" type="(aqy)" />
+  </signal>
+  <signal name="CurrentBarData">
+    <arg name="curr_bar_val" direction="in" type="i" />
+  </signal>
+  <signal name="CurrDrvTrend_Brake">
+    <annotation name="com.jci.type_ref.curr_brk"
+    value="IDM_CurrDrvTrend_s_t" />
+    <arg name="curr_brk" type="(yy)" />
+  </signal>
+  <signal name="CurrDrvTrend_Accel">
+    <annotation name="com.jci.type_ref.curr_accel"
+    value="IDM_CurrDrvTrend_s_t" />
+    <arg name="curr_accel" type="(yy)" />
+  </signal>
+  <signal name="CurrDrvTrend_Steer">
+    <annotation name="com.jci.type_ref.curr_steer"
+    value="IDM_CurrDrvTrend_s_t" />
+    <arg name="curr_steer" type="(yy)" />
+  </signal>
+  <signal name="StageAchievedData">
+    <annotation name="com.jci.type_ref.stage_data"
+    value="IDM_StageData_s_t" />
+    <arg name="stage_data" type="(yb)" />
+  </signal>
+  <signal name="DrivingAdviceId">
+    <annotation name="typeof.drv_adviceId"
+    value="IDM_DrivingAdvice_e_t" />
+    <arg name="drv_adviceId" direction="in" type="u" />
+  </signal>
+  <signal name="HVD_IDMMode">
+    <annotation name="typeof.idm_mode"
+    value="IDM_HVD_IDMMode_e_t" />
+    <arg name="idm_mode" direction="in" type="u" />
+  </signal>
+  <signal name="HiScore_Counter">
+    <arg name="hi_score_val" direction="in" type="u" />
+  </signal>
+  <signal name="MeterAmbDisp_SetRq_Retry">
+    <annotation name="typeof.setrq_retry"
+    value="IDM_Setrq_Retry_e_t" />
+    <arg name="setrq_retry" direction="in" type="u" />
+  </signal>
+  <signal name="End_Of_Screen_Data">
+    <annotation name="typeof.scrn_type" value="IDM_Scrn_Typ_e_t" />
+    <arg name="scrn_type" direction="in" type="u" />
+  </signal>
+  <signal name="Display_EndScreen">
+    <annotation name="typeof.disp_endscrn"
+    value="IDM_Disp_EndScrn_e_t" />
+    <arg name="disp_endscrn" direction="in" type="u" />
+  </signal>
+  <signal name="SpeedRest_Flg">
+    <annotation name="typeof.spd_flg"
+    value="IDM_Spd_Thrshld_e_t" />
+    <arg name="spd_flg" direction="in" type="u" />
+  </signal>
+  <signal name="Ignition_Sts">
+    <annotation name="typeof.ign_sts" value="IDM_IGN_Sts_e_t" />
+    <arg name="ign_sts" direction="in" type="u" />
+  </signal>
+</interface>

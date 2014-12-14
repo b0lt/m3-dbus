@@ -1,0 +1,90 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.driverid">
+  <annotation name="header_include" value="driverid_data.h" />
+  <annotation name="com.jci.def_struct_names.driverid_msg_1_t"
+  value="arg1, arg2" />
+  <annotation name="com.jci.def_struct_types.driverid_msg_1_t"
+  value="i,ay" />
+  <annotation name="com.jci.def_struct_names.DRIVERID_DriverData_s_t"
+  value="drvId, drvNickname, drvName_exist, di_event" />
+  <annotation name="com.jci.def_struct_types.DRIVERID_DriverData_s_t"
+  value="y, ay, b, y" />
+  <annotation name="com.jci.def_struct_names.DRIVERID_DriverList_s_t"
+  value="driver_data" />
+  <annotation name="com.jci.def_struct_types.DRIVERID_DriverList_s_t"
+  value="DRIVERID_DriverData_s_t" />
+  <annotation name="com.jci.def_struct_names.byte_array_t"
+  value="buffer" />
+  <annotation name="com.jci.def_struct_types.byte_array_t"
+  value="y" />
+  <method name="Get_DriveridConfig">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Set_DriveridSetting">
+    <annotation name="typeof.setting_type"
+    value="DRIVERID_Setting_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="setting_type" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDriverIdData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_DriverList">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Change_DriverId">
+    <annotation name="async" value="client" />
+    <arg name="drv_id" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Change_DriverNickname">
+    <annotation name="async" value="client" />
+    <annotation name="com.jci.type_ref.nickname"
+    value="byte_array_t" />
+    <arg name="nickname" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SynUp_Ack_Rcvd">
+    <annotation name="async" value="client" />
+    <arg name="ack_value" direction="out" type="i" />
+  </method>
+  <signal name="EOLConfig">
+    <arg name="eol_config" direction="in" type="q" />
+  </signal>
+  <signal name="Setting">
+    <arg name="driverid_sett" direction="in" type="b" />
+  </signal>
+  <signal name="Curr_DriverData">
+    <annotation name="com.jci.type_ref.curr_drv"
+    value="DRIVERID_DriverData_s_t" />
+    <arg name="curr_drv" type="(yayby)" />
+  </signal>
+  <signal name="Curr_DriverDataAsync">
+    <annotation name="com.jci.type_ref.curr_drv"
+    value="DRIVERID_DriverData_s_t" />
+    <arg name="curr_drv" type="(yayby)" />
+  </signal>
+  <signal name="Driver_List">
+    <annotation name="com.jci.type_ref.drv_list"
+    value="DRIVERID_DriverList_s_t" />
+    <arg name="drv_list" direction="in" type="(a(yayby))" />
+  </signal>
+  <signal name="Duplicate_Nickname">
+    <arg name="dup_nickname" direction="in" type="i" />
+  </signal>
+  <signal name="SpeedRest_Flg">
+    <annotation name="typeof.spd_flg" value="DI_Spd_Thrshld_e_t" />
+    <arg name="spd_flg" direction="in" type="u" />
+  </signal>
+  <signal name="ACC_OFF">
+    <arg name="acc_state" type="b" />
+  </signal>
+</interface>

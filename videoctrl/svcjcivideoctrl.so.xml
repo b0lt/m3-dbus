@@ -1,0 +1,95 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.VIDEOCTRL">
+  <annotation name="def_struct_names.VIDEOCTRL_GenericRange_t"
+  value="low, high" />
+  <annotation name="def_struct_types.VIDEOCTRL_GenericRange_t"
+  value="i, i" />
+  <annotation name="def_struct_names.VIDEOCTRL_CropArea_t"
+  value="left, top, right, bottom" />
+  <annotation name="def_struct_types.VIDEOCTRL_CropArea_t"
+  value="i, i, i, i" />
+  <annotation name="def_struct_names.VIDEOCTRL_Capability_t"
+  value="bDeviceIsInstalled, brightnessRange, contrastRange, colorRange, tintRange, videoType, cropArea" />
+  <annotation name="def_struct_types.VIDEOCTRL_Capability_t"
+  value="b, VIDEOCTRL_GenericRange_t, VIDEOCTRL_GenericRange_t, VIDEOCTRL_GenericRange_t, VIDEOCTRL_GenericRange_t, i, VIDEOCTRL_CropArea_t" />
+  <annotation name="def_struct_names.VIDEOCTRL_Adjustments_t"
+  value="brightnessValue, contrastValue, colorValue, tintValue" />
+  <annotation name="def_struct_types.VIDEOCTRL_Adjustments_t"
+  value="i, i, i, i" />
+  <annotation name="def_struct_names.VIDEOCTRL_Adjustments_Array_t"
+  value="adjustments" />
+  <annotation name="def_struct_types.VIDEOCTRL_Adjustments_Array_t"
+  value="VIDEOCTRL_Adjustments_t" />
+  <method name="SelectVideoDevice">
+    <annotation name="async_client" value="true" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetCapability">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.status"
+    value="VIDEOCTRL_Capability_t" />
+    <arg name="status" direction="out"
+    type="(b(ii)(ii)(ii)(ii)i(iiii))" />
+  </method>
+  <method name="TestVideoStatus">
+    <annotation name="async_client" value="true" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="videoStatus" direction="out" type="i" />
+    <arg name="outDevice" direction="out" type="i" />
+  </method>
+  <method name="GetVideoStatus">
+    <annotation name="async_client" value="true" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="videoStatus" direction="out" type="i" />
+    <arg name="outDevice" direction="out" type="i" />
+  </method>
+  <method name="GetAdjustments">
+    <annotation name="async_client" value="true" />
+    <annotation name="type_ref.adjustments"
+    value="VIDEOCTRL_Adjustments_t" />
+    <arg name="adjustments" direction="out" type="(iiii)" />
+  </method>
+  <method name="SetContrast">
+    <annotation name="async_client" value="true" />
+    <arg name="contrast" direction="in" type="i" />
+    <arg name="newContrast" direction="out" type="i" />
+  </method>
+  <method name="SetBrightness">
+    <annotation name="async_client" value="true" />
+    <arg name="brightness" direction="in" type="i" />
+    <arg name="newBrightness" direction="out" type="i" />
+  </method>
+  <method name="SetTint">
+    <annotation name="async_client" value="true" />
+    <arg name="tint" direction="in" type="i" />
+    <arg name="newTint" direction="out" type="i" />
+  </method>
+  <method name="SetColor">
+    <annotation name="async_client" value="true" />
+    <arg name="color" direction="in" type="i" />
+    <arg name="newColor" direction="out" type="i" />
+  </method>
+  <method name="DeselectDevice">
+    <annotation name="async_client" value="true" />
+    <arg name="device" direction="in" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ResetAdjustments">
+    <annotation name="async_client" value="true" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <signal name="VideoSignalChanged">
+    <arg name="videoSignal" type="i" />
+    <arg name="device" type="i" />
+  </signal>
+  <signal name="onSettingsChanged">
+    <annotation name="type_ref.adjustments"
+    value="VIDEOCTRL_Adjustments_Array_t" />
+    <arg name="adjustments" type="(a(iiii))" />
+  </signal>
+</interface>

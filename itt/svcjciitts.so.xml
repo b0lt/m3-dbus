@@ -1,0 +1,137 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include"
+value="itts_common_defs.h" />
+<interface name="com.jci.itts">
+  <annotation name="def_struct_names.ITTS_DeviceList_t"
+  value="deviceIdList" />
+  <annotation name="def_struct_types.ITTS_DeviceList_t"
+  value="u" />
+  <annotation name="def_struct_names.ITTS_TagMetadata_t"
+  value="metadata" />
+  <annotation name="def_struct_types.ITTS_TagMetadata_t"
+  value="y" />
+  <annotation name="def_struct_names.ITTS_DeviceConn_t"
+  value="devId, devName, devType, devFeatures" />
+  <annotation name="def_struct_types.ITTS_DeviceConn_t"
+  value="u, s, i, u" />
+  <annotation name="def_struct_names.ITTS_StoreInfo_t"
+  value="deviceMemList, accessoryFreeSlots" />
+  <annotation name="def_struct_types.ITTS_StoreInfo_t"
+  value="ITTS_DevStoreMemoryInfo_t, u" />
+  <annotation name="def_struct_names.ITTS_DevStoreMemoryInfo_t"
+  value="devId, deviceFreeSlots, tagStoreStatus" />
+  <annotation name="def_struct_types.ITTS_DevStoreMemoryInfo_t"
+  value="u, u, i" />
+  <annotation name="def_struct_names.ITTS_TransferInfo_t"
+  value="deviceMemList, accessoryFreeSlots, accessoryTotalSlots" />
+  <annotation name="def_struct_types.ITTS_TransferInfo_t"
+  value="ITTS_DevTransferMemoryInfo_t, u, u" />
+  <annotation name="def_struct_names.ITTS_DevTransferMemoryInfo_t"
+  value="deviceId, deviceFreeSlots, accessoryClearedSlots" />
+  <annotation name="def_struct_types.ITTS_DevTransferMemoryInfo_t"
+  value="u, u, u" />
+  <method name="RequestMemoryInfo">
+    <annotation name="type_ref.devIdList"
+    value="ITTS_DeviceList_t" />
+    <annotation name="type_ref.memoryInfo"
+    value="ITTS_StoreInfo_t" />
+    <annotation name="return" value="return_value" />
+    <arg name="devIdList" direction="in" type="(au)" />
+    <arg name="memoryInfo" direction="out" type="(a(uui)u)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StoreTag">
+    <annotation name="type_ref.devIdList"
+    value="ITTS_DeviceList_t" />
+    <annotation name="type_ref.memoryInfo"
+    value="ITTS_StoreInfo_t" />
+    <annotation name="com.jci.typeof.tagStoreStatus"
+    value="ITTS_StoreStatus_t" />
+    <annotation name="async" value="both" />
+    <arg name="tagMaxCntFlash" direction="in" type="u" />
+    <arg name="devIdList" direction="in" type="(au)" />
+    <arg name="tagStoreStatus" direction="out" type="i" />
+    <arg name="memoryInfo" direction="out" type="(a(uui)u)" />
+  </method>
+  <method name="TransferTag">
+    <annotation name="type_ref.devIdList"
+    value="ITTS_DeviceList_t" />
+    <annotation name="type_ref.memoryInfo"
+    value="ITTS_TransferInfo_t" />
+    <annotation name="com.jci.typeof.tagTransferStatus"
+    value="ITTS_StoreStatus_t" />
+    <annotation name="async" value="both" />
+    <arg name="tagMaxCntiPod" direction="in" type="u" />
+    <arg name="devIdList" direction="in" type="(au)" />
+    <arg name="tagTransferStatus" direction="out" type="i" />
+    <arg name="memoryInfo" direction="out" type="(a(uuu)uu)" />
+  </method>
+  <method name="RadioConnectionStatus">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="connectStandbyStat" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RadioModeChange">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="modeChangeSrc" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RadioOnOff">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="radioOnOffStatus" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RadioStationChange">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="frequency" direction="in" type="q" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="RadioTrackChange">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="trackChange" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="UpdateMetadata">
+    <annotation name="type_ref.tagInfo"
+    value="ITTS_TagMetadata_t" />
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="tagInfo" direction="in" type="(ay)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ClearNVM">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="tagsToClearCnt" direction="in" type="u" />
+    <arg name="tagsClearedCnt" direction="out" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CheckConnDev">
+    <annotation name="return" value="return_value" />
+    <annotation name="async" value="both" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="AppleDevConnected">
+    <annotation name="type_ref.devConn"
+    value="ITTS_DeviceConn_t" />
+    <arg name="devConn" direction="in" type="(usiu)" />
+    <arg name="tagsNVM" direction="in" type="b" />
+  </signal>
+  <signal name="AppleDevDisconnected">
+    <arg name="devId" direction="in" type="i" />
+  </signal>
+  <signal name="TaggingAvailable">
+    <annotation name="com.jci.typeof.enableTagging"
+    value="ITTS_TagStates_t" />
+    <arg name="enableTagging" direction="in" type="i" />
+  </signal>
+</interface>

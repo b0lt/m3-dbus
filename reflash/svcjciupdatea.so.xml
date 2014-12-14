@@ -1,0 +1,130 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.UPDATEA_Ipc_Client_Sys.Interface">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="header_include" value="updatea.h" />
+  <annotation name="com.jci.def_struct_names.UPDATEA_Ipc_Client_Sys_Interface_packageInfoData_t"
+  value="name, type, version" />
+  <annotation name="com.jci.def_struct_types.UPDATEA_Ipc_Client_Sys_Interface_packageInfoData_t"
+  value=" s, i, s" />
+  <annotation name="com.jci.def_struct_names.UPDATEA_Ipc_Client_Sys_Interface_packageInfoDataArray_t"
+  value="UPDATEA_Ipc_Client_Sys_Interface_packageInfoData" />
+  <annotation name="com.jci.def_struct_types.UPDATEA_Ipc_Client_Sys_Interface_packageInfoDataArray_t"
+  value="UPDATEA_Ipc_Client_Sys_Interface_packageInfoData_t" />
+  <method name="Connect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="GetVersion">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.in_versionType"
+    value="UPDATEA_version_type_t" />
+    <annotation name="typeof.out_versionType"
+    value="UPDATEA_version_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="in_versionType" direction="in" type="i" />
+    <arg name="out_versionType" direction="out" type="i" />
+    <arg name="out_version" direction="out" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="IsPresentFailSafeOS">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_isPresent" direction="out" type="b" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="SearchForAvailableUPs">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="com.jci.type_ref.out_packageInfo"
+    value="UPDATEA_Ipc_Client_Sys_Interface_packageInfoDataArray_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_packageInfo" direction="out" type="(a(sis))" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="CancelSearchForUPs">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="ValidateAndDownloadUP">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="in_upLocation" direction="in" type="s" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="CancelValidAndDwnld">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="InstallUP">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="GetUpdateStatus">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="typeof.out_state"
+    value="UPDATEA_state_type_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_state" direction="out" type="i" />
+    <arg name="out_progress" direction="out" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <method name="RebootBoard">
+    <annotation name="typeof.out_result" value="status_t" />
+    <annotation name="async" value="both" />
+    <arg name="in_connId" direction="in" type="u" />
+    <arg name="out_result" direction="out" type="i" />
+    <arg name="out_connId" direction="out" type="u" />
+  </method>
+  <signal name="available_ups_event">
+    <annotation name="com.jci.type_ref.packageInfo"
+    value="UPDATEA_Ipc_Client_Sys_Interface_packageInfoDataArray_t" />
+    <arg name="packageInfo" type="(a(sis))" />
+    <arg name="connId" type="u" />
+  </signal>
+  <signal name="available_autoupdate_event">
+    <annotation name="com.jci.type_ref.packageInfo"
+    value="UPDATEA_Ipc_Client_Sys_Interface_packageInfoData_t" />
+    <arg name="packageInfo" type="(sis)" />
+    <arg name="connId" type="u" />
+  </signal>
+  <signal name="update_status_event">
+    <annotation name="typeof.result" value="status_t" />
+    <annotation name="typeof.state" value="UPDATEA_state_type_t" />
+    <arg name="state" type="i" />
+    <arg name="progress" type="u" />
+    <arg name="result" type="i" />
+    <arg name="connId" type="u" />
+  </signal>
+</interface>

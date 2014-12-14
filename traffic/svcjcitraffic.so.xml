@@ -1,0 +1,69 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.traffic">
+  <annotation name="def_struct_names.mapInfo_st"
+  value="mapType, mapName" />
+  <annotation name="def_struct_types.mapInfo_st" value="u, s" />
+  <annotation name="def_struct_names.mapInfoArr_st"
+  value="mapInfo" />
+  <annotation name="def_struct_types.mapInfoArr_st"
+  value="mapInfo_st" />
+  <annotation name="def_struct_names.gpsInfo_st"
+  value="pixelX, pixelY, position" />
+  <annotation name="def_struct_types.gpsInfo_st" value="i, i, u" />
+  <method name="SetNewMapUpdateEnable_async">
+    <annotation name="async" value="client" />
+    <arg name="enable" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetMapInFocus_async">
+    <annotation name="async" value="client" />
+    <arg name="focus" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetGpsInfo_async">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="BGColorInfo">
+    <arg name="colorR" type="u" />
+    <arg name="colorG" type="u" />
+    <arg name="colorB" type="u" />
+  </signal>
+  <signal name="NewTrafficMap">
+    <arg name="trafficMapId" type="u" />
+  </signal>
+  <signal name="MapUpdate">
+    <annotation name="type_ref.mapInfo" value="mapInfoArr_st" />
+    <arg name="mapType" type="u" />
+    <arg name="mapInfo" type="(a(us))" />
+  </signal>
+  <signal name="GpsInfoUpdate">
+    <annotation name="type_ref.gpsInfo" value="gpsInfo_st" />
+    <arg name="gpsInfo" type="(iiu)" />
+  </signal>
+  <signal name="LockedToStation">
+    <arg name="lockStatus" type="u" />
+  </signal>
+  <signal name="ApplicationStatus">
+    <arg name="appStatus" type="u" />
+  </signal>
+  <signal name="LastTileUpdatedTime">
+    <arg name="lastUpdatedTime" type="u" />
+  </signal>
+  <signal name="TestModeText">
+    <arg name="testText" type="s" />
+  </signal>
+  <signal name="VICSFrequencyChangeAck">
+    <arg name="Frequency" type="d">
+      <doc line="frequency value requested by NNG" />
+    </arg>
+    <arg name="State" type="i">
+      <doc line="State = enum( FC_SUCCESS (0), FC_FAILED (1) )" />
+    </arg>
+    <doc line="Frequency change acknowledge" />
+  </signal>
+</interface>

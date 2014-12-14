@@ -1,0 +1,112 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.testdiag">
+  <annotation name="com.jci.def_struct_names.testdiag_gui_exitbutton_t"
+  value="exitEnableBtn, btnText" />
+  <annotation name="com.jci.def_struct_types.testdiag_gui_exitbutton_t"
+  value=" b, ay" />
+  <annotation name="com.jci.def_struct_names.testdiag_gui_buttonstate_t"
+  value="enableEnterBtn, enableClearBtn, enableDeleteBtn, exitButton" />
+  <annotation name="com.jci.def_struct_types.testdiag_gui_buttonstate_t"
+  value=" b, b, b, testdiag_gui_exitbutton_t" />
+  <annotation name="com.jci.def_struct_names.testdiag_gui_keypadbuttonsstate_t"
+  value=" keyPadButtonsEnabled" />
+  <annotation name="com.jci.def_struct_types.testdiag_gui_keypadbuttonsstate_t"
+  value=" ay" />
+  <annotation name="com.jci.def_struct_names.testdiag_msg_2_t"
+  value="keypadState, keyPadButtonStates, buttonState" />
+  <annotation name="com.jci.def_struct_types.testdiag_msg_2_t"
+  value=" b, testdiag_gui_keypadbuttonsstate_t, testdiag_gui_buttonstate_t" />
+  <annotation name="com.jci.def_struct_names.testdiag_msg_1_t"
+  value="data_len, data_message" />
+  <annotation name="com.jci.def_struct_types.testdiag_msg_1_t"
+  value=" i, ay" />
+  <annotation name="com.jci.def_struct_names.testdiag_test_detail_t"
+  value="testID, testName" />
+  <annotation name="com.jci.def_struct_types.testdiag_test_detail_t"
+  value=" u, ay" />
+  <annotation name="com.jci.def_struct_names.testdiag_test_info_t"
+  value="count, test" />
+  <annotation name="com.jci.def_struct_types.testdiag_test_info_t"
+  value=" u, testdiag_test_detail_t" />
+  <annotation name="header_include" value="testdiag_data.h" />
+  <method name="StartRoutine">
+    <annotation name="async" value="client" />
+    <arg name="test_id" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ActivateTestMode">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeactivateTestMode">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CommanderInput">
+    <annotation name="async" value="client" />
+    <arg name="buttont_id" direction="in" type="n" />
+    <arg name="buttont_value" direction="in" type="n" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StopCommanderRoutine">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetTestInfo">
+    <annotation name="com.jci.type_ref.testInfo"
+    value="testdiag_test_info_t" />
+    <annotation name="async" value="client" />
+    <arg name="testInfo" direction="out" type="(ua(uay))" />
+  </method>
+  <method name="ActivateJCITestMode">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DeactivateJCITestModeMode">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="NotifyDiagLostFocus">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDiagStatus">
+    <annotation name="typeof.status"
+    value="TESTDIAG_ScreenMode_e_t" />
+    <annotation name="sync" value="client" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <signal name="TestRoutineStatus_Response">
+    <annotation name="com.jci.type_ref.response_data"
+    value="testdiag_msg_1_t" />
+    <annotation name="com.jci.type_ref.test_info"
+    value="testdiag_test_detail_t" />
+    <annotation name="com.jci.type_ref.gui_state"
+    value="testdiag_msg_2_t" />
+    <arg name="test_status" direction="in" type="s" />
+    <arg name="test_info" direction="in" type="(uay)" />
+    <arg name="response_data" direction="in" type="(iay)" />
+    <arg name="gui_state" direction="in"
+    type="(b(ay)(bbb(bay)))" />
+    <arg name="isTUIDataReq" direction="in" type="b" />
+    <arg name="endOfData" direction="in" type="b" />
+  </signal>
+  <signal name="NotifyTestMode_Response">
+    <arg name="test_mode" direction="in" type="u" />
+  </signal>
+  <signal name="SystemError_Response">
+    <annotation name="typeof.error_id"
+    value="TESTDIAG_System_Error_e_t" />
+    <annotation name="typeof.error_status"
+    value="TESTDIAG_System_Error_Status_e_t" />
+    <arg name="error_id" direction="in" type="u" />
+    <arg name="error_status" direction="in" type="u" />
+  </signal>
+  <signal name="DVD_SpeedRestriction_Enable">
+    <arg name="speed_Restriction_Enable" direction="in" type="b" />
+  </signal>
+</interface>

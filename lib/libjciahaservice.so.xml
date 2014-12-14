@@ -1,0 +1,371 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.obs.aha.hmi">
+  <annotation name="com.jci.def_struct_names.AhaArrayOfIds64Type"
+  value="ids" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfIds64Type"
+  value="t" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfIds32Type"
+  value="ids" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfIds32Type"
+  value="u" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfStringsType"
+  value="ahaArrayOfStrings" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfStringsType"
+  value="s" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfMapStringsType"
+  value="ahaArrayOfMapStrings" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfMapStringsType"
+  value="AhaMapStringsType" />
+  <annotation name="com.jci.def_struct_names.AhaMapStringsType"
+  value="id, name" />
+  <annotation name="com.jci.def_struct_types.AhaMapStringsType"
+  value="u, s" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfMapStatusAndStringsType"
+  value="ahaArrayOfMapStatusAndStrings" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfMapStatusAndStringsType"
+  value="AhaMapStatusAndStringsType" />
+  <annotation name="com.jci.def_struct_names.AhaMapStatusAndStringsType"
+  value="id, status, name" />
+  <annotation name="com.jci.def_struct_types.AhaMapStatusAndStringsType"
+  value="u, y, s" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfStationsAllParametersType"
+  value="ahaArrayOfStationsAllParameters" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfStationsAllParametersType"
+  value="AhaStationsAllParametersType" />
+  <annotation name="com.jci.def_struct_names.AhaStationsAllParametersType"
+  value="stationId, flags, stationRecordTime, stationDescription, fullStationName, abbreviationName, stationIdString, resourceIdIcon, resourceIdIconStatus, resourceIdLikeUnselectedIcon, resourceIdLikeUnselectedIconStatus, resourceIdDislikeUnselectedIcon, resourceIdDislikeUnselectedIconStatus, resourceIdLikeSelectedIcon, resourceIdLikeSelectedIconStatus, resourceIdDislikeSelectedIcon, resourceIdDislikeSelectedIconStatus" />
+  <annotation name="com.jci.def_struct_types.AhaStationsAllParametersType"
+  value="t, u, t, s, s, s, s, u, y, u, y, u, y, u, y, u, y" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfStationsParametersType"
+  value="ahaArrayOfStationsParameters" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfStationsParametersType"
+  value="AhaStationsParametersType" />
+  <annotation name="com.jci.def_struct_names.AhaStationsParametersType"
+  value="stationId, validParamFlags, flags, stationRecordTime, fullStationName, resourceIdIcon, resourceIdIconStatus, resourceIdLikeUnselectedIcon, resourceIdLikeUnselectedIconStatus, resourceIdDislikeUnselectedIcon, resourceIdDislikeUnselectedIconStatus, resourceIdLikeSelectedIcon, resourceIdLikeSelectedIconStatus, resourceIdDislikeSelectedIcon, resourceIdDislikeSelectedIconStatus" />
+  <annotation name="com.jci.def_struct_types.AhaStationsParametersType"
+  value="t, t, u, t, s, u, y, u, y, u, y, u, y, u, y" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfContentsAllParametersType"
+  value="ahaArrayOfContentsAllParameters" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfContentsAllParametersType"
+  value="AhaContentsAllParametersType" />
+  <annotation name="com.jci.def_struct_names.AhaContentsAllParametersType"
+  value="contentId, flags, totalLikes, timeStamp, numberOfReviews, speed, normalSpeed, longtitude, latitude, rating, maxRating, resourceIdAudioClip, resourceIdAudioClipStatus, title, resourceIdThumbnailImage, resourceIdThumbnailImageStatus, locationString, userName, zipCode, address1, state, city, phone, fullAddress, address2, countryCode, languageCode, resourceIdRatingImage, resourceIdRatingImageStatus, resourceIdPartnerLogo, resourceIdPartnerLogoStatus, distance, direction" />
+  <annotation name="com.jci.def_struct_types.AhaContentsAllParametersType"
+  value="t, u, t, t, t, x, x, d, d, d, d, u, y, s, u, y, s, s, s, s, s, s, s, s, s, s, s, u, y, u, y, s, n" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfContentsParametersType"
+  value="ahaArrayOfContentsParameters" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfContentsParametersType"
+  value="AhaContentsParametersType" />
+  <annotation name="com.jci.def_struct_names.AhaContentsParametersType"
+  value="contentId, validParamFlags, flags, speed, normalSpeed, longtitude, latitude, rating, title, resourceIdThumbnailImage, resourceIdThumbnailImageStatus, phone, fullAddress, resourceIdRatingImage, resourceIdRatingImageStatus, resourceIdPartnerLogo, resourceIdPartnerLogoStatus, distance" />
+  <annotation name="com.jci.def_struct_types.AhaContentsParametersType"
+  value="t, t, u, x, x, d, d, d, s, u, y, s, s, u, y, u, y, s" />
+  <annotation name="com.jci.def_struct_names.AhaArrayOfContentEpisodesAllParametersType"
+  value="ahaArrayOfContentEpisodesAllParameters" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfContentEpisodesAllParametersType"
+  value="AhaContentEpisodesAllParametersType" />
+  <annotation name="com.jci.def_struct_names.AhaContentEpisodesAllParametersType"
+  value="contentId, validParamFlags, title, resourceIdThumbnailImage, resourceIdThumbnailImageStatus, address, distance" />
+  <annotation name="com.jci.def_struct_types.AhaContentEpisodesAllParametersType"
+  value="t, t, s, u, y, s, s" />
+  <method name="ListSessions">
+    <annotation name="com.jci.type_ref.Sessions"
+    value="AhaArrayOfMapStringsType" />
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="Sessions" direction="out" type="(a(us))" />
+  </method>
+  <method name="ListAttachedClients">
+    <annotation name="com.jci.type_ref.Clients"
+    value="AhaArrayOfStringsType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="Clients" direction="out" type="(as)" />
+  </method>
+  <method name="AttachToSession">
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ClientName" direction="in" type="s" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="DetachFromSession">
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ClientName" direction="in" type="s" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="RequestPlaybackUpdateStatus">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="StationId" direction="out" type="t" />
+    <arg name="ContentId" direction="out" type="t" />
+    <arg name="PlaybackState" direction="out" type="y" />
+    <arg name="IndexedSeconds" direction="out" type="u" />
+  </method>
+  <method name="GetStationsIdList">
+    <annotation name="com.jci.type_ref.StationsIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StartPosition" direction="in" type="u" />
+    <arg name="NumberOfStations" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="TotalNumberOfStations" direction="out" type="u" />
+    <arg name="StationsIds" direction="out" type="(at)" />
+  </method>
+  <method name="GetStationsAllParameters">
+    <annotation name="com.jci.type_ref.StationsIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.type_ref.ParametersList"
+    value="AhaArrayOfStationsAllParametersType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationsIds" direction="in" type="(at)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ParametersList" direction="out"
+    type="(a(tutssssuyuyuyuyuy))" />
+  </method>
+  <method name="GetStationsParameters">
+    <annotation name="com.jci.type_ref.StationsIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.type_ref.ParametersList"
+    value="AhaArrayOfStationsParametersType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationsIds" direction="in" type="(at)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ParametersList" direction="out"
+    type="(a(ttutsuyuyuyuyuy))" />
+  </method>
+  <method name="GetResource">
+    <annotation name="com.jci.type_ref.ResourceIds"
+    value="AhaArrayOfIds32Type" />
+    <annotation name="com.jci.type_ref.Files"
+    value="AhaArrayOfMapStatusAndStringsType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ResourceIds" direction="in" type="(au)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="Files" direction="out" type="(a(uys))" />
+  </method>
+  <method name="ReleaseResource">
+    <annotation name="com.jci.type_ref.ResourceIds"
+    value="AhaArrayOfIds32Type" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ResourceIds" direction="in" type="(au)" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="GetContentsIdList">
+    <annotation name="com.jci.type_ref.ContentIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationId" direction="in" type="t" />
+    <arg name="MaxItems" direction="in" type="q" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="TotalNumberOfContents" direction="out" type="q" />
+    <arg name="ContentIds" direction="out" type="(at)" />
+  </method>
+  <method name="GetContentsAllParameters">
+    <annotation name="com.jci.type_ref.ContentIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.type_ref.ParametersList"
+    value="AhaArrayOfContentsAllParametersType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentIds" direction="in" type="(at)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ParametersList" direction="out"
+    type="(a(tutttxxdddduysuysssssssssssuyuysn))" />
+  </method>
+  <method name="GetContentsParameters">
+    <annotation name="com.jci.type_ref.ContentIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.type_ref.ParametersList"
+    value="AhaArrayOfContentsParametersType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ImageType" direction="in" type="y" />
+    <arg name="ContentIds" direction="in" type="(at)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ParametersList" direction="out"
+    type="(a(ttuxxdddsuyssuyuys))" />
+  </method>
+  <method name="GetContentEpisodesAllParameters">
+    <annotation name="com.jci.type_ref.ContentIds"
+    value="AhaArrayOfIds64Type" />
+    <annotation name="com.jci.type_ref.ParametersList"
+    value="AhaArrayOfContentEpisodesAllParametersType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ImageType" direction="in" type="y" />
+    <arg name="ContentIds" direction="in" type="(at)" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ParametersList" direction="out"
+    type="(a(ttsuyss))" />
+  </method>
+  <method name="PostTextToStation">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationId" direction="in" type="t" />
+    <arg name="Text" direction="in" type="s" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="Query3rdPartyConnectivity">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ResponseFlags" direction="out" type="u" />
+  </method>
+  <method name="RequestCurrentContentDisplayInformation">
+    <annotation name="com.jci.type_ref.StringsArray"
+    value="AhaArrayOfStringsType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StartIndexOfTheStringToQueryFor" direction="in"
+    type="y" />
+    <arg name="NumberOfStringsToQueryFor" direction="in"
+    type="y" />
+    <arg name="MaxLengthOfReturnStrings" direction="in" type="q" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="ContentId" direction="out" type="t" />
+    <arg name="Color" direction="out" type="y" />
+    <arg name="TotalNumberOfStrings" direction="out" type="y" />
+    <arg name="StringsArray" direction="out" type="(as)" />
+  </method>
+  <method name="GetMainCacheDir">
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="MainCacheDir" direction="out" type="s" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <signal name="SessionDestroyed">
+    <arg name="SessionId" type="u" />
+    <arg name="ReasonId" type="u" />
+  </signal>
+  <signal name="NotifyPlaybackOfNewStation">
+    <arg name="SessionId" type="u" />
+    <arg name="StationId" type="t" />
+  </signal>
+  <signal name="NotifyNewContentPlaybackState">
+    <arg name="SessionId" type="u" />
+    <arg name="ContentId" type="t" />
+    <arg name="PlaybackState" type="y" />
+  </signal>
+  <signal name="NotifyNewContentAvailable">
+    <arg name="SessionId" type="u" />
+    <arg name="StationId" type="t" />
+    <arg name="NewerContentAvailable" type="b" />
+    <arg name="OlderContentAvailable" type="b" />
+  </signal>
+  <signal name="NotifyContentDeleted">
+    <annotation name="com.jci.type_ref.ContentIds"
+    value="AhaArrayOfIds64Type" />
+    <arg name="SessionId" type="u" />
+    <arg name="StationId" type="t" />
+    <arg name="ContentIds" type="(at)" />
+  </signal>
+  <signal name="NotifyClientStatusUpdate">
+    <arg name="SessionId" type="u" />
+    <arg name="StatusCode" type="u" />
+  </signal>
+  <signal name="NotifySubscribedStationListChange">
+    <arg name="SessionId" type="u" />
+  </signal>
+  <signal name="NotifyPendingRequest">
+    <arg name="SessionId" type="u" />
+    <arg name="RequestId" type="q" />
+    <arg name="RequestState" type="y" />
+    <arg name="ExpectedProcessingTime" type="q" />
+  </signal>
+  <signal name="ResourceStatus">
+    <arg name="SessionId" type="u" />
+    <arg name="ResourceId" type="u" />
+    <arg name="ResourceStatus" type="y" />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.obs.aha.svc">
+  <annotation name="com.jci.def_struct_names.AhaArrayOfMapStringsType"
+  value="ahaArrayOfMapStrings" />
+  <annotation name="com.jci.def_struct_types.AhaArrayOfMapStringsType"
+  value="AhaMapStringsType" />
+  <annotation name="com.jci.def_struct_names.AhaMapStringsType"
+  value="id, name" />
+  <annotation name="com.jci.def_struct_types.AhaMapStringsType"
+  value="u, s" />
+  <annotation name="com.jci.def_struct_names.AhaVehicleInfoType"
+  value="vehicleMake, vehicleModel, headUnitSerialNumber, headUnitModel, modelYear, vin" />
+  <annotation name="com.jci.def_struct_types.AhaVehicleInfoType"
+  value="s, s, s, s, s, s" />
+  <method name="ConnectUsingPseudoTerminal">
+    <annotation name="com.jci.async" value="both" />
+    <annotation name="com.jci.type_ref.VehicleInfo"
+    value="AhaVehicleInfoType" />
+    <arg name="PseudoTerminal" direction="in" type="s" />
+    <arg name="SessionName" direction="in" type="s" />
+    <arg name="VehicleInfo" direction="in" type="(ssssss)" />
+    <arg name="ShoutFormat" direction="in" type="y" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="SessionId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ReasonId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="ChangeClientPlaybackState">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="PlaybackState" direction="in" type="y" />
+    <arg name="ContentId" direction="out" type="t" />
+    <arg name="PlayState" direction="out" type="y" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="SelectContentForPlayback">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="SelectStationForPlayback">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationId" direction="in" type="t" />
+    <arg name="PlaybackFromBegin" direction="in" type="y" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="TimeShiftContent">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="NOSecondsToTimeShift" direction="in" type="n" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="PerformAction">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ActionId" direction="in" type="u" />
+    <arg name="ContentId" direction="in" type="t" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="PostNewRecording">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="File" direction="in" type="s" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+</interface>

@@ -1,0 +1,78 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.bteca">
+  <method name="AbortCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="TransferToHandset">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="TransferFromHandset">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BargeIntoCall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetBTECAEnabledValue">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="y" />
+  </method>
+  <method name="SetBTECAEnabledValue">
+    <annotation name="async" value="client" />
+    <arg name="isBTECAenabled" direction="in" type="y" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="IsBTECASupported">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="y" />
+  </method>
+  <method name="RetryEcall">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ResetEnableSetting">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="EnabledChange">
+    <arg name="isBTECAenabled" type="y" />
+  </signal>
+  <signal name="CollisionDetected">
+    <arg name="PhoneConnected" type="b" />
+  </signal>
+  <signal name="PhoneFoundStatus">
+    <arg name="Found" type="b" />
+  </signal>
+  <signal name="CollisionDetectedTimerStart" />
+  <signal name="CollisionDetectedTimerExpired" />
+  <signal name="CallSuccess" />
+  <signal name="CallNotSuccess">
+    <arg name="MaxAttempts" type="b" />
+  </signal>
+  <signal name="AudioTransferredToPhone" />
+  <signal name="AudioTransferredToCar" />
+  <signal name="EndCall" />
+  <signal name="EmergencyCallFailure" />
+  <signal name="MP911EmergencyCallStatus">
+    <arg name="EmergencyStatus" type="i" />
+  </signal>
+  <signal name="PhoneBTConnectionLost" />
+  <signal name="TransferredToHandset">
+    <arg name="TransferStaus" type="b" />
+  </signal>
+  <signal name="TransferredFromHandset">
+    <arg name="TransferStaus" type="b" />
+    <arg name="StillConnecting" type="b" />
+  </signal>
+  <signal name="ConnectedTimerStart" />
+  <signal name="ShowPSAPInfoInscription">
+    <arg name="ShowInscription" type="b" />
+  </signal>
+</interface>

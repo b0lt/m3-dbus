@@ -1,0 +1,262 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.obs.stitcher.hmi">
+  <annotation name="com.jci.def_struct_names.StitcherArrayOfIds64Type"
+  value="ids" />
+  <annotation name="com.jci.def_struct_types.StitcherArrayOfIds64Type"
+  value="t" />
+  <annotation name="com.jci.def_struct_names.StitcherArrayOfStringsType"
+  value="arrayOfStrings" />
+  <annotation name="com.jci.def_struct_types.StitcherArrayOfStringsType"
+  value="s" />
+  <annotation name="com.jci.def_struct_names.StitcherMapStringsType"
+  value="id, name" />
+  <annotation name="com.jci.def_struct_types.StitcherMapStringsType"
+  value="u, s" />
+  <annotation name="com.jci.def_struct_names.StitcherArrayOfMapStringsType"
+  value="stitcherArrayOfMapStrings" />
+  <annotation name="com.jci.def_struct_types.StitcherArrayOfMapStringsType"
+  value="StitcherMapStringsType" />
+  <annotation name="com.jci.def_struct_names.StitcherArrayOfIdsFlagsStringsType"
+  value="stitcherArrayOfIdsFlagsStrings" />
+  <annotation name="com.jci.def_struct_types.StitcherArrayOfIdsFlagsStringsType"
+  value="StitcherIdsFlagsStringsType" />
+  <annotation name="com.jci.def_struct_names.StitcherIdsFlagsStringsType"
+  value="id, flag, name" />
+  <annotation name="com.jci.def_struct_types.StitcherIdsFlagsStringsType"
+  value="t, u, s" />
+  <annotation name="com.jci.def_struct_names.StitcherArtType"
+  value="ImageDataLength, ResourceID" />
+  <annotation name="com.jci.def_struct_types.StitcherArtType"
+  value="u, u" />
+  <annotation name="com.jci.def_struct_names.StitcherStationAllInfoType"
+  value="IsActive, StationName, StationGenre, SeedArtist, SeedTrack, StationArt, StationSeqNum, StationNumTracks, StationFlags" />
+  <annotation name="com.jci.def_struct_types.StitcherStationAllInfoType"
+  value="b, s, s, s, s, StitcherArtType, u, u, u" />
+  <annotation name="com.jci.def_struct_names.StitcherTrackAllInfoType"
+  value="TrackTitle, TrackGenre, TrackArtistName, TrackDescription, TrackAlbumName, TrackAlbumArt, TrackYear, TrackDuration, TrackLength, TrackBMP, TrackActions, TrackRating, TrackSeqNum, TrackStationID, TrackFlags" />
+  <annotation name="com.jci.def_struct_types.StitcherTrackAllInfoType"
+  value="s, s, s, s, s, StitcherArtType, u, u, u, u, StitcherArrayOfMapStringsType, u, u, t, u" />
+  <method name="ListSessions">
+    <annotation name="com.jci.type_ref.Sessions"
+    value="StitcherArrayOfMapStringsType" />
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="Sessions" direction="out" type="(a(us))" />
+  </method>
+  <method name="ListAttachedClients">
+    <annotation name="com.jci.type_ref.Clients"
+    value="StitcherArrayOfStringsType" />
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="Clients" direction="out" type="(as)" />
+  </method>
+  <method name="AttachToSession">
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ClientName" direction="in" type="s" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="DetachFromSession">
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ClientName" direction="in" type="s" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="SetElapsedPolling">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="TimeMs" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="GetResource">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="GroupId" direction="in" type="t" />
+    <arg name="ResourceId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="FilePath" direction="out" type="s" />
+  </method>
+  <method name="ReleaseResource">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ResourceId" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="StationGetListId">
+    <annotation name="com.jci.type_ref.ResStationId"
+    value="StitcherArrayOfIds64Type" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ParentId" direction="in" type="u" />
+    <arg name="StartPosition" direction="in" type="u" />
+    <arg name="NumberOfStations" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="Total" direction="out" type="i" />
+    <arg name="ResStationId" direction="out" type="(at)" />
+  </method>
+  <method name="StationGetAllInfo">
+    <annotation name="com.jci.type_ref.StationAllInfo"
+    value="StitcherStationAllInfoType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="StationId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="StationAllInfo" direction="out"
+    type="(bssss(uu)uuu)" />
+  </method>
+  <method name="TrackGetAllInfo">
+    <annotation name="com.jci.type_ref.TrackAllInfo"
+    value="StitcherTrackAllInfoType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="TrackId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="TrackAllInfo" direction="out"
+    type="(sssss(uu)uuuu(a(us))uutu)" />
+  </method>
+  <method name="Bookmark">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ListType" direction="in" type="y" />
+    <arg name="Type" direction="in" type="y" />
+    <arg name="Id" direction="in" type="t" />
+    <arg name="Name" direction="in" type="s" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="RequestPlaybackUpdateStatus">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="PlaybackState" direction="out" type="y" />
+    <arg name="TrackId" direction="out" type="t" />
+    <arg name="StationId" direction="out" type="t" />
+    <arg name="ElapsedTime" direction="out" type="u" />
+    <arg name="Buffering" direction="out" type="u" />
+  </method>
+  <method name="SelectFavourites">
+    <annotation name="com.jci.type_ref.Actions"
+    value="StitcherArrayOfMapStringsType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="Id" direction="in" type="t" />
+    <arg name="Actions" direction="in" type="(a(us))" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="DeleteBookmark">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ListType" direction="in" type="y" />
+    <arg name="Type" direction="in" type="y" />
+    <arg name="Id" direction="in" type="t" />
+    <arg name="Name" direction="in" type="s" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="StationGetListIdsAndNames">
+    <annotation name="com.jci.type_ref.ResStationIdsFlagsAndNames"
+    value="StitcherArrayOfIdsFlagsStringsType" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ParentId" direction="in" type="u" />
+    <arg name="StartPosition" direction="in" type="u" />
+    <arg name="NumberOfStations" direction="in" type="u" />
+    <arg name="StatusId" direction="out" type="i" />
+    <arg name="Total" direction="out" type="i" />
+    <arg name="ResStationIdsFlagsAndNames" direction="out"
+    type="(a(tus))" />
+  </method>
+  <signal name="SessionDestroyed">
+    <arg name="SessionId" type="u" />
+    <arg name="ReasonId" type="u" />
+  </signal>
+  <signal name="PlaybackUpdateStatus">
+    <arg name="SessionId" type="u" />
+    <arg name="PlaybackState" type="y" />
+    <arg name="TrackId" type="t" />
+    <arg name="StationId" type="t" />
+    <arg name="ElapsedTime" type="u" />
+    <arg name="Buffering" type="u" />
+  </signal>
+  <signal name="UpdateInfo">
+    <arg name="SessionId" type="u" />
+    <arg name="Type" type="y" />
+    <arg name="Id" type="t" />
+    <arg name="InfoUpdated" type="y" />
+    <arg name="Data" type="t" />
+  </signal>
+  <signal name="UpdateList">
+    <arg name="SessionId" type="u" />
+    <arg name="Type" type="y" />
+    <arg name="Id" type="t" />
+  </signal>
+  <signal name="UpdateNotificationText">
+    <arg name="SessionId" type="u" />
+    <arg name="Type" type="y" />
+    <arg name="Text" type="s" />
+    <arg name="Duration" type="u" />
+  </signal>
+  <signal name="BookmarkList">
+    <annotation name="com.jci.type_ref.BookmarkListData"
+    value="StitcherArrayOfStringsType" />
+    <arg name="SessionId" type="u" />
+    <arg name="BookmarkListType" type="u" />
+    <arg name="BookmarkListData" type="(as)" />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.obs.stitcher.svc">
+  <annotation name="com.jci.def_struct_names.StitcherMapStringsType"
+  value="id, name" />
+  <annotation name="com.jci.def_struct_types.StitcherMapStringsType"
+  value="u, s" />
+  <annotation name="com.jci.def_struct_names.StitcherArrayOfMapStringsType"
+  value="stitcherArrayOfMapStrings" />
+  <annotation name="com.jci.def_struct_types.StitcherArrayOfMapStringsType"
+  value="StitcherMapStringsType" />
+  <method name="ConnectUsingPseudoTerminal">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="PseudoTerminal" direction="in" type="s" />
+    <arg name="SessionName" direction="in" type="s" />
+    <arg name="Status" direction="out" type="i" />
+    <arg name="SessionId" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="com.jci.async_client" value="true" />
+    <annotation name="com.jci.async_server" value="false" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="ReasonId" direction="in" type="u" />
+    <arg name="Status" direction="out" type="i" />
+  </method>
+  <method name="Command">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Command" direction="in" type="y" />
+    <arg name="GroupType" direction="in" type="y" />
+    <arg name="GroupId" direction="in" type="t" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+  <method name="Rate">
+    <annotation name="com.jci.async" value="both" />
+    <arg name="SessionId" direction="in" type="u" />
+    <arg name="Type" direction="in" type="y" />
+    <arg name="Id" direction="in" type="t" />
+    <arg name="Rate" direction="in" type="y" />
+    <arg name="IsRelative" direction="in" type="b" />
+    <arg name="StatusId" direction="out" type="i" />
+  </method>
+</interface>

@@ -1,0 +1,52 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.audioPlayer">
+  <method name="Open">
+    <arg name="client_id" direction="out" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="OpenByName">
+    <arg name="device" direction="in" type="s" />
+    <arg name="client_id" direction="out" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="Close">
+    <arg name="client_id" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="PlaySync">
+    <annotation name="async" value="server" />
+    <arg name="client_id" direction="in" type="i" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="mode" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="PlayASync">
+    <annotation name="async" value="both" />
+    <arg name="client_id" direction="in" type="i" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="mode" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="AbortSync">
+    <annotation name="async" value="server" />
+    <arg name="client_id" direction="in" type="i" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="abort_type" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="AbortASync">
+    <annotation name="async" value="both" />
+    <arg name="client_id" direction="in" type="i" />
+    <arg name="fileName" direction="in" type="s" />
+    <arg name="abort_type" direction="in" type="i" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <signal name="Exception">
+    <arg name="id" type="n" />
+    <arg name="message" type="s" />
+  </signal>
+</interface>

@@ -1,0 +1,206 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.fav">
+  <annotation name="def_struct_names.favList_st" value="arr_fav" />
+  <annotation name="def_struct_types.favList_st" value="fav_st" />
+  <annotation name="def_struct_names.fav_st"
+  value="id, name, type, image" />
+  <annotation name="def_struct_types.fav_st" value="u, s, u, s" />
+  <annotation name="def_struct_names.favCommNum_st"
+  value="arr_favComm" />
+  <annotation name="def_struct_types.favCommNum_st"
+  value="favComm_st" />
+  <annotation name="def_struct_names.favComm_st"
+  value="category, number" />
+  <annotation name="def_struct_types.favComm_st" value="u, s" />
+  <annotation name="def_struct_names.favCommAddr_st"
+  value="category, street, city, region, country, zipCode" />
+  <annotation name="def_struct_types.favCommAddr_st"
+  value="u, s, s, s, s, s" />
+  <annotation name="com.jci.def_struct_names.XM_tunerStatus_resp_s_t"
+  value="OperationStatus, ErrorStatus, Channel num, SID, Category, Channel Lock Status, Channel Name " />
+  <annotation name="com.jci.def_struct_types.XM_tunerStatus_resp_s_t"
+  value=" y, y, y, y, y, b, ay" />
+  <method name="GetFavoriteMax">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="category" direction="in" type="u" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_category" direction="out" type="u" />
+    <arg name="return_number_fav" direction="out" type="i" />
+    <arg name="return_max_fav" direction="out" type="i" />
+    <arg name="return_max_reached" direction="out" type="b" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="AddFavoriteRadio">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="displayText" direction="in" type="s" />
+    <arg name="replaceFavId" direction="in" type="i" />
+    <arg name="stationType" direction="in" type="u" />
+    <arg name="frequency" direction="in" type="d" />
+    <arg name="stationName" direction="in" type="s" />
+    <arg name="piCode" direction="in" type="q" />
+    <arg name="hdSPS" direction="in" type="u" />
+    <arg name="XM_step" direction="in" type="y" />
+    <arg name="XM_category" direction="in" type="y" />
+    <arg name="XM_channel" direction="in" type="y" />
+    <arg name="XM_SID" direction="in" type="y" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+    <arg name="return_add_favId" direction="out" type="i" />
+    <arg name="return_max_reached" direction="out" type="b" />
+  </method>
+  <method name="DeleteFavorite">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="category" direction="in" type="u" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="MoveFavorite">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="category" direction="in" type="u" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="oldIndex" direction="in" type="i" />
+    <arg name="newIndex" direction="in" type="i" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="RenameFavorite">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="category" direction="in" type="u" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="displayText" direction="in" type="s" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetFavoriteRadio">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_favId" direction="out" type="i" />
+    <arg name="return_stationType" direction="out" type="u" />
+    <arg name="return_frequency" direction="out" type="d" />
+    <arg name="return_stationName" direction="out" type="s" />
+    <arg name="return_piCode" direction="out" type="q" />
+    <arg name="return_hdSPS" direction="out" type="u" />
+    <arg name="return_XM_step" direction="out" type="y" />
+    <arg name="return_XM_category" direction="out" type="y" />
+    <arg name="return_XM_channel" direction="out" type="y" />
+    <arg name="return_XM_SID" direction="out" type="y" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetFavoriteList">
+    <annotation name="type_ref.favList" value="favList_st" />
+    <annotation name="async" value="client" />
+    <annotation name="appsdkgen" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="category" direction="in" type="u" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="startIndex" direction="in" type="i" />
+    <arg name="maxItems" direction="in" type="i" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_category" direction="out" type="u" />
+    <arg name="return_startIndex" direction="out" type="i" />
+    <arg name="return_numItems" direction="out" type="i" />
+    <arg name="return_totItems" direction="out" type="i" />
+    <arg name="favList" direction="out" type="(a(usus))" />
+  </method>
+  <method name="AddFavoriteComm">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="displayText" direction="in" type="s" />
+    <arg name="replaceFavId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="contactId" direction="in" type="u" />
+    <arg name="contactType" direction="in" type="u" />
+    <arg name="contactName" direction="in" type="s" />
+    <arg name="phoneNumber" direction="in" type="s" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+    <arg name="return_add_favId" direction="out" type="i" />
+    <arg name="return_max_reached" direction="out" type="b" />
+  </method>
+  <method name="GetFavoriteContactDetail">
+    <annotation name="type_ref.favCommNum" value="favCommNum_st" />
+    <annotation name="type_ref.favCommAddr"
+    value="favCommAddr_st" />
+    <annotation name="async" value="client" />
+    <annotation name="appsdkgen" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_favId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+    <arg name="return_displayName" direction="out" type="s" />
+    <arg name="return_companyName" direction="out" type="s" />
+    <arg name="return_image" direction="out" type="s" />
+    <arg name="favCommNum" direction="out" type="(a(us))" />
+    <arg name="favCommAddr" direction="out" type="(usssss)" />
+  </method>
+  <method name="GetFavoriteComm">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="favId" direction="in" type="i" />
+    <arg name="deviceId" direction="in" type="u" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_favId" direction="out" type="i" />
+    <arg name="return_contactId" direction="out" type="u" />
+    <arg name="return_contactType" direction="out" type="u" />
+    <arg name="return_displayName" direction="out" type="s" />
+    <arg name="return_phoneNumber" direction="out" type="s" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="RadioFavoriteSeek">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="radioType" direction="in" type="u" />
+    <arg name="frequency" direction="in" type="d" />
+    <arg name="hdSPS" direction="in" type="u" />
+    <arg name="XM_channel" direction="in" type="y" />
+    <arg name="button" direction="in" type="i" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_favId" direction="out" type="i" />
+    <arg name="return_stationType" direction="out" type="u" />
+    <arg name="return_frequency" direction="out" type="d" />
+    <arg name="return_stationName" direction="out" type="s" />
+    <arg name="return_piCode" direction="out" type="q" />
+    <arg name="return_hdSPS" direction="out" type="u" />
+    <arg name="return_XM_step" direction="out" type="y" />
+    <arg name="return_XM_category" direction="out" type="y" />
+    <arg name="return_XM_channel" direction="out" type="y" />
+    <arg name="return_XM_SID" direction="out" type="y" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="ReplaceFavoriteXMChannel">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="i" />
+    <arg name="stationName" direction="in" type="s" />
+    <arg name="XM_channel" direction="in" type="y" />
+    <arg name="XM_SID" direction="in" type="y" />
+    <arg name="return_requestId" direction="out" type="i" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="UpdateFromTunerStatus">
+    <annotation name="com.jci.type_ref.Tuner_status"
+    value="XM_tunerStatus_resp_s_t" />
+    <arg name="Tuner_status" direction="in" type="(yyyyybay)" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <signal name="SeekStatusResp">
+    <arg name="SeekStatus" type="u" />
+  </signal>
+</interface>

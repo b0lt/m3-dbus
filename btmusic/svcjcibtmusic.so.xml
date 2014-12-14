@@ -1,0 +1,137 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.btmusic">
+  <annotation name="def_struct_names.btmusic_array_t"
+  value="data" />
+  <annotation name="def_struct_types.btmusic_array_t" value="i" />
+  <method name="StartStreaming">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StopStreaming">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StreamingAudioCmd">
+    <annotation name="async" value="client" />
+    <arg name="commandType" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetTrackInfo">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BrowseFolderUp">
+    <annotation name="async" value="client" />
+    <arg name="folderType" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BrowseFolderDown">
+    <annotation name="async" value="client" />
+    <arg name="index" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetBrowseItemTitleForFolder">
+    <annotation name="async" value="client" />
+    <arg name="itemStartIndex" direction="in" type="u" />
+    <arg name="itemEndIndex" direction="in" type="u" />
+    <arg name="requestedPage" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetNowPlayListTitleForFile">
+    <annotation name="async" value="client" />
+    <arg name="itemStartIndex" direction="in" type="u" />
+    <arg name="itemEndIndex" direction="in" type="u" />
+    <arg name="requestedPage" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="PlayBrowseItem">
+    <annotation name="async" value="client" />
+    <arg name="playScope" direction="in" type="u" />
+    <arg name="playItemId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="StreamingStatus">
+    <arg name="streamStatus" direction="in" type="u" />
+  </signal>
+  <signal name="StreamingAudioCmdStatus">
+    <arg name="commandType" direction="in" type="u" />
+    <arg name="commandStatus" direction="in" type="u" />
+  </signal>
+  <signal name="StreamingPlayerStatus">
+    <arg name="playerStatus" direction="in" type="u" />
+  </signal>
+  <signal name="TrackInformation">
+    <annotation name="type_ref.trackInfo"
+    value="btmusic_array_t" />
+    <annotation name="typedef_callback"
+    value="BTMUSIC_TrackInformation_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="trackInfo" direction="in" type="(ay)" />
+  </signal>
+  <signal name="DeviceBatteryIndicator">
+    <arg name="batteryStrength" direction="in" type="u" />
+  </signal>
+  <signal name="BusyReason">
+    <arg name="busyReason" direction="in" type="u" />
+  </signal>
+  <signal name="TrackChangeIndicator" />
+  <signal name="TrackPositionIndicator">
+    <arg name="elapsedTime" direction="in" type="i" />
+  </signal>
+  <signal name="NowPlayingChangeIndicator" />
+  <signal name="SettingsStatus">
+    <arg name="settingType" direction="in" type="u" />
+    <arg name="settingValue" direction="in" type="u" />
+    <arg name="settingStatus" direction="in" type="u" />
+  </signal>
+  <signal name="PlayerSettingsInfo">
+    <annotation name="type_ref.playerSetting"
+    value="btmusic_array_t" />
+    <annotation name="typedef_callback"
+    value="BTMUSIC_PlayerSettingsInfo_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="playerSetting" direction="in" type="(ay)" />
+  </signal>
+  <signal name="FolderBrowseItemTitleResponse">
+    <annotation name="type_ref.foldertitleResponse"
+    value="btmusic_array_t" />
+    <annotation name="typedef_callback"
+    value="BTMUSIC_FolderBrowseItemTitleResponse_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="foldertitleResponse" direction="in" type="(ay)" />
+  </signal>
+  <signal name="BrowseNowPlayingTitleResponse">
+    <annotation name="type_ref.nowPlayingTitleResponse"
+    value="btmusic_array_t" />
+    <annotation name="typedef_callback"
+    value="BTMUSIC_BrowseNowPlayingTitleResponse_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="nowPlayingTitleResponse" direction="in"
+    type="(ay)" />
+  </signal>
+  <signal name="BrowseFolderResponse">
+    <annotation name="type_ref.browseFolderResp"
+    value="btmusic_array_t" />
+    <annotation name="typedef_callback"
+    value="BTMUSIC_BrowseFolderResponse_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="browseFolderResp" direction="in" type="(ay)" />
+  </signal>
+  <signal name="BrowseStatus">
+    <arg name="browseStatus" direction="in" type="u" />
+  </signal>
+  <signal name="BrowseConnStatus">
+    <arg name="browseConnStatus" direction="in" type="u" />
+  </signal>
+  <signal name="NowPlayingInfo">
+    <arg name="nowPlayingIndex" direction="in" type="u" />
+    <arg name="nowPlayingTotalCount" direction="in" type="u" />
+  </signal>
+  <signal name="MusicProfileSupported">
+    <arg name="musicProfile" direction="in" type="u" />
+  </signal>
+</interface>

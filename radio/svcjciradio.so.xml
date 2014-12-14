@@ -1,0 +1,229 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.radio">
+  <annotation name="com.jci.def_struct_names.RADIO_directTune_req_s_t"
+  value="Freq, PICode, SPSNo" />
+  <annotation name="com.jci.def_struct_types.RADIO_directTune_req_s_t"
+  value=" d, q, i " />
+  <annotation name="com.jci.def_struct_names.RADIO_modeStatus_s_t"
+  value="ModeStatus, Band" />
+  <annotation name="com.jci.def_struct_types.RADIO_modeStatus_s_t"
+  value=" i, i" />
+  <annotation name="com.jci.def_struct_names.RADIO_tunerStatus_s_t"
+  value="Band, OperationMode, Frequency, StationName, PICode" />
+  <annotation name="com.jci.def_struct_types.RADIO_tunerStatus_s_t"
+  value=" i, i, d, ay, i" />
+  <annotation name="com.jci.def_struct_names.RADIO_HD_tunerStatus_s_t"
+  value="Transmission_Type, ChannelType, CurrentSPS, SPS_Fault, HD_Error, AvailableSPS" />
+  <annotation name="com.jci.def_struct_types.RADIO_HD_tunerStatus_s_t"
+  value=" i, i, i, b, b, ab " />
+  <annotation name="com.jci.def_struct_names.RADIO_harStatus_s_t"
+  value="HAR_Freq, HAR_TranStatus" />
+  <annotation name="com.jci.def_struct_types.RADIO_harStatus_s_t"
+  value=" i, i, " />
+  <annotation name="com.jci.def_struct_names.RADIO_metadataChange_notification_s_t"
+  value="sis, track, artist, genre, album, ufid_url, ufid_id" />
+  <annotation name="com.jci.def_struct_types.RADIO_metadataChange_notification_s_t"
+  value=" b, b, b, b, b, b, b " />
+  <method name="Mode_Req">
+    <annotation name="async" value="client" />
+    <arg name="mode" direction="in" type="i" />
+    <arg name="band" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Tune_Req">
+    <annotation name="async" value="client" />
+    <arg name="direction" direction="in" type="i" />
+    <arg name="steps" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Scan_Req">
+    <annotation name="async" value="client" />
+    <arg name="Request" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Seek_Req">
+    <annotation name="async" value="client" />
+    <arg name="Request" direction="in" type="i" />
+    <arg name="Direction" direction="in" type="i" />
+    <arg name="Genreseek_screen" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ForceSeek_Req">
+    <annotation name="async" value="client" />
+    <arg name="ForceSeek_Type" direction="in" type="i" />
+    <arg name="Direction" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Tune_Direct_Req">
+    <annotation name="com.jci.type_ref.Tune_direct"
+    value="RADIO_directTune_req_s_t" />
+    <annotation name="async" value="client" />
+    <arg name="Tune_direct" direction="in" type="(dqi)" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Station_List_Req">
+    <annotation name="async" value="client" />
+    <arg name="List_req_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Auto_M_Req">
+    <annotation name="async" value="client" />
+    <arg name="Auto_M_req_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_HDsetting_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_TAsetting_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_AFsetting_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_RegionLockSetting_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_HARfreqSetting_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_CurrentGenre_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Pty_Req">
+    <annotation name="async" value="client" />
+    <arg name="Pty_req_type" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Setting_Change_Req">
+    <annotation name="async" value="client" />
+    <arg name="Setting_type" direction="in" type="i" />
+    <arg name="Setting_mode" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="HD_ChUp_Req">
+    <annotation name="async" value="client" />
+    <arg name="Hd_ChUp_req" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="HAR_Freq_change">
+    <annotation name="async" value="client" />
+    <arg name="Frequency" direction="in" type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Cancel_Traffic_alert">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_TAU_Connection_status">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Fav_Seek_Req">
+    <annotation name="async" value="client" />
+    <arg name="fav_seek_dir" direction="in" type="i" />
+    <arg name="current_freq" direction="in" type="d" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_Tuner_status">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_HDTuner_status">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Get_Mode_status">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Region_specific_info_Req">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Factory_Reset_Setting">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="TAU_Connection_status">
+    <arg name="tau_status" type="i" />
+  </signal>
+  <signal name="Tuner_mode_status">
+    <annotation name="com.jci.type_ref.tuner_mode_status"
+    value="RADIO_modeStatus_s_t" />
+    <arg name="tuner_mode_status" type="(ii)" />
+  </signal>
+  <signal name="Tuner_status">
+    <annotation name="com.jci.type_ref.tuner_status"
+    value="RADIO_tunerStatus_s_t" />
+    <arg name="tuner_status" type="(iidayi)" />
+  </signal>
+  <signal name="Station_list_status">
+    <arg name="list_status" type="i" />
+  </signal>
+  <signal name="Auto_M_status">
+    <arg name="auto_m_status" type="i" />
+  </signal>
+  <signal name="HD_setting_status">
+    <arg name="hd_status" type="i" />
+  </signal>
+  <signal name="TA_setting_status">
+    <arg name="ta_status" type="i" />
+  </signal>
+  <signal name="HAR_setting_status">
+    <arg name="har_status" type="i" />
+  </signal>
+  <signal name="AF_setting_status">
+    <arg name="af_status" type="i" />
+  </signal>
+  <signal name="RegionLock_setting_status">
+    <arg name="region_lock_status" type="i" />
+  </signal>
+  <signal name="Current_genre_status">
+    <arg name="current_genre_status" type="i" />
+  </signal>
+  <signal name="Metadata_status">
+    <arg name="metadata_status" type="i" />
+  </signal>
+  <signal name="Setting_status">
+    <arg name="setting_mode_status" type="i" />
+    <arg name="setting_type" type="i" />
+  </signal>
+  <signal name="Pty_response">
+    <arg name="pty_received" type="i" />
+    <arg name="pty_requested" type="i" />
+  </signal>
+  <signal name="HD_tuner_status">
+    <annotation name="com.jci.type_ref.hd_tuner_status"
+    value="RADIO_HD_tunerStatus_s_t" />
+    <arg name="hd_tuner_status" type="(iiibbab)" />
+  </signal>
+  <signal name="HAR_status">
+    <annotation name="com.jci.type_ref.har_transmission_status"
+    value="RADIO_harStatus_s_t" />
+    <arg name="har_transmission_status" type="(ii)" />
+  </signal>
+  <signal name="Traffic_alert">
+    <arg name="traffic_alert" type="i" />
+  </signal>
+  <signal name="Metadata_Artisticinfo">
+    <arg name="artistic_info" type="i" />
+  </signal>
+  <signal name="Metadata_change_notification">
+    <annotation name="com.jci.type_ref.metadata_change"
+    value="RADIO_metadataChange_notification_s_t" />
+    <arg name="metadata_change" type="(bbbbbbb)" />
+  </signal>
+  <signal name="Region_specific_notification">
+    <arg name="Region_info" type="i" />
+  </signal>
+</interface>

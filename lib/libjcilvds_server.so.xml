@@ -1,0 +1,256 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.lvds">
+  <annotation name="def_struct_names.blmRequest_st"
+  value="id, action, msb, lsb" />
+  <annotation name="def_struct_types.blmRequest_st"
+  value="u, u, y, y" />
+  <annotation name="def_struct_names.verResponse_st"
+  value="id, version" />
+  <annotation name="def_struct_types.verResponse_st"
+  value="u, s" />
+  <annotation name="com.jci.def_struct_names.display_status_data_t"
+  value="data" />
+  <annotation name="com.jci.def_struct_types.display_status_data_t"
+  value="y" />
+  <annotation name="def_struct_names.videoTune_st"
+  value="preemp, eqtune, boost, hpftune" />
+  <annotation name="def_struct_types.videoTune_st"
+  value="u, u, u, u" />
+  <annotation name="def_struct_names.touchEvent_st" value="x, y" />
+  <annotation name="def_struct_types.touchEvent_st" value="q, q" />
+  <annotation name="def_struct_names.touchEvents_st"
+  value="num_touch, touch1, touch2, touch3, touch4" />
+  <annotation name="def_struct_types.touchEvents_st"
+  value="y, touchEvent_st, touchEvent_st, touchEvent_st, touchEvent_st" />
+  <method name="SetBrightness">
+    <annotation name="type_ref.brightnessLevel"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="brightnessLevel" direction="in" type="(uuyy)" />
+    <arg name="return_value" direction="out" type="n" />
+  </method>
+  <method name="GetSoftwareTPVersion">
+    <annotation name="type_ref.softwareTPVersion"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="softwareTPVersion" direction="in" type="(uuyy)" />
+    <arg name="return_tpSoftwareVer" direction="out" type="s" />
+  </method>
+  <method name="GetSoftwareDispVersion">
+    <annotation name="type_ref.softwareDispVersion"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="softwareDispVersion" direction="in" type="(uuyy)" />
+    <arg name="return_dispSoftwareVer" direction="out" type="s" />
+  </method>
+  <method name="SetNormalMode">
+    <annotation name="type_ref.NormalMode" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="NormalMode" direction="in" type="(uuyy)" />
+    <arg name="return_NormalMode" direction="out" type="s" />
+  </method>
+  <method name="SetSleepMode">
+    <annotation name="type_ref.SleepMode" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="SleepMode" direction="in" type="(uuyy)" />
+    <arg name="return_SleepMode" direction="out" type="s" />
+  </method>
+  <method name="SetDiagMode">
+    <annotation name="type_ref.DiagMode" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="DiagMode" direction="in" type="(uuyy)" />
+    <arg name="return_DiagMode" direction="out" type="s" />
+  </method>
+  <method name="SetExtendMode">
+    <annotation name="type_ref.ExtendMode" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="ExtendMode" direction="in" type="(uuyy)" />
+    <arg name="return_ExtendMode" direction="out" type="s" />
+  </method>
+  <method name="SetACCOff">
+    <annotation name="type_ref.ACCOff" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="ACCOff" direction="in" type="(uuyy)" />
+    <arg name="return_ACCOff" direction="out" type="n" />
+  </method>
+  <method name="SetDispOn">
+    <annotation name="type_ref.DispOn" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="DispOn" direction="in" type="(uuyy)" />
+    <arg name="return_DispOn" direction="out" type="n" />
+  </method>
+  <method name="SetDispOff">
+    <annotation name="type_ref.DispOff" value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="DispOff" direction="in" type="(uuyy)" />
+    <arg name="return_DispOff" direction="out" type="n" />
+  </method>
+  <method name="EnablePRBS">
+    <annotation name="type_ref.EnablePRBSAutoTest"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="EnablePRBSAutoTest" direction="in" type="(uuyy)" />
+    <arg name="return_EnPRBS" direction="out" type="s" />
+  </method>
+  <method name="DisablePRBS">
+    <annotation name="type_ref.DisablePRBSAutoTest"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="DisablePRBSAutoTest" direction="in" type="(uuyy)" />
+    <arg name="return_DisPRBS" direction="out" type="s" />
+  </method>
+  <method name="PRBSReport">
+    <annotation name="type_ref.PRBSAutoTestReport"
+    value="blmRequest_st" />
+    <annotation name="async" value="client" />
+    <arg name="PRBSAutoTestReport" direction="in" type="(uuyy)" />
+    <arg name="return_PRBSReport" direction="out" type="s" />
+  </method>
+  <method name="SystemACCMonitoring">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="SpeedRestriction">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="SetHdcpMode">
+    <annotation name="async" value="client" />
+    <arg name="mode" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetErrorEncounteredStatus">
+    <annotation name="async" value="client" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="BlmLvdsReady">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="FaultStatusResponse">
+    <annotation name="async" value="client" />
+    <arg name="faultId" direction="in" type="u" />
+    <arg name="status" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetDisplayStatus">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetHdcpState">
+    <annotation name="async" value="client" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="SetVideoTuning">
+    <annotation name="type_ref.VideoTuning" value="videoTune_st" />
+    <annotation name="async" value="client" />
+    <arg name="VideoTuning" direction="in" type="(uuuu)" />
+    <arg name="return_videoTuning" direction="out" type="u" />
+  </method>
+  <method name="GetTunedValues">
+    <annotation name="async" value="client" />
+    <arg name="requestId" direction="in" type="u" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="GetRegisterDump">
+    <annotation name="async" value="client" />
+    <arg name="regType" direction="in" type="u" />
+    <arg name="all" direction="in" type="b" />
+    <arg name="start" direction="in" type="y" />
+    <arg name="stop" direction="in" type="y" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <method name="TouchSimulation">
+    <annotation name="com.jci.type_ref.TouchEvents"
+    value="touchEvents_st" />
+    <annotation name="async" value="client" />
+    <arg name="TouchEvents" direction="in"
+    type="(y(qq)(qq)(qq)(qq))" />
+    <arg name="return_status" direction="out" type="u" />
+  </method>
+  <signal name="brightNessLevelResp">
+    <arg name="brightNessLvl" type="n" />
+  </signal>
+  <signal name="TPVersionResp">
+    <annotation name="type_ref.TPVersion" value="verResponse_st" />
+    <arg name="TPVersion" type="(us)" />
+  </signal>
+  <signal name="displayVersion">
+    <annotation name="type_ref.dispVersion"
+    value="verResponse_st" />
+    <arg name="dispVersion" type="(us)" />
+  </signal>
+  <signal name="NormalModeResp">
+    <arg name="NormalModeResp" type="n" />
+  </signal>
+  <signal name="SleepModeResp">
+    <arg name="SleepModeResp" type="n" />
+  </signal>
+  <signal name="DiagModeResp">
+    <arg name="DiagModeResp" type="n" />
+  </signal>
+  <signal name="ExtendModeResp">
+    <arg name="ExtendModeResp" type="n" />
+  </signal>
+  <signal name="EnablePRBSResp">
+    <arg name="EnablePRBSResp" type="n" />
+  </signal>
+  <signal name="DisablePRBSResp">
+    <arg name="DisablePRBSResp" type="n" />
+  </signal>
+  <signal name="PRBSReportResp">
+    <arg name="PRBSReportResp" type="n" />
+  </signal>
+  <signal name="ACCOffResp">
+    <arg name="ACCOff" type="n" />
+  </signal>
+  <signal name="DispOnResp">
+    <arg name="DispOn" type="n" />
+  </signal>
+  <signal name="DispOffResp">
+    <arg name="DispOff" type="n" />
+  </signal>
+  <signal name="CurrentStatus">
+    <annotation name="type_ref.CurStat" value="blmRequest_st" />
+    <arg name="CurStat" type="(uuyy)" />
+  </signal>
+  <signal name="FaultStatus">
+    <annotation name="type_ref.Fault" value="blmRequest_st" />
+    <arg name="Fault" type="(uuyy)" />
+  </signal>
+  <signal name="ErrorStatus">
+    <arg name="error" type="n" />
+  </signal>
+  <signal name="ErrorEncounteredAlert">
+    <arg name="ErrorAlert" type="u" />
+  </signal>
+  <signal name="DisplayStatus">
+    <annotation name="com.jci.type_ref.DisplayStatus"
+    value="display_status_data_t" />
+    <arg name="DisplayStatus" type="(ay)" />
+  </signal>
+  <signal name="HdcpState">
+    <arg name="HdcpState" type="u" />
+  </signal>
+  <signal name="VideoTuning">
+    <arg name="VideoTuning" type="u" />
+  </signal>
+  <signal name="TunedValues">
+    <annotation name="type_ref.TunedValues" value="videoTune_st" />
+    <arg name="TunedValues" type="(uuuu)" />
+  </signal>
+  <signal name="RegisterDumpStatus">
+    <arg name="RegisterDumpStatus" type="u" />
+  </signal>
+  <signal name="TouchSimulationStatus">
+    <arg name="TouchSimulationStatus" type="u" />
+  </signal>
+</interface>

@@ -1,0 +1,94 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.lds.data">
+  <annotation name="com.jci.with_error_string" value="true" />
+  <method name="GetPosition">
+    <annotation name="async_client" value="true" />
+    <arg name="PositionAccuracy" direction="out" type="i">
+      <doc line="Accuracy = enum(POSITION_UNKNOWN=0x00, POSITION_GPS_3D=0x01, POSITION_GPS_2D=0x02, POSITION_DR=0x03)" />
+    </arg>
+    <arg name="UTCtime" direction="out" type="t">
+      <doc line="UNIX timestamp from epoch, 0 means invalid." />
+    </arg>
+    <arg name="Latitude" direction="out" type="d">
+      <doc line="Latitude in degrees." />
+    </arg>
+    <arg name="Longitude" direction="out" type="d">
+      <doc line="Longitude in degrees." />
+    </arg>
+    <arg name="Altitude" direction="out" type="i">
+      <doc line="Altitude in meters (can be negative)." />
+    </arg>
+    <arg name="Heading" direction="out" type="d">
+      <doc line="Heading value in degrees, clockwise, zero is north." />
+    </arg>
+    <arg name="Velocity" direction="out" type="d">
+      <doc line="Speed in km/h." />
+    </arg>
+    <arg name="HorizontalAccuracy" direction="out" type="d">
+      <doc line="Horizontal DOP value." />
+    </arg>
+    <arg name="VerticalAccuracy" direction="out" type="d">
+      <doc line="Vertical DOP value." />
+    </arg>
+    <doc line="GetPosition = This method returns the current position." />
+  </method>
+  <method name="GetLastKnownPosition">
+    <annotation name="async_client" value="true" />
+    <arg name="UTCtime" direction="out" type="t">
+      <doc line="UNIX timestamp from epoch, 0 means invalid." />
+    </arg>
+    <arg name="Latitude" direction="out" type="d">
+      <doc line="Latitude in degrees." />
+    </arg>
+    <arg name="Longitude" direction="out" type="d">
+      <doc line="Longitude in degrees." />
+    </arg>
+    <doc line="GetLastKnownPosition = This method returns the last known position. Valid only if UTCtime is non-zero." />
+  </method>
+  <method name="GetGPSFirmwareVersion">
+    <annotation name="async_client" value="true" />
+    <arg name="FirmwareVersion" direction="out" type="s">
+      <doc line="Firmware version in format STA8088.XXXx, where Xs are digits and x is a lowercase letter. &quot;Unknown ver.&quot; means version hasn't been obtained from the GPS yet." />
+    </arg>
+    <doc line="GetGPSFirmwareVersion = This method returns the firmware version of the used GPS device." />
+  </method>
+  <method name="GetSatelliteInfo">
+    <annotation name="async_client" value="true" />
+    <arg name="SatellitesInUse" direction="out" type="i">
+      <doc line="Count of the satellites, which are used for position calculation." />
+    </arg>
+    <doc line="GetSatelliteInfo = This method returns the current satellite information." />
+  </method>
+  <signal name="GPSDiagnostics">
+    <arg name="DTCId" type="y">
+      <doc line="Id of the DTC = enum(DTC_ANT_SHORT=0x11, DTC_ANT_OPEN=0x13, DTC_ANT_OVERCURR=0x1D, DTC_NMEA_FAILURE=0x92)" />
+    </arg>
+    <arg name="DTCAction" type="y">
+      <doc line="Setting or clearing of the DTC = enum(DTC_ACTION_SET=0x00, DTC_ACTION_CLEAR=0x01)" />
+    </arg>
+    <doc line="GPSDiagnostics = This signal is sent when a DTC is set or cleared." />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.lds.control">
+  <method name="ReadControl">
+    <arg name="Command" direction="in" type="i" />
+    <doc line="ReadControl = This method control the LDS reading." />
+    <doc line="Command = enum(READ_START=0x00, READ_STOP=0x01)" />
+  </method>
+  <signal name="ReadStatus">
+    <arg name="CommandReply" type="i" />
+    <arg name="Status" type="i" />
+    <doc line="ReadStatus = This signal provides the status of LDS reading." />
+    <doc line="CommandReply = enum(READ_STARTED=0x02, READ_STOPPED=0x03)" />
+    <doc line="Status = enum(FAILED=0x00,SUCCESS=0x01)" />
+  </signal>
+</interface>

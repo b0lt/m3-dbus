@@ -1,0 +1,476 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" direction="out" type="s" />
+  </method>
+</interface>
+<interface name="com.jci.blm.msg.Interface">
+  <annotation name="def_struct_names.BLM_MSG_instance_list_t"
+  value="count, instances" />
+  <annotation name="def_struct_types.BLM_MSG_instance_list_t"
+  value="u, BLM_MSG_instance_t" />
+  <annotation name="def_struct_names.BLM_MSG_instance_t"
+  value="id, name" />
+  <annotation name="def_struct_types.BLM_MSG_instance_t"
+  value="q, s" />
+  <annotation name="def_struct_names.BLM_MSG_message_list_t"
+  value="savedMessageAvailable, newMessagesAvailable, sendingMessage, unreadMessagesCount, totalMessagesCount, messages" />
+  <annotation name="def_struct_types.BLM_MSG_message_list_t"
+  value="b, b, b, u, u, BLM_MSG_message_list_item_t" />
+  <annotation name="def_struct_names.BLM_MSG_message_list_item_t"
+  value="clientType, id, status, datetime, sender, senderPhotoPath, instance" />
+  <annotation name="def_struct_types.BLM_MSG_message_list_item_t"
+  value="i, t, i, u, s, s, s" />
+  <annotation name="def_struct_names.BLM_MSG_new_messages_list_t"
+  value="count, messages" />
+  <annotation name="def_struct_types.BLM_MSG_new_messages_list_t"
+  value="u, BLM_MSG_message_list_item_t" />
+  <annotation name="def_struct_names.BLM_MSG_sender_filter_t"
+  value="typeMask, contactID, addressList" />
+  <annotation name="def_struct_types.BLM_MSG_sender_filter_t"
+  value="u, u, BLM_MSG_contact_address_list_t" />
+  <annotation name="def_struct_names.BLM_MSG_message_list_filter_t"
+  value="instanceID, sender" />
+  <annotation name="def_struct_types.BLM_MSG_message_list_filter_t"
+  value="q, BLM_MSG_sender_filter_t" />
+  <annotation name="def_struct_names.BLM_MSG_message_t"
+  value="instance, id, status, datetime, sender, recipients, subject, body, prevMessageID, nextMessageID, hasAttachments, options" />
+  <annotation name="def_struct_types.BLM_MSG_message_t"
+  value="BLM_MSG_instance_t, t, i, u, BLM_MSG_contact_t, BLM_MSG_contact_list_t, s, s, t, t, b, u" />
+  <annotation name="def_struct_names.BLM_MSG_new_message_t"
+  value="clientType, id, sender, senderPhotoPath" />
+  <annotation name="def_struct_types.BLM_MSG_new_message_t"
+  value="i, t, s, s" />
+  <annotation name="def_struct_names.BLM_MSG_outgoing_message_t"
+  value="subject, body, instance, recipients" />
+  <annotation name="def_struct_types.BLM_MSG_outgoing_message_t"
+  value="s, s, BLM_MSG_instance_t, BLM_MSG_contact_list_t" />
+  <annotation name="def_struct_names.BLM_MSG_contact_address_list_t"
+  value="count, addresses" />
+  <annotation name="def_struct_types.BLM_MSG_contact_address_list_t"
+  value="u, BLM_MSG_contact_address_t" />
+  <annotation name="def_struct_names.BLM_MSG_contact_address_t"
+  value="type, subTypeMask, address" />
+  <annotation name="def_struct_types.BLM_MSG_contact_address_t"
+  value="i, u, s" />
+  <annotation name="def_struct_names.BLM_MSG_contact_list_t"
+  value="count, contacts" />
+  <annotation name="def_struct_types.BLM_MSG_contact_list_t"
+  value="u, BLM_MSG_contact_t" />
+  <annotation name="def_struct_names.BLM_MSG_contact_t"
+  value="type, photoPath, name, addressList" />
+  <annotation name="def_struct_types.BLM_MSG_contact_t"
+  value="i, s, s, BLM_MSG_contact_address_list_t" />
+  <annotation name="def_struct_names.BLM_MSG_preset_messages_t"
+  value="presetMessagesCount, presetMessages" />
+  <annotation name="def_struct_types.BLM_MSG_preset_messages_t"
+  value="u, s" />
+  <annotation name="def_struct_names.BLM_MSG_new_messages_info_t"
+  value="newMessagesCountData" />
+  <annotation name="def_struct_types.BLM_MSG_new_messages_info_t"
+  value="BLM_MSG_new_messages_count_data_t" />
+  <annotation name="def_struct_names.BLM_MSG_new_messages_count_data_t"
+  value="countsNumber, counts" />
+  <annotation name="def_struct_types.BLM_MSG_new_messages_count_data_t"
+  value="u, BLM_MSG_new_messages_count_t" />
+  <annotation name="def_struct_names.BLM_MSG_new_messages_count_t"
+  value="clientType, count, availableForDownload" />
+  <annotation name="def_struct_types.BLM_MSG_new_messages_count_t"
+  value="i, u, b" />
+  <method name="Connect">
+    <annotation name="async" value="both" />
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="appsdkgen" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="client_type_in" direction="in" type="i" />
+    <arg name="callbacks_in" direction="in" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="client_type_out" direction="out" type="i" />
+    <arg name="callbacks_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="connection" direction="out" type="u" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetInstanceList">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.instance_list"
+    value="BLM_MSG_instance_list_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="instance_list" direction="out" type="(ua(qs))" />
+  </method>
+  <method name="GetMessageList">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.filter"
+    value="BLM_MSG_message_list_filter_t" />
+    <annotation name="type_ref.message_list"
+    value="BLM_MSG_message_list_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="filter" direction="in" type="(q(uu(ua(ius))))" />
+    <arg name="request_type" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message_list" direction="out"
+    type="(bbbuua(itiusss))" />
+  </method>
+  <method name="GetNewMessagesList">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message_list"
+    value="BLM_MSG_new_messages_list_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="request_type" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message_list" direction="out"
+    type="(ua(itiusss))" />
+  </method>
+  <method name="GetNewMessagesInfo">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.info"
+    value="BLM_MSG_new_messages_info_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="info" direction="out" type="((ua(iub)))" />
+  </method>
+  <method name="GetMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="t" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message" direction="out"
+    type="((qs)tiu(iss(ua(ius)))(ua(iss(ua(ius))))ssttbu)" />
+  </method>
+  <method name="SetMessageStatus">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="t" />
+    <arg name="message_status" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="DeleteMessage">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id_in" direction="in" type="t" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message_id_out" direction="out" type="t" />
+  </method>
+  <method name="DeleteSavedMessage">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetOutgoingMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_outgoing_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="t" />
+    <arg name="send_type" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message" direction="out"
+    type="(ss(qs)(ua(iss(ua(ius)))))" />
+  </method>
+  <method name="GetSavedMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_outgoing_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="message" direction="out"
+    type="(ss(qs)(ua(iss(ua(ius)))))" />
+  </method>
+  <method name="SendMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_outgoing_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message" direction="in"
+    type="(ss(qs)(ua(iss(ua(ius)))))" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SaveMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_outgoing_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message" direction="in"
+    type="(ss(qs)(ua(iss(ua(ius)))))" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetAutoDownload">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="client_type_in" direction="in" type="i" />
+    <arg name="type" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="client_type_out" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="enabled" direction="out" type="b" />
+  </method>
+  <method name="SetAutoDownload">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="client_type_in" direction="in" type="i" />
+    <arg name="enabled" direction="in" type="b" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="client_type_out" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetNotify">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="client_type_in" direction="in" type="i" />
+    <arg name="type" direction="in" type="i" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="client_type_out" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="enabled" direction="out" type="b" />
+  </method>
+  <method name="SetNotify">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="client_type_in" direction="in" type="i" />
+    <arg name="enabled" direction="in" type="b" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="client_type_out" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="StartMessagePlayback">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="t" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="StartOutgoingMessagePlayback">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.message"
+    value="BLM_MSG_outgoing_message_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message" direction="in"
+    type="(ss(qs)(ua(iss(ua(ius)))))" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="PauseMessagePlayback">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ResumeMessagePlayback">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="StopMessagePlayback">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="CancelPendingMessagePlayback">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="AddPresetMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message" direction="in" type="s" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="DeletePresetMessage">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="u" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="MovePresetMessage">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id_from" direction="in" type="u" />
+    <arg name="message_id_to" direction="in" type="u" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="EditPresetMessage">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="message_id" direction="in" type="u" />
+    <arg name="message" direction="in" type="s" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetPresetMessageList">
+    <annotation name="async" value="both" />
+    <annotation name="appsdkgen" />
+    <annotation name="type_ref.list"
+    value="BLM_MSG_preset_messages_t" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="type" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="list" direction="out" type="(uas)" />
+  </method>
+  <method name="ApplySettings">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="ResetSettings">
+    <annotation name="async" value="both" />
+    <arg name="connection_in" direction="in" type="u" />
+    <arg name="context_in" direction="in" type="u" />
+    <arg name="settings_in" direction="in" type="u" />
+    <arg name="connection_out" direction="out" type="u" />
+    <arg name="context_out" direction="out" type="u" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="settings_out" direction="out" type="u" />
+  </method>
+  <signal name="AutoDownloadChanged">
+    <arg name="client_type" type="i" />
+    <arg name="enabled" type="b" />
+  </signal>
+  <signal name="NotifyChanged">
+    <arg name="client_type" type="i" />
+    <arg name="enabled" type="b" />
+  </signal>
+  <signal name="PresetMessageListChanged" />
+  <signal name="NewMessage">
+    <annotation name="type_ref.newMessage"
+    value="BLM_MSG_new_message_t" />
+    <arg name="connection" type="u" />
+    <arg name="newMessage" type="(itss)" />
+  </signal>
+  <signal name="NewMessagesInfo">
+    <annotation name="type_ref.info"
+    value="BLM_MSG_new_messages_info_t" />
+    <arg name="connection" type="u" />
+    <arg name="info" type="((ua(iub)))" />
+  </signal>
+  <signal name="Notification">
+    <arg name="connection" type="u" />
+    <arg name="type" type="i" />
+  </signal>
+  <signal name="DownloadCompleted">
+    <annotation name="type_ref.message_list"
+    value="BLM_MSG_message_list_t" />
+    <arg name="connection" type="u" />
+    <arg name="status" type="i" />
+    <arg name="message_list" type="(bbbuua(itiusss))" />
+  </signal>
+  <signal name="MessagePlaybackStatusChanged">
+    <arg name="connection" type="u" />
+    <arg name="status" type="i" />
+    <arg name="message_id" type="t" />
+  </signal>
+  <signal name="InstancesDisconnected">
+    <annotation name="type_ref.instance_list"
+    value="BLM_MSG_instance_list_t" />
+    <arg name="connection" type="u" />
+    <arg name="instance_list" type="(ua(qs))" />
+  </signal>
+</interface>

@@ -1,0 +1,45 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.tv">
+  <annotation name="header_include" value="tv_common.h" />
+  <annotation name="com.jci.force_interface_visibility"
+  value="client" />
+  <annotation name="def_struct_names.Tv_handShakeData_t"
+  value="m_hardwareStatus, m_mode, m_acc, m_ready" />
+  <annotation name="def_struct_types.Tv_handShakeData_t"
+  value="u,u,u,u" />
+  <method name="SourceSelect">
+    <annotation name="com.jci.async" value="both" />
+    <annotation name="typeof.source_select_reply"
+    value="Tv_SourceSelectReply_t" />
+    <arg name="source_select_reply" direction="out" type="u" />
+  </method>
+  <method name="UIStatus">
+    <annotation name="typeof.uiStatusUpdate"
+    value="Tv_UIStatus_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="uiStatusUpdate" direction="in" type="u" />
+  </method>
+  <method name="EmBroControl">
+    <annotation name="typeof.emBroOption"
+    value="Tv_EmBroOption_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="emBroOption" direction="in" type="u" />
+  </method>
+  <method name="handShakeRequest">
+    <annotation name="type_ref.hand_shake_reply"
+    value="Tv_handShakeData_t" />
+    <annotation name="com.jci.async" value="both" />
+    <arg name="hand_shake_reply" direction="out" type="(uuuu)" />
+  </method>
+  <signal name="TvEvent">
+    <annotation name="typeof.eventId" value="Tv_event_t" />
+    <annotation name="typedef_callback"
+    value="TvEvent_signal_callback_t" />
+    <annotation name="always_broadcast" value="yes" />
+    <arg name="eventId" type="u" />
+  </signal>
+</interface>

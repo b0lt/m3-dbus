@@ -1,0 +1,381 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.eem">
+  <annotation name="header_include" value="eem_data.h" />
+  <annotation name="com.jci.def_struct_names.eem_msg_1_t"
+  value="arg1, arg2" />
+  <annotation name="com.jci.def_struct_types.eem_msg_1_t"
+  value="i,ay" />
+  <annotation name="com.jci.def_struct_names.EEM_CMU_SettingresetResponse_s_t"
+  value="resetType,resetStatus" />
+  <annotation name="com.jci.def_struct_types.EEM_CMU_SettingresetResponse_s_t"
+  value="u,u" />
+  <annotation name="com.jci.def_struct_names.EEM_CMU_UMPresetResponse_s_t"
+  value="resetUMPStatus" />
+  <annotation name="com.jci.def_struct_types.EEM_CMU_UMPresetResponse_s_t"
+  value="u" />
+  <annotation name="com.jci.def_struct_names.EEM_iEloop_control_status_s_t"
+  value="capacitor, motor_generator, CapToElc_B_Actl" />
+  <annotation name="com.jci.def_struct_types.EEM_iEloop_control_status_s_t"
+  value="u ,u ,u" />
+  <annotation name="com.jci.def_struct_names.EEM_cumlAvgEfficiency_s_t"
+  value="cumlAvgEfficiency" />
+  <annotation name="com.jci.def_struct_types.EEM_cumlAvgEfficiency_s_t"
+  value="u" />
+  <annotation name="com.jci.def_struct_names.EEM_cumlFuelEff_s_t"
+  value="cntrlstat_fuelEff, cumlEff_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_cumlFuelEff_s_t"
+  value="EEM_cumlAvgEfficiency_s_t ,u" />
+  <annotation name="com.jci.def_struct_names.EEM_gasoline_diesel_engine_standby_condition_s_t"
+  value="enginetypeStandy" />
+  <annotation name="com.jci.def_struct_types.EEM_gasoline_diesel_engine_standby_condition_s_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.EEM_heaterControl_standby_condition_s_t"
+  value="heaterControlStandby" />
+  <annotation name="com.jci.def_struct_types.EEM_heaterControl_standby_condition_s_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.EEM_battery_standby_condition_s_t"
+  value="batteryStandby" />
+  <annotation name="com.jci.def_struct_types.EEM_battery_standby_condition_s_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.EEM_iSTOPstatus_s_t"
+  value="istpStatus" />
+  <annotation name="com.jci.def_struct_types.EEM_iSTOPstatus_s_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.EEM_istop_status_s_t"
+  value="gasolinedieselStandby, heaterstandby, batterystandby, istopStatus" />
+  <annotation name="com.jci.def_struct_types.EEM_istop_status_s_t"
+  value="EEM_gasoline_diesel_engine_standby_condition_s_t , EEM_heaterControl_standby_condition_s_t, EEM_battery_standby_condition_s_t, EEM_iSTOPstatus_s_t" />
+  <annotation name="com.jci.def_struct_names.EEM_iSTOP_time_s_t"
+  value="iStop_timeIG, iStopTotalTime" />
+  <annotation name="com.jci.def_struct_types.EEM_iSTOP_time_s_t"
+  value=" u, u" />
+  <annotation name="com.jci.def_struct_names.EEM_iSTOP_error_s_t"
+  value="istopActivated, istopStandbyNOtFullfilled, istop_denied_condition" />
+  <annotation name="com.jci.def_struct_types.EEM_iSTOP_error_s_t"
+  value=" b, b, u" />
+  <annotation name="com.jci.def_struct_names.EEM_iStpEffRate_s_t"
+  value="iStop_effective_rate" />
+  <annotation name="com.jci.def_struct_types.EEM_iStpEffRate_s_t"
+  value=" y" />
+  <annotation name="com.jci.def_struct_names.EEM_TotStpTime_s_t"
+  value="tot_time_veh_stopped" />
+  <annotation name="com.jci.def_struct_types.EEM_TotStpTime_s_t"
+  value="u" />
+  <annotation name="com.jci.def_struct_names.EEM_iStop_effectiveness_time_s_t"
+  value="effectiveness_iStop_time, effectiveness_TotStpTime" />
+  <annotation name="com.jci.def_struct_types.EEM_iStop_effectiveness_time_s_t"
+  value="EEM_iSTOP_time_s_t, EEM_TotStpTime_s_t " />
+  <annotation name="com.jci.def_struct_names.EEM_iEloopEffectiveRate_s_t"
+  value="iEloopEffectiveRate" />
+  <annotation name="com.jci.def_struct_types.EEM_iEloopEffectiveRate_s_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.EEM_iEloop_regnGenEnergy_total_s_t"
+  value="RgnPwrTotal" />
+  <annotation name="com.jci.def_struct_types.EEM_iEloop_regnGenEnergy_total_s_t"
+  value="q" />
+  <annotation name="com.jci.def_struct_names.EEM_iEloop_electricalLoad_total_s_t"
+  value="ElecLoadTotal" />
+  <annotation name="com.jci.def_struct_types.EEM_iEloop_electricalLoad_total_s_t"
+  value="q" />
+  <annotation name="com.jci.def_struct_names.EEM_iEloop_Effective_data_s_t"
+  value="effectiveness_RgnPwrTotal, RegnPowr_unit, effectiveness_ElecLoadTotal, ElecLoad_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_iEloop_Effective_data_s_t"
+  value="EEM_iEloop_regnGenEnergy_total_s_t, u, EEM_iEloop_electricalLoad_total_s_t, u " />
+  <annotation name="com.jci.def_struct_names.EEM_CO2_reduction_data_s_t"
+  value="reduction_CO2, CO2Red_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_CO2_reduction_data_s_t"
+  value="q, y " />
+  <annotation name="com.jci.def_struct_names.EEM_CO2_reductiondata_PrevIgnCycl_s_t"
+  value="reduction_CO2_prevIGN, CO2RedPrevIGN_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_CO2_reductiondata_PrevIgnCycl_s_t"
+  value="q, y " />
+  <annotation name="com.jci.def_struct_names.EEM_Total_Saved_Distance_s_t"
+  value="TotSvdDistance, TotSvdDistance_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Total_Saved_Distance_s_t"
+  value="u, y " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuelE_s_t"
+  value="Drv1AvlFuelE" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuelE_s_t"
+  value="q" />
+  <annotation name="com.jci.def_struct_names.EEM_HEV_Drv1AvlFuelE_s_t"
+  value="HEV_Drv1AvlFuelE, HEV_Discs, HEV_HalfDisc, HEV_EVmodeGreen" />
+  <annotation name="com.jci.def_struct_types.EEM_HEV_Drv1AvlFuelE_s_t"
+  value="q, y, b, b " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_LineGraph_s_t"
+  value="NumOfReadings, EEM_CurDrvAvgFuelEco, LineGraph_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_LineGraph_s_t"
+  value="y,EEM_Drv1AvlFuelE_s_t,u " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_BarGraph_s_t"
+  value="NumOfReadings, EEM_CurDrvAvgFuelEco, BarGraph_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_BarGraph_s_t"
+  value="y,EEM_Drv1AvlFuelE_s_t,u " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_SixtyMinute_BarGraph_s_t"
+  value="NumOfReadings,EEM_BarGraph,BarGraph_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_SixtyMinute_BarGraph_s_t"
+  value="y,EEM_Drv1AvlFuelE_s_t,u " />
+  <annotation name="com.jci.def_struct_names.EEM_HEV_Drv1AvlFuel_BarGraph_s_t"
+  value="NumOfReadings,EEM_BarGraph,BarGraph_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_HEV_Drv1AvlFuel_BarGraph_s_t"
+  value="y,EEM_HEV_Drv1AvlFuelE_s_t,u " />
+  <annotation name="com.jci.def_struct_names.EEM_OneDriveEVDist_s_t"
+  value="OneDriveEVDistance, dist_unit, oneDriveRatio" />
+  <annotation name="com.jci.def_struct_types.EEM_OneDriveEVDist_s_t"
+  value="q, y, y" />
+  <annotation name="com.jci.def_struct_names.EEM_HEVEnergyFlowSignals_s_t"
+  value="ecoEngTire, ecoEngMotor,ecoMotorTire, ecoMotorBatt, rvrseLmpReq, vehSpeed " />
+  <annotation name="com.jci.def_struct_types.EEM_HEVEnergyFlowSignals_s_t"
+  value="y,y,y,y,y,u" />
+  <annotation name="com.jci.def_struct_names.EEM_CummEVDriveDist_s_t"
+  value="cummEVDrvDistance, dist_unit, totRatio" />
+  <annotation name="com.jci.def_struct_types.EEM_CummEVDriveDist_s_t"
+  value="u, y, y" />
+  <annotation name="com.jci.def_struct_names.EEM_cumlAvgEfficiencyReset_BarGraph_s_t"
+  value="NumOfReadings, EEM_cumAvgFuelEffAfterReset, cumBarGraph_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_cumlAvgEfficiencyReset_BarGraph_s_t"
+  value="y, EEM_cumlAvgEfficiency_s_t, u" />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_SingleReadingBar_s_t"
+  value="CurDrvSingleReading, Valid_PID, CurDrvAvgFuelEco_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_SingleReadingBar_s_t"
+  value="EEM_Drv1AvlFuelE_s_t, b, u " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_SingleReadingLine_s_t"
+  value="CurDrvSingleReading, Valid_PID, CurDrvAvgFuelEco_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_SingleReadingLine_s_t"
+  value="EEM_Drv1AvlFuelE_s_t, b, u " />
+  <annotation name="com.jci.def_struct_names.EEM_Drv1AvlFuel_Current_s_t"
+  value="CurdrvAvlFuel, Valid_PID, CurdrvAvlFuel_unit" />
+  <annotation name="com.jci.def_struct_types.EEM_Drv1AvlFuel_Current_s_t"
+  value="EEM_Drv1AvlFuelE_s_t, b, u " />
+  <annotation name="com.jci.def_struct_names.EEM_Screen_Ending_message_s_t"
+  value="celebration_notice" />
+  <annotation name="com.jci.def_struct_types.EEM_Screen_Ending_message_s_t"
+  value="b" />
+  <method name="GetEquippedData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetEEMUpdateScreenEnable">
+    <annotation name="typeof.screen_type"
+    value="EEM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="screen_type" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CMUResetSettingRequest">
+    <annotation name="typeof.reset_active"
+    value="EEM_CMU_resetRequest_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="reset_active" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CMU_UMPResetRequest">
+    <annotation name="typeof.return_value"
+    value="EEM_CMU_resetRequest_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="u" />
+  </method>
+  <method name="EndingScreenSetting">
+    <annotation name="typeof.EndSetActive"
+    value="EEM_EndingScreenSetting_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="EndSetActive" direction="in" type="u" />
+  </method>
+  <signal name="SetEquippedData">
+    <annotation name="typeof.feature_attached"
+    value="EEM_equiped_feature_type_e_t" />
+    <arg name="feature_attached" type="u" />
+  </signal>
+  <signal name="Setting_ResetResponse">
+    <annotation name="com.jci.type_ref.Setting_resetResponse"
+    value="EEM_CMU_SettingresetResponse_s_t" />
+    <arg name="Setting_resetResponse" type="(uu)" />
+  </signal>
+  <signal name="CMU_UMPResetResponse">
+    <annotation name="com.jci.type_ref.CMU_UMPresetResponse"
+    value="EEM_CMU_UMPresetResponse_s_t" />
+    <arg name="CMU_UMPresetResponse" type="(u)" />
+  </signal>
+  <signal name="HVD_EEMEndSet">
+    <annotation name="typeof.EEMEndSet_Active"
+    value="EEM_HVDEndingScreenSetting_e_t" />
+    <arg name="EEMEndSet_Active" type="u" />
+  </signal>
+  <signal name="StDisEco_Active">
+    <annotation name="typeof.StDisEco_Active"
+    value="EEM_StDisEco_Active_e_t" />
+    <arg name="StDisEco_Active" type="u" />
+  </signal>
+  <signal name="HVD_CstmzRq_Trip">
+    <annotation name="typeof.CstmzRq_Trip"
+    value="EEM_HVDCstmzRq_TripSettings_e_t" />
+    <arg name="CstmzRq_Trip" type="u" />
+  </signal>
+  <signal name="EEMEndDispConf">
+    <annotation name="typeof.EEMEndDisp_Enabled"
+    value="EEM_EndingScreenConfig_e_t" />
+    <arg name="EEMEndDisp_Enabled" type="u" />
+  </signal>
+  <signal name="IEloop_ControlStatus">
+    <annotation name="com.jci.type_ref.iEloop_Control_sts"
+    value="EEM_iEloop_control_status_s_t" />
+    <arg name="iEloop_Control_sts" type="(uuu)" />
+  </signal>
+  <signal name="Cumulative_Avg_Fuel_Economy">
+    <annotation name="com.jci.type_ref.value"
+    value="EEM_cumlFuelEff_s_t" />
+    <arg name="value" type="((u)u)" />
+  </signal>
+  <signal name="iStop_mode_ControlStatus">
+    <annotation name="typeof.iStop_mode"
+    value="EEM_iStop_mode_e_t" />
+    <arg name="iStop_mode" type="u" />
+  </signal>
+  <signal name="iStop_status_ControlStatus">
+    <annotation name="com.jci.type_ref.istop_status"
+    value="EEM_istop_status_s_t" />
+    <arg name="istop_status" type="((y)(y)(y)(y))" />
+  </signal>
+  <signal name="iStop_time_ControlStatus">
+    <annotation name="com.jci.type_ref.iStop_time"
+    value="EEM_iSTOP_time_s_t" />
+    <arg name="iStop_time" type="(uu)" />
+  </signal>
+  <signal name="iStop_error_ControlStatus">
+    <annotation name="com.jci.type_ref.iStop_error"
+    value="EEM_iSTOP_error_s_t" />
+    <arg name="iStop_error" type="(bbu)" />
+  </signal>
+  <signal name="iStop_Effective_Rate">
+    <annotation name="com.jci.type_ref.iStop_Eff_Rate"
+    value="EEM_iStpEffRate_s_t" />
+    <arg name="iStop_Eff_Rate" type="(y)" />
+  </signal>
+  <signal name="iStop_Effective_time">
+    <annotation name="com.jci.type_ref.iStop_effectiveness_time"
+    value="EEM_iStop_effectiveness_time_s_t" />
+    <arg name="iStop_effectiveness_time" type="((uu)(u))" />
+  </signal>
+  <signal name="iEloop_Effective_Rate">
+    <annotation name="com.jci.type_ref.iEloop_Eff_Rate"
+    value="EEM_iEloopEffectiveRate_s_t" />
+    <arg name="iEloop_Eff_Rate" type="(y)" />
+  </signal>
+  <signal name="iEloop_Effective_Data">
+    <annotation name="com.jci.type_ref.iEloop_Effective_data"
+    value="EEM_iEloop_Effective_data_s_t" />
+    <arg name="iEloop_Effective_data" type="((q)u(q)u)" />
+  </signal>
+  <signal name="CO2_reduction">
+    <annotation name="com.jci.type_ref.CO2_reduction"
+    value="EEM_CO2_reduction_data_s_t" />
+    <arg name="CO2_reduction" type="(qy)" />
+  </signal>
+  <signal name="CO2_Reduction_prevIGNcycle">
+    <annotation name="com.jci.type_ref.CO2_reduction_prevIGcycl"
+    value="EEM_CO2_reductiondata_PrevIgnCycl_s_t" />
+    <arg name="CO2_reduction_prevIGcycl" type="(qy)" />
+  </signal>
+  <signal name="EEM_Total_Saved_Distance">
+    <annotation name="com.jci.type_ref.Total_Saved_Distance"
+    value="EEM_Total_Saved_Distance_s_t" />
+    <arg name="Total_Saved_Distance" type="(uy)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_line_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_line"
+    value="EEM_Drv1AvlFuel_LineGraph_s_t" />
+    <arg name="fuel_eco_dataY_line" type="(ya(q)u)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_bar_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_bar"
+    value="EEM_Drv1AvlFuel_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_bar" type="(ya(q)u)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_SixtyMin_bar_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_sixtyMinbar"
+    value="EEM_Drv1AvlFuel_SixtyMinute_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_sixtyMinbar" type="(ya(q)u)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_OneMin_bar_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_oneMinbar"
+    value="EEM_Drv1AvlFuel_SixtyMinute_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_oneMinbar" type="(ya(q)u)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_HEV_SixtyMin_bar_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_sixtyMinbar"
+    value="EEM_HEV_Drv1AvlFuel_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_sixtyMinbar" type="(ya(qybb)u)" />
+  </signal>
+  <signal name="Curr_drive_fuel_eco_HEV_OneMin_bar_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_oneMinbar"
+    value="EEM_HEV_Drv1AvlFuel_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_oneMinbar" type="(ya(qybb)u)" />
+  </signal>
+  <signal name="OneDriveEVDistance">
+    <annotation name="com.jci.type_ref.driveEV_dist"
+    value="EEM_OneDriveEVDist_s_t" />
+    <arg name="driveEV_dist" type="(qyy)" />
+  </signal>
+  <signal name="HEVSendEnergyFlowSignals">
+    <annotation name="com.jci.type_ref.energyFlowSignals"
+    value="EEM_HEVEnergyFlowSignals_s_t" />
+    <arg name="energyFlowSignals" type="(yyyyyu)" />
+  </signal>
+  <signal name="HEVSendBatteryDisplayLvl">
+    <annotation name="com.jci.type_ref.battLvl"
+    value="EEM_HVbattChgLvl_e_t" />
+    <arg name="battLvl" type="u" />
+  </signal>
+  <signal name="DistDriveEV">
+    <annotation name="com.jci.type_ref.driveEV_dist"
+    value="EEM_CummEVDriveDist_s_t" />
+    <arg name="driveEV_dist" type="(uyy)" />
+  </signal>
+  <signal name="Cumm_fuel_eco_reset_graph_data">
+    <annotation name="com.jci.type_ref.fuel_eco_dataY_reset"
+    value="EEM_cumlAvgEfficiencyReset_BarGraph_s_t" />
+    <arg name="fuel_eco_dataY_reset" type="(ya(u)u)" />
+  </signal>
+  <signal name="new_Curr_drive_fuel_eco_per_inst_bar_graph_data">
+    <annotation name="com.jci.type_ref.new_valueY"
+    value="EEM_Drv1AvlFuel_SingleReadingBar_s_t" />
+    <arg name="new_valueY" type="((q)bu)" />
+  </signal>
+  <signal name="new_Curr_drive_fuel_eco_line_graph_data">
+    <annotation name="com.jci.type_ref.new_valueY"
+    value="EEM_Drv1AvlFuel_SingleReadingLine_s_t" />
+    <arg name="new_valueY" type="((q)bu)" />
+  </signal>
+  <signal name="Curr_avg_drive_fuel_eco">
+    <annotation name="com.jci.type_ref.curr_fuel_eco"
+    value="EEM_Drv1AvlFuel_Current_s_t" />
+    <arg name="curr_fuel_eco" type="((q)bu)" />
+  </signal>
+  <signal name="Cum_fuel_eco_after_reset_data_Y1">
+    <annotation name="com.jci.type_ref.curr_fuel_eco"
+    value="EEM_cumlFuelEff_s_t" />
+    <arg name="curr_fuel_eco" type="((u)u)" />
+  </signal>
+  <signal name="UMP_Reset_enable">
+    <annotation name="com.jci.type_ref.button_enable"
+    value="EEM_ResetButtonEnabled_e_t" />
+    <arg name="button_enable" type="u" />
+  </signal>
+  <signal name="End_Of_Screen_Data" />
+  <signal name="Screen_Ending_message">
+    <annotation name="com.jci.type_ref.ending_screen_message"
+    value="EEM_Screen_Ending_message_s_t" />
+    <arg name="ending_screen_message" type="(b)" />
+  </signal>
+  <signal name="Ignition_Sts">
+    <annotation name="typeof.ign_sts" value="EEM_IGN_Sts_e_t" />
+    <arg name="ign_sts" direction="in" type="u" />
+  </signal>
+  <signal name="HVD_LAST_DISPLAYED_SCREEN">
+    <annotation name="typeof.Previous_Screen"
+    value="EEM_screen_user_action_e_t" />
+    <arg name="Previous_Screen" type="u" />
+  </signal>
+</interface>

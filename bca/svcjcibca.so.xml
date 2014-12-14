@@ -1,0 +1,188 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.bca">
+  <annotation name="def_struct_names.bca_array_t" value="data" />
+  <annotation name="def_struct_types.bca_array_t" value="y" />
+  <annotation name="def_struct_names.bca_connectionStatus_t"
+  value="serviceId, connStatus, btDeviceId, status, terminalPath" />
+  <annotation name="def_struct_types.bca_connectionStatus_t"
+  value="i, i, i, i, bca_array_t" />
+  <method name="ConnectRequest">
+    <annotation name="async" value="client" />
+    <arg name="serviceId" direction="in" type="u" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ConnectRequestHfpAndAvp">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DisconnectRequest">
+    <annotation name="async" value="client" />
+    <arg name="serviceId" direction="in" type="u" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="CancelConnect">
+    <annotation name="async" value="client" />
+    <arg name="cancelConnect" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetConnectStatus">
+    <annotation name="async" value="client" />
+    <arg name="serviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="QueryConnectStatus">
+    <annotation name="type_ref.connectionStatus"
+    value="bca_connectionStatus_t" />
+    <annotation name="async" value="client" />
+    <arg name="serviceId" direction="in" type="u" />
+    <arg name="connectionStatus" direction="out"
+    type="(iiii(ay))" />
+  </method>
+  <method name="UnbarDevice">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BluetoothOn">
+    <annotation name="async" value="client" />
+    <arg name="isInfoToBeUpdatedToFlash" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="BluetoothOff">
+    <annotation name="async" value="client" />
+    <arg name="isInfoToBeUpdatedToFlash" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="StartAdd">
+    <annotation name="async" value="client" />
+    <arg name="addServiceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ConnectAll">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="DisconnectAll">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetServiceId">
+    <annotation name="async" value="client" />
+    <arg name="serviceType" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="ReadBluetoothSetting">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="AvailablePairedDeviceList">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetFeatureStatus">
+    <annotation name="async" value="client" />
+    <arg name="isbcaReady" direction="out" type="i" />
+    <arg name="reasonCode" direction="out" type="i" />
+  </method>
+  <method name="SupportedProfiles">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetDontShowOnConnectionSetting">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="setting" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetDontShowOnConnectionSetting">
+    <annotation name="async" value="client" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="DontShowOnConnectionSettingStatusResp">
+    <annotation name="typedef_callback"
+    value="BCA_DontShowOnConnectionSettingStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="setting" direction="in" type="b" />
+  </signal>
+  <signal name="ConnectionStatusResp">
+    <annotation name="type_ref.terminalPath" value="bca_array_t" />
+    <annotation name="typedef_callback"
+    value="BCA_ConnectionStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="serviceId" direction="in" type="u" />
+    <arg name="connStatus" direction="in" type="u" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="status" direction="in" type="u" />
+    <arg name="terminalPath" direction="in" type="(ay)" />
+  </signal>
+  <signal name="HftReadyStatus">
+    <annotation name="typedef_callback"
+    value="BCA_HftReadyStatus_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="hftReady" direction="in" type="u" />
+    <arg name="reasonCode" direction="in" type="u" />
+    <arg name="appId" direction="in" type="u" />
+  </signal>
+  <signal name="ReadyStatus">
+    <annotation name="typedef_callback"
+    value="BCA_ReadyStatus_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="isReady" direction="in" type="u" />
+    <arg name="reasonCode" direction="in" type="u" />
+  </signal>
+  <signal name="AddStatusResp">
+    <annotation name="typedef_callback"
+    value="BCA_AddStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="addServiceId" direction="in" type="u" />
+    <arg name="status" direction="in" type="u" />
+  </signal>
+  <signal name="DeviceUnbarringStatusResp">
+    <annotation name="typedef_callback"
+    value="BCA_DeviceUnbarringStatusResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="btDeviceId" direction="in" type="u" />
+    <arg name="status" direction="in" type="u" />
+  </signal>
+  <signal name="DeviceBluetoothSettingResp">
+    <annotation name="typedef_callback"
+    value="BCA_DeviceBluetoothSettingResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="btSetting" direction="in" type="b" />
+  </signal>
+  <signal name="AvailablePairedListResp">
+    <annotation name="type_ref.pairedDeviceList"
+    value="bca_array_t" />
+    <annotation name="typedef_callback"
+    value="BCA_AvailablePairedListResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="totalPairedDevices" direction="in" type="u" />
+    <arg name="pairedDeviceList" direction="in" type="(ay)" />
+  </signal>
+  <signal name="SupportedProfilesResp">
+    <annotation name="type_ref.supportedProfiles"
+    value="bca_array_t" />
+    <annotation name="typedef_callback"
+    value="BCA_SupportedProfilesResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="supportedProfiles" direction="in" type="(ay)" />
+  </signal>
+  <signal name="FirstHfpSupportedInfo">
+    <annotation name="typedef_callback"
+    value="BCA_FirstHfpSupportedInfoResp_Signal_Callback_t" />
+    <annotation name="always_broadcast" value="false" />
+    <arg name="isHfpSupportedDevicePresent" direction="in"
+    type="b" />
+  </signal>
+</interface>

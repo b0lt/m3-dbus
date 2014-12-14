@@ -1,0 +1,228 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.time">
+  <annotation name="header_include" value="status.h" />
+  <annotation name="com.jci.with_error_string" value="true" />
+  <annotation name="def_struct_names.TIME_datetime_dbus_t"
+  value="year,month, day, hour, min, sec" />
+  <annotation name="def_struct_types.TIME_datetime_dbus_t"
+  value="n, y, y, y, y, y" />
+  <annotation name="def_struct_names.TIME_datetime_components_dbus_t"
+  value="base_datetime, timezone_offset, daylightsaving_offset, user_offset" />
+  <annotation name="def_struct_types.TIME_datetime_components_dbus_t"
+  value="TIME_datetime_dbus_t, TIME_datetime_dbus_t, TIME_datetime_dbus_t, TIME_datetime_dbus_t" />
+  <method name="Connect">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="Disconnect">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetDatetime">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.datetime_out" value="time_t" />
+    <arg name="field_in" direction="in" type="n" />
+    <arg name="datetime_out" direction="out" type="u" />
+    <arg name="field_out" direction="out" type="n" />
+    <arg name="synchronized" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="GetDatetimeComposite">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.datetime_out"
+    value="TIME_datetime_dbus_t" />
+    <arg name="field_in" direction="in" type="n" />
+    <arg name="datetime_out" direction="out" type="(nyyyyy)" />
+    <arg name="field_out" direction="out" type="n" />
+    <arg name="synchronized" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="GetDatetimeComponents">
+    <annotation name="async" value="both" />
+    <annotation name="type_ref.base_datetime"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.timezone_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.daylightsaving_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.user_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="base_datetime" direction="out" type="(nyyyyy)" />
+    <arg name="timezone_offset" direction="out" type="(nyyyyy)" />
+    <arg name="daylightsaving_offset" direction="out"
+    type="(nyyyyy)" />
+    <arg name="user_offset" direction="out" type="(nyyyyy)" />
+    <arg name="synchronized" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="RegisterForDatetimeChangeEvent">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_time_out"
+    value="TIME_datetime_dbus_t" />
+    <arg name="time_req" direction="in" type="y" />
+    <arg name="event_time" direction="in" type="(nyyyyy)" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="time_req_out" direction="out" type="y" />
+    <arg name="event_time_out" direction="out" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="UnregisterFromDatetimeChangeEvent">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_time_out"
+    value="TIME_datetime_dbus_t" />
+    <arg name="time_req" direction="in" type="y" />
+    <arg name="event_time" direction="in" type="(nyyyyy)" />
+    <arg name="client_name" direction="in" type="s" />
+    <arg name="time_req_out" direction="out" type="y" />
+    <arg name="event_time_out" direction="out" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="RegisterForOffsetChangeEvent">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="offset_change_type" direction="in" type="y" />
+    <arg name="offset_change_type_out" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="UnregisterFromOffsetChangeEvent">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="offset_change_type" direction="in" type="y" />
+    <arg name="offset_change_type_out" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="SetDatetimeComponents">
+    <annotation name="async" value="both" />
+    <annotation name="type_ref.base_datetime"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.timezone_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.daylightsaving_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.user_offset"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="typeof.status" value="status_t" />
+    <arg name="base_datetime" direction="in" type="(nyyyyy)" />
+    <arg name="timezone_offset" direction="in" type="(nyyyyy)" />
+    <arg name="daylightsaving_offset" direction="in"
+    type="(nyyyyy)" />
+    <arg name="user_offset" direction="in" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="SetDatetimeComposite">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.datetime_in"
+    value="TIME_datetime_dbus_t" />
+    <arg name="field_in" direction="in" type="n" />
+    <arg name="datetime_in" direction="in" type="(nyyyyy)" />
+    <arg name="field_out" direction="out" type="n" />
+    <arg name="synchronized" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="SetDatetime">
+    <annotation name="async" value="both" />
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.datetime_in" value="time_t" />
+    <arg name="field_in" direction="in" type="n" />
+    <arg name="datetime_in" direction="in" type="u" />
+    <arg name="field_out" direction="out" type="n" />
+    <arg name="synchronized" direction="out" type="y" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="GetWeekDay">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time" direction="in" type="(nyyyyy)" />
+    <arg name="weekday" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="GetMonthDaysCount">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time" direction="in" type="(nyyyyy)" />
+    <arg name="monthdayscount" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="GetYearWeekNumber">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time" direction="in" type="(nyyyyy)" />
+    <arg name="weeknumber" direction="out" type="u" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="CalculateDateDiff">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time_from"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_time_to"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_diff"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time_from" direction="in" type="(nyyyyy)" />
+    <arg name="event_time_to" direction="in" type="(nyyyyy)" />
+    <arg name="event_diff" direction="out" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="CalculateTimeDiff">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time_from"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_time_to"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_diff"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time_from" direction="in" type="(nyyyyy)" />
+    <arg name="event_time_to" direction="in" type="(nyyyyy)" />
+    <arg name="event_diff" direction="out" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <method name="CalculateDatetimeDiff">
+    <annotation name="typeof.status" value="status_t" />
+    <annotation name="type_ref.event_time_from"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_time_to"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.event_diff"
+    value="TIME_datetime_dbus_t" />
+    <arg name="event_time_from" direction="in" type="(nyyyyy)" />
+    <arg name="event_time_to" direction="in" type="(nyyyyy)" />
+    <arg name="event_diff" direction="out" type="(nyyyyy)" />
+    <arg name="status" direction="out" type="u" />
+  </method>
+  <signal name="FireEventMsg">
+    <annotation name="type_ref.event_time"
+    value="TIME_datetime_dbus_t" />
+    <annotation name="type_ref.deviation_time_out"
+    value="TIME_datetime_dbus_t" />
+    <arg name="time_req" type="y" />
+    <arg name="event_time" type="(nyyyyy)" />
+    <arg name="deviation_time_out" type="(nyyyyy)" />
+    <arg name="stat" type="i" />
+  </signal>
+  <signal name="OffsetChangeMsg">
+    <arg name="field_out" type="n" />
+    <arg name="synchronized" type="y" />
+    <arg name="request_out" type="n" />
+  </signal>
+</interface>

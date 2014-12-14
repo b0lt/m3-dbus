@@ -1,0 +1,196 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="com.jci.vwm">
+  <annotation name="header_include" value="vwm_data.h" />
+  <annotation name="com.jci.def_struct_names.vwm_msg_1_t"
+  value="arg1" />
+  <annotation name="com.jci.def_struct_types.vwm_msg_1_t"
+  value="i" />
+  <annotation name="com.jci.def_struct_names.vwm_msg_2_t"
+  value="arg1, arg2" />
+  <annotation name="com.jci.def_struct_types.vwm_msg_2_t"
+  value=" i, ay" />
+  <annotation name="com.jci.def_struct_names.byte_array_t"
+  value="Buffer" />
+  <annotation name="com.jci.def_struct_types.byte_array_t"
+  value="y" />
+  <annotation name="com.jci.def_struct_names.VWM_Status_D_s_t"
+  value="Warning_count, Warning_Values" />
+  <annotation name="com.jci.def_struct_types.VWM_Status_D_s_t"
+  value="y , byte_array_t" />
+  <annotation name="com.jci.def_struct_names.VWM_High_Alert_D_s_t"
+  value="Warning_HA_Values" />
+  <annotation name="com.jci.def_struct_types.VWM_High_Alert_D_s_t"
+  value="byte_array_t" />
+  <annotation name="com.jci.def_struct_names.VWM_Scheduled_Maintenance_Data_D_s_t"
+  value="Disp_distance, Oil_setting_disp, DistIncr_scale, DistIncr_scale_mile, TimeIncr_scale, DistanceDue_KM, DistanceDue_MILE, TimeDue, SchedMaintsetDistDefault, SchedMntSetTimeDefault, TireRotationSetDistDefault, OilSetDistDefault, ScdMaintSetting, TireRotationSetting, OilChangeSetting, Unit" />
+  <annotation name="com.jci.def_struct_types.VWM_Scheduled_Maintenance_Data_D_s_t"
+  value="b, u, i, i, i, n, n, n, n, n, n, n, u, u, u, u " />
+  <annotation name="com.jci.def_struct_names.VWM_VDT_Rqrd_Data_s_t"
+  value="SchedMaintRemDist,SchedMaintRemTime,OilRemDist,TireRemDist,Unit,SchdMntDistanceDue,SchdMntTimeDue,TireRotationDistanceDue,OilChangeDistanceDue,OilDtrWrnB" />
+  <annotation name="com.jci.def_struct_types.VWM_VDT_Rqrd_Data_s_t"
+  value=" i, i, i, i, u, b, b, b, b, y " />
+  <method name="getWGuideSettings">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="getActiveAlertList">
+    <annotation name="typeof.WarningScreen"
+    value="VWM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="WarningScreen" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Maintenance_Req">
+    <annotation name="typeof.MaintenanceScreen"
+    value="VWM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="MaintenanceScreen" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Sched_Maintenance_Req">
+    <annotation name="typeof.SchedMaintenanceScreen"
+    value="VWM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="SchedMaintenanceScreen" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Tire_Maintenance_Req">
+    <annotation name="typeof.TireMaintenanceScreen"
+    value="VWM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="TireMaintenanceScreen" direction="in" type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="Oil_Deterioration_Maintenance_Req">
+    <annotation name="typeof.OilDeteriorationMaintenanceScreen"
+    value="VWM_screen_user_action_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="OilDeteriorationMaintenanceScreen" direction="in"
+    type="u" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="GetScdMntSettingData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="SetSchdMaintUpdateEnable">
+    <annotation name="typeof.VWM_SchMaintUpdateModule"
+    value="VWM_ScheduleMaintUpdateEnable_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="VWM_SchMaintUpdateModule" direction="in" type="i" />
+    <arg name="status" direction="in" type="b" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="setOilChangeSetting">
+    <annotation name="typeof.VWM_OilChangeSettingStatus"
+    value="VWM_OilChangeSettingStatus_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="VWM_OilChangeSettingStatus" direction="in"
+    type="i" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <method name="setSchedMaintSetting">
+    <annotation name="typeof.VWM_ScdMaintSettingStatus"
+    value="VWM_Maintenance_Mode_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="VWM_ScdMaintSettingStatus" direction="in"
+    type="i" />
+  </method>
+  <method name="setTireRotMaintSetting">
+    <annotation name="typeof.VWM_TireRotMaintSettingStatus"
+    value="VWM_Maintenance_Mode_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="VWM_TireRotMaintSettingStatus" direction="in"
+    type="i" />
+  </method>
+  <method name="SchMntResetRq">
+    <annotation name="typeof.ResetProperty"
+    value="VWM_Reset_Param_e_t" />
+    <annotation name="async" value="client" />
+    <arg name="ResetProperty" direction="in" type="i" />
+  </method>
+  <method name="setSchedMaintSetDist">
+    <annotation name="async" value="client" />
+    <arg name="SchMaintDistRem" direction="in" type="i" />
+  </method>
+  <method name="setSchedMaintSetTime">
+    <annotation name="async" value="client" />
+    <arg name="SchMaintTimeRem" direction="in" type="i" />
+  </method>
+  <method name="setTireRotMaintSetDist">
+    <annotation name="async" value="client" />
+    <arg name="TireRotMaintDistRem" direction="in" type="i" />
+  </method>
+  <method name="setOilMaintSetDist">
+    <annotation name="async" value="client" />
+    <arg name="OiltMaintDistRem" direction="in" type="i" />
+  </method>
+  <method name="GetVWMData">
+    <annotation name="async" value="client" />
+    <arg name="return_value" direction="out" type="i" />
+  </method>
+  <signal name="wGuideSettings">
+    <arg name="MaxHighPriorityAlerts" direction="in" type="i" />
+  </signal>
+  <signal name="wGuideActiveAlerts">
+    <annotation name="com.jci.type_ref.warning_info"
+    value="vwm_msg_2_t" />
+    <arg name="warning_info" direction="in" type="(iay)" />
+  </signal>
+  <signal name="wGuideNewHighAlerts">
+    <annotation name="com.jci.type_ref.warning_ha_info"
+    value="vwm_msg_2_t" />
+    <arg name="warning_ha_info" direction="in" type="(iay)" />
+  </signal>
+  <signal name="ScdMntSettingDataAsyncResp">
+    <annotation name="com.jci.type_ref.VWM_Scheduled_Maintenance_Data"
+    value="VWM_Scheduled_Maintenance_Data_D_s_t" />
+    <arg name="VWM_Scheduled_Maintenance_Data" direction="in"
+    type="(buiiinnnnnnnuuuu)" />
+  </signal>
+  <signal name="SchedMaintRemainingDist">
+    <arg name="scheduled_maint_dist" direction="in" type="i" />
+    <arg name="scheduled_maint_dist_unit" direction="in"
+    type="u" />
+  </signal>
+  <signal name="SchedMaintRemainingTime">
+    <arg name="scheduled_maint_time" direction="in" type="i" />
+  </signal>
+  <signal name="TireRotationRemainingDist">
+    <arg name="tire_rota_rem_dist" direction="in" type="i" />
+    <arg name="tire_rota_rem_unit" direction="in" type="u" />
+  </signal>
+  <signal name="OilLife">
+    <arg name="oil_life_level" direction="in" type="i" />
+  </signal>
+  <signal name="schdMntDue">
+    <annotation name="typeof.VWM_ScheduleMaintUpdateEnable"
+    value="VWM_ScheduleMaintDue_e_t" />
+    <arg name="VWM_ScheduleMaintUpdateEnable" direction="in"
+    type="i" />
+    <arg name="status" direction="in" type="b" />
+  </signal>
+  <signal name="OilChangeRemainingDist">
+    <arg name="OilChangeDistRemaining" direction="in" type="i" />
+    <arg name="unit" direction="in" type="u" />
+  </signal>
+  <signal name="SchMntSettingChangeStatus">
+    <annotation name="typeof.VWM_SchMaintStatusChange"
+    value="VWM_AutoOil_Resp_e_t" />
+    <arg name="VWM_SchMaintStatusChange" direction="in" type="i" />
+  </signal>
+  <signal name="Dismiss_High_Alert">
+    <annotation name="typeof.VWM_High_Alert_Dismiss"
+    value="VWM_Number_e_t" />
+    <arg name="VWM_High_Alert_Dismiss" direction="in" type="i" />
+  </signal>
+  <signal name="Curr_VWMData">
+    <annotation name="com.jci.type_ref.VWM_Data"
+    value="VWM_VDT_Rqrd_Data_s_t" />
+    <arg name="VWM_Data" direction="in" type="(iiiiubbbby)" />
+  </signal>
+</interface>

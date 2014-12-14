@@ -1,0 +1,43 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" direction="out" type="s" />
+  </method>
+</interface>
+<interface name="com.jci.cpp.power.Interface">
+  <method name="OpenConnection">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="status" direction="out" type="i" />
+    <arg name="unique_connection_id" direction="out" type="u" />
+  </method>
+  <method name="CloseConnection">
+    <annotation name="async" value="both" />
+    <annotation name="server_interested_in_client" value="true" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SafeShutDown">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="SafeReboot">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="FactoryReset">
+    <annotation name="async" value="both" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <method name="GetCurrentAccStatus">
+    <annotation name="async" value="both" />
+    <arg name="acc_state" direction="out" type="i" />
+    <arg name="status" direction="out" type="i" />
+  </method>
+  <signal name="NotifyAccChange">
+    <arg name="acc_state" type="i" />
+  </signal>
+</interface>

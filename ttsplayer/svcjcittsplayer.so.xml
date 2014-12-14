@@ -1,0 +1,82 @@
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include" value="tts_defs.h" />
+<annotation name="com.jci.header_include" value="status.h" />
+<annotation name="com.jci.userdata_passed_to_client_callbacks"
+value="false" />
+<interface name="com.jci.tts">
+  <method name="ConnectToTTS">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.typeof.result" value="status_t" />
+    <arg name="clientName" direction="in" type="s" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="DisconnectFromTTS">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.typeof.result" value="status_t" />
+    <arg name="clientName" direction="in" type="s" />
+    <arg name="result" direction="out" type="i" />
+  </method>
+  <method name="PlayText">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="clientName" direction="in" type="s" />
+    <arg name="string" direction="in" type="s" />
+  </method>
+  <method name="PausePlayback">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="clientName" direction="in" type="s" />
+  </method>
+  <method name="ResumePlayback">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="clientName" direction="in" type="s" />
+  </method>
+  <method name="AbortPlayback">
+    <annotation name="com.jci.server_interested_in_client"
+    value="true" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="clientName" direction="in" type="s" />
+  </method>
+  <signal name="Status">
+    <annotation name="com.jci.typeof.result"
+    value="TTS_PromptStatus_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="ReceiveStatus" />
+    <annotation name="com.jci.always_broadcast" value="false" />
+    <arg name="result" type="i" />
+  </signal>
+</interface>
+<interface name="org.freedesktop.DBus.Introspectable">
+  <method name="Introspect">
+    <arg name="Introspection" type="s" direction="out" />
+  </method>
+</interface>
+<annotation name="com.jci.header_include"
+value="jci_languagecommon.h" />
+<annotation name="com.jci.userdata_passed_to_client_callbacks"
+value="false" />
+<interface name="com.jci.tts.language">
+  <method name="SetLanguage">
+    <annotation name="com.jci.typeof.language"
+    value="LANGS_language_t" />
+    <annotation name="com.jci.async_client" value="true" />
+    <arg name="language" direction="in" type="i" />
+  </method>
+  <signal name="LanguageChangedCallback">
+    <annotation name="com.jci.typeof.language"
+    value="LANGS_language_t" />
+    <annotation name="com.jci.typedef_callback"
+    value="LanguageChangedCallback" />
+    <arg name="language" type="i" />
+  </signal>
+</interface>
