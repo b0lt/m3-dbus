@@ -1,0 +1,15 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/com/jci/blm/system">
+  <interface name="com.jci.blmsystem.Interface">
+    <method name="GetCurrentAccStatus">
+      <annotation name="async" value="both"/>
+      <arg name="acc_state" direction="out" type="i"/>
+      <arg name="status" direction="out" type="i"/>
+    </method>
+    <signal name="NotifyAccChange">
+        <arg name="acc_state" type="i"/>  <!-- SYSTEM_ACC_ON(0), SYSTEM_ACC_OFF(1) -->
+        <arg name="system_state" type="u"/>
+    </signal>
+  </interface>
+</node>

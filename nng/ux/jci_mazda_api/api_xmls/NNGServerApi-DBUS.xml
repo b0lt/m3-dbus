@@ -1,0 +1,934 @@
+<!DOCTYPE node PUBLIC "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd" "//freedesktop//DTD D-BUS Object Introspection 1.0//EN">
+<node name="/com/NNG/Api/Server">
+	<!-->
+		Version: v1.12-2013.01.24
+	</!-->
+
+	<interface name="com.NNG.Api.Server" alias="jci_mazda_api">
+		<signal name="DBusServerStarted">
+			<doc>
+				<line> "Issued when the navigation engine is capable of handling methods and issuing signals defined in these interfaces (com.NNG.Api.Server.*)" </line>
+			</doc>
+		</signal>
+		<signal name="DBusServerStopped">
+			<doc>
+				<line> "Issued when the navigation engine stops supporting these interfaces (com.NNG.Api.Server.*)" </line>
+			</doc>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.Settings" alias="jci_mazda_api">
+		<method name="SetTTSLang">
+			<doc>
+				<line> This method sets the TTS language </line>
+			</doc>
+			<arg name="language" direction="in" type="i">
+				<doc>
+					<line> language = the Microsoft LCID of the language that should be used for TTS</line>
+				</doc>
+			</arg>
+			<arg name="result" direction="out" type="i">
+				<doc>
+					<line> The TTS language that will be in force after this call. This might be the same as the input parameter </line>
+					<line> (in case the language could be set) or the old, unchanged value (in case the language was not available). </line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="GetTTSLang">
+			<doc>
+				<line> This method returns the LCID of the current TTS language </line>
+			</doc>
+			<arg name="language" direction="out" type="i">
+				<doc>
+					<line> The TTS language currently used by the navigation engine.</line>
+				</doc>
+			</arg>
+		</method>
+		
+	
+		<method name="SetVDELang">
+			<doc>
+				<line> This method sets the VR (VDE) language </line>
+			</doc>
+			<arg name="language" direction="in" type="s">
+				<doc>
+					<line> The Nuance LLC code of the VR language </line>
+				</doc>
+			</arg>
+			<arg name="result" direction="out" type="s">
+				<doc>
+					<line> The input parameter is returned </line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="GetVDELang">
+			<doc>
+				<line> This method is used to retrieve the VR language used by the navigation engine </line>
+			</doc>
+			<arg name="language" direction="out" type="s">
+				<doc>
+					<line> The Nuance LLC code of the VR (VDE) language currently in use by the navigation engine  </line>
+				</doc>
+			</arg>
+		</method>
+		
+	
+		<method name="SetLanguage">
+			<doc>
+				<line> SetLanguage = This method passes the new system language to the navigation engine; it implies a restart.</line>
+			</doc>
+			<arg name="language" direction="in" type="i">
+				<doc>
+					<line> language = the Microsoft LCID of the language that should be used by the navigation engine</line>
+				</doc>
+			</arg>
+			<arg name="result" direction="out" type="i">
+				<doc>
+					<line> LANG_RESTART (0) - NNG will have to restart to set the requested language</line>
+					<line> LANG_ALREADY_SET (1) - The requested language is already in use, no action needed</line>
+					<line> LANG_UNAVAILABLE (2) - The requested language is not available, no action will be performed</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="GetLanguage">
+			<doc>
+				<line> Returns the LCID of the language currently in use by the navigation engine </line>
+			</doc>
+			<arg name="language" direction="out" type="i">
+				<doc>
+					<line> The Microsoft LCID of the language currently in use</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="SetDayNightMode">
+			<doc>
+				<line> SetDayNightMode = This method passes the new day/night mode to the navigation engine. </line>
+			</doc>
+			<arg name="mode" direction="in" type="i">
+				<doc>
+					<line>mode = enum( DAYNIGHTMODE_DAY=0x00, DAYNIGHTMODE_NIGHT=0x01, DAYNIGHTMODE_AUTO=0x02 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetSpeedRestriction"> 
+			<doc>
+				<line> This method passes the state of a speed restriction being active or not. </line> 
+			</doc> 
+			<arg name="SpeedRestriction" type="i" direction="in"> 
+				<doc> 
+					<line>SpeedRestriction=  enum( SPEED_RESTRICTION_OFF=0x00, SPEED_RESTRICTION_ON=0x01 ) </line> 
+				</doc> 
+			</arg> 
+		</method> 
+		
+	
+		<method name="SetTemperatureUnit">
+			<doc>
+				<line> This function sets the unit in which the temperature should be displayed. </line>
+			</doc>
+			<arg name="TempUnit" type="i" direction="in">
+				<doc>
+					<line>TempUnit enum( TEMP_UNIT_CELSIUS=0, TEMP_UNIT_FAHRENHEIT=1 ) </line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+        </method> 
+	
+		
+		<method name="SetTimeFormat">
+			<doc>
+				<line> SetTimeFormat = This method passes the time format to the navigation engine. </line>
+			</doc>
+			<arg name="format" direction="in" type="i">
+				<doc>
+					<line>format = enum( TIMEFORMAT_12H=0x00, TIMEFORMAT_24H=0x01 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetLengthUnit">
+			<doc>
+				<line>SetLengthUnit = This method passes the length unit to the navigation engine. </line>
+			</doc>
+			<arg name="unit" direction="in" type="i">
+				<doc>
+					<line> unit = enum( UNIT_MILES_YARD=0, UNIT_KM=1, UNIT_MILES_FEET=2 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetNetworkConnectionStatus">
+			<doc>
+				<line>SetNetworkConnectionStatus = Updates the NetworkConnectionStatus to the EmNavi app.</line>
+			</doc>
+			<arg name="NetworkConnectionStatus" type="i">
+				<doc>
+					<line>NetworkConnectionStatus = enum( NETWORK_AVAILABLE=0x00, NETWORK_NOT_AVAILABLE=0x01 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetFuelType">
+			<doc>
+				<line> This method sets the type of fuel used in the car. </line>
+			</doc>
+			<arg name="FuelType" direction="in" type="i">
+				<doc>
+					<line>FuelType = enum( Fuel_Unknown (0), Fuel_Gasoline_DISI (1), Fuel_Gasoline_EFI (2), Fuel_Diesel_DI (3), Fuel_Diesel_IDI (4), Fuel_EV_HEV (5), Fuel_NaturalGas_CFI (6), Fuel_NaturealGas_EFI (7), Fuel_FlexibleFuel_CFI (8), Fuel_FlexibleFuel_EFI (9), Fuel_Gasoline_iStop (10), Fuel_Diesel_iStop (11) )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetPhoneConnectionStatus">
+			<doc>
+				<line>SetPhoneConnectionStatus = This method passes the phone connection status to the navigation engine, whenever the status changes </line>
+			</doc>
+			<arg name="PhoneStatus" direction="in" type="i">
+				<doc>
+					<line>PhoneStatus = enum( PHONE_DISCONNECTED=0x00, PHONE_CONNECTED=0x01 )</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="SetRecentKeyboardNumber">
+			<doc>
+				<line> Number of keyboards at the top that needs to be marked as recent</line>
+			</doc>
+			<arg name="NumberOfRecentKeyboards" direction="in" type="i">
+				<doc>
+					<line>
+						Number of most recent keyboard
+					</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="SetAvailableLayouts">
+			<doc>
+				<line> Sets the list of the keyboard layouts available at JCI side</line>
+			</doc>
+			<arg name="Layouts" direction="in" type="(ia(i))">
+				<doc>
+					<line>
+						List of layouts. All ids must come from the set defined in the method KeyboardLayout in this file.
+					</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetKeyboardLayout">
+			<doc>
+				<line>SetKeyboardLayout = This method passes the keyboard layout to the navigation engine, whenever the status changes </line>
+			</doc>
+			<arg name="KeyboardLayout" direction="in" type="i">
+				<doc>
+					<line>KeyboardLayout is one of the following values </line>
+					<line>ABC = 0</line>
+					<line>Arabic = 1</line>
+					<line>Bahasa Malay = 2</line>
+					<line>Bulgarian = 3</line>
+					<line>Chinese Pinyin (Simplified) = 4</line>
+					<line>Chinese Pinyin (Traditional) = 5</line>
+					<line>Croatian = 6</line>
+					<line>Czech = 7</line>
+					<line>Danish = 8</line>
+					<line>Dutch = 9</line>
+					<line>English (ADR) = 10</line>
+					<line>English (UK) = 11</line>
+					<line>English(US) = 12</line>
+					<line>Estonian = 13</line>
+					<line>Finnish = 14</line>
+					<line>French (CA) = 15</line>
+					<line>French (EU) = 16</line>
+					<line>German = 17</line>
+					<line>Greek = 18</line>
+					<line>Hebrew = 19</line>
+					<line>Hungarian = 20</line>
+					<line>Indonesian = 21</line>
+					<line>Italian = 22</line>
+					<line>Japanese (Kana) = 23</line>
+					<line>Latvian = 24</line>
+					<line>Lithuanian = 25</line>
+					<line>Norwegian = 26</line>
+					<line>Polish = 27</line>
+					<line>Portuguese = 28</line>
+					<line>Romanian = 29</line>
+					<line>Russian = 30</line>
+					<line>Serbian (Latin) = 31</line>
+					<line>Slovakian = 32</line>
+					<line>Spanish (Castillian) = 33</line>
+					<line>Spanish (NA) = 34</line>
+					<line>Swedish = 35</line>
+					<line>Thai = 36</line>
+					<line>Turkish = 37</line>					
+				</doc>
+			</arg>
+		</method>
+
+		<method name="SetVolumeRequestEnabled">
+			<doc>
+				<line>SetVolumeRequestEnabled = This method passes whether it is enabled to change volume or not to the navigation engine, whenever it changes </line>
+			</doc>
+			<arg name="RequestEnabled" direction="in" type="i">
+				<doc>
+					<line>RequestEnabled = enum( DISABLED=0x00, ENABLED=0x01 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<signal name="KeyboardLayoutChanged">
+			<doc>
+				<line>KeyboardLayoutChanged = This signal notifies the system about the keyboard layout changes </line>
+			</doc>
+			<arg name="KeyboardLayout" type="i">
+				<doc>
+					<line>KeyboardLayout is one of the following values </line>
+					<line>ABC = 0</line>
+					<line>Arabic = 1</line>
+					<line>Bahasa Malay = 2</line>
+					<line>Bulgarian = 3</line>
+					<line>Chinese Pinyin (Simplified) = 4</line>
+					<line>Chinese Pinyin (Traditional) = 5</line>
+					<line>Croatian = 6</line>
+					<line>Czech = 7</line>
+					<line>Danish = 8</line>
+					<line>Dutch = 9</line>
+					<line>English (ADR) = 10</line>
+					<line>English (UK) = 11</line>
+					<line>English(US) = 12</line>
+					<line>Estonian = 13</line>
+					<line>Finnish = 14</line>
+					<line>French (CA) = 15</line>
+					<line>French (EU) = 16</line>
+					<line>German = 17</line>
+					<line>Greek = 18</line>
+					<line>Hebrew = 19</line>
+					<line>Hungarian = 20</line>
+					<line>Indonesian = 21</line>
+					<line>Italian = 22</line>
+					<line>Japanese (Kana) = 23</line>
+					<line>Latvian = 24</line>
+					<line>Lithuanian = 25</line>
+					<line>Norwegian = 26</line>
+					<line>Polish = 27</line>
+					<line>Portuguese = 28</line>
+					<line>Romanian = 29</line>
+					<line>Russian = 30</line>
+					<line>Serbian (Latin) = 31</line>
+					<line>Slovakian = 32</line>
+					<line>Spanish (Castillian) = 33</line>
+					<line>Spanish (NA) = 34</line>
+					<line>Swedish = 35</line>
+					<line>Thai = 36</line>
+					<line>Turkish = 37</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+	<interface name="com.NNG.Api.Server.Version" alias="jci_mazda_api">
+		<signal name="NAVIVersion">
+			<doc>
+				<line> "This signal sends version information about the executable and the content" </line>
+			</doc>
+			<arg name="NAVIEngineVersion" type="s">
+				<doc>
+					<line> The version of the Navigation engine (executable)</line>
+				</doc>
+			</arg>
+			<arg name="SKUName" type="s">
+				<doc>
+					<line> Content name (region name and version) </line>
+				</doc>
+			</arg>
+		</signal>	
+	</interface>
+	
+	
+	<interface name="com.NNG.Api.Server.Focus" alias="jci_mazda_api">
+		<signal name="ReadyToShowNavi">
+			<doc>
+				<line> "Issued after the navigation engine received the ShowNavigation signal, and has drawn at least one frame." </line>
+			</doc>
+		</signal>
+		
+		<signal name="RequestShowNavigation">
+			<doc>
+				<line> "With this signal, NNG (in the background) requests JCI to give it the focus." </line>
+				<line> "JCI can answer either with a ShowNavigation signal, or with a RequestShowNavigationDenied signal." </line>				
+			</doc>
+		</signal>		
+		
+		<signal name="LeaveNavi">
+			<doc>
+				<line> "Issued when the user pressed a button to leave the navi screen. The JCI system should then take the focus from the navigation engine." </line>
+			</doc>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.Audio" alias="jci_mazda_api">
+		<signal name="PlayEffect">
+			<doc>
+				<line> "This signal tells the JCI environment that an effect should be played" </line>
+			</doc>
+			<arg name="Expiration" type="t">
+				<doc>
+					<line> Timestamp: the monotinic system clock with millisecond precision. If playing the effect has not begun at this point, it should be discarded. The value of 0 indicates that there is no expiration.</line>
+				</doc>
+			</arg>
+			<arg name="CallbackId" type="i">
+				<doc>
+					<line> Unique id assigned to this effect.</line>
+				</doc>
+			</arg>
+			<arg name="Effect"  type="s">
+				<doc>
+					<line> This string describes the effect to be played.</line>
+					<line>	"EFFECT_BUTTON" </line>
+					<line>	"EFFECT_SCROLLSTART" </line>
+					<line>	"EFFECT_SCROLLEND" </line>
+					<line>	"EFFECT_CHECKON" </line>
+					<line>	"EFFECT_CHECKOFF" </line>
+					<line>	"EFFECT_RADIO" </line>
+					<line>	"EFFECT_KEY" </line>
+					<line>	"EFFECT_DISABLED" </line>
+					<line>	"EFFECT_DING" </line>
+					<line>	"EFFECT_MAPCLICK" </line>
+					<line>	"EFFECT_MAPCLICK_FAILED" </line>
+					<line>	"EFFECT_RECALCULATE" </line>
+					<line>	"EFFECT_FAVORITE_ADDED" </line>
+					<line>	"EFFECT_OVERSPEED" </line>
+					<line>	"EFFECT_GPS_LOST" </line>
+					<line>	"EFFECT_GPS_DISCONNECTED" </line>
+					<line>	"EFFECT_SPEEDCAM_STATIC" </line>
+					<line>	"EFFECT_SPEEDCAM_MOBILE" </line>
+					<line>	"EFFECT_REDLIGHT" </line>
+					<line>	"EFFECT_SECTION" </line>
+					<line>	"EFFECT_REDLIGHTONLY" </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="VoicePrompt">
+			<doc>
+				<line> "This signal sends a string to be announced to the TTS engine" </line>
+			</doc>
+			<arg name="Expiration"  type="t">
+				<doc>
+					<line> Timestamp: the monotinic system clock with millisecond precision. If playing the voice has not begun at this point, it should be discarded. The value of 0 indicates that there is no expiration.</line>
+				</doc>
+			</arg>
+			<arg name="CallbackId"  type="i">
+				<doc>
+					<line> Unique id assigned to this voice request.</line>
+				</doc>
+			</arg>
+			<arg name="Prompt" type="s">
+				<doc>
+					<line> The text that should be announced</line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="CancelPrompt">
+			<doc>
+				<line> "This signal cancels a previous voice request. (Effects will not be cancelled)" </line>
+			</doc>
+			<arg name="CallbackId"  type="i">
+				<doc>
+					<line> The id of the voice request to be cancelled</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<signal name="SetNavigationVolume">
+			<doc>
+				<line> "This signal sets the volume with which JCI plays navigation-related sounds" </line>
+			</doc>
+			<arg name="Volume"  type="i">
+				<doc>
+					<line> Volume strength: falls between 0 and 62 inclusively, 0 means the guidance is muted.</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.VR" alias="jci_mazda_api">
+		<signal name="PoiCategoryList">
+			<doc>
+				<line> "This signal is issued by NNG when it has finished reading the relevant content files and is able to determine which POI categories make sense for the given content." </line>
+			</doc>
+			<arg name="PoiCategories" type="(ia(s))">
+				<doc>
+					<line> List of valid POI categories, here are the possible values: </line>
+					<line>"POI_CAMPSITE"</line>
+					<line>"POI_CARPARK"</line>
+					<line>"POI_CAR_REPAIR_SERVICE"</line>
+					<line>"POI_CAR_DEALER"</line>
+					<line>"POI_ATM"</line>
+					<line>"POI_BANK"</line>
+					<line>"POI_DENTIST"</line>
+					<line>"POI_DOCTOR"</line>
+					<line>"POI_HOSPITAL"</line>
+					<line>"POI_HOTEL"</line>
+					<line>"POI_PARKING_"</line>
+					<line>"POI_PETROL_STATION"</line>
+					<line>"POI_PHARMACY"</line>
+					<line>"POI_POLICE_STATION"</line>
+					<line>"POI_POST_OFFICE"</line>
+					<line>"POI_RAILWAY_STATION"</line>
+					<line>"POI_REST_AREA"</line>
+					<line>"POI_RESTAURANT"</line>
+					<line>"POI_TOURIST_INFORMATION"</line>
+					<line>"POI_SHOPPING_CENTER"</line>
+				</doc>
+			</arg>
+		</signal>
+	
+		<signal name="IssueAlert">
+			<doc>
+				<line> "This signal is issued by NNG to trigger a VUI alert" </line>
+			</doc>
+			<arg name="AlertId" type="s">
+				<doc>
+					<line> A string identifying the alert, e.g., PositionIsUnknown_Alert</line>
+				</doc>
+			</arg>
+			<arg name="AlertStr" type="s">
+				<doc>
+					<line> This string can be used to pass an alert argument. The empty string means no argument. </line>
+				</doc>
+			</arg>
+			<arg name="AlertAction" type="i">
+				<doc>
+					<line> For future extension </line>
+					<line> AlertSessionAllow (0x00) -  The session can continue.</line>
+					<line> AlertSessionEnd (0x01) - The session ends.</line>
+					<line> AlertSessionKeep (0x02) - For echo alerts which will be followed immediately by a new context which continues the voice dialog. </line>
+				</doc>
+			</arg>
+
+		</signal>
+		
+		<signal name="VDEAvailabilityChanged">
+			<doc>
+				<line> Issued when there is a change in whether the currently set VDE(VR) language is supported at the current car position. </line>
+			</doc>
+			<arg name="Availability" type="i">
+				<doc>
+					<line>VDE_NOT_SUPPORTED (0x00) - VDE cannot be used at the current position with the current VR language</line>
+					<line>VDE_SUPPORTED (0x01) -  VDE can be used. </line>			
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="SetContext">
+			<doc>
+				<line> This signal is used by NNG to notify the environment about a context change </line>
+			</doc>
+			<arg name="ContextId" type="s">
+				<doc>
+					<line> A string identifying the context, e.g., "SelectCity_Context"</line>
+				</doc>
+			</arg>
+			<arg name="VuiAction" type="i">
+				<doc>
+					<line> VuiAction = enum describing how the context was entered</line>
+					<line> VuiActionNoAction (0x0) - Context was triggered by GUI</line>
+					<line> VuiActionPrompt (0x1) - Reserved</line>
+					<line> VuiActionPromptReco (0x2) - Context was triggered by VUI</line>
+					<line> VuiActionEndSessionWithBeeps (0x3) - Used when the final(terminating) context is sent.</line>
+					<line> VuiActionEndSessionNoBeeps (0x4) - Reserved</line>
+					<line> VuiActionEndSessionThenPrompt (0x5) - Reserved</line>
+					<line> VuiActionEndSessionThenPromptReco (0x6) - Reserved</line>
+				</doc>
+			</arg>
+			<arg name="CtxParamStr" type="s">
+				<doc>
+					<line> Used to pass an additional string parameter to the context. Its meaning depends on the context</line>
+				</doc>
+			</arg>
+			<arg name="CtxParamInt" type="u">
+				<doc>
+					<line> Used to pass an additional string parameter to the context. Its meaning depends on the context</line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="JpjNextAddressLevel">
+			<doc>
+				<line> This signal is used by NNG to reply for JpjIntermediateHypothesis when the hypothesis list has been processed and the related content files are generated </line>
+			</doc>
+			<arg name="Path" type="s">
+				<doc>
+					<line> Path to .eco file for the next level. NNG create the file in /tmp folder. If there is no next level return it will be empty. </line>
+				</doc>
+			</arg>
+			<arg name="Phonetics" type="(ia(s))">
+				<doc>
+					<line> When NNG receives the IDs from JpjNextAddressLevel it should retrieve all the phonetic alternatives for the valid Ids, construct strings containing the phonetics and send them back to Nuance. </line>
+				</doc>
+			</arg>
+			<arg name="Orthographic" type="s">
+				<doc>
+					<line> When NNG receives the above signal it should retrieve the orthography corresponding to the valid Ids and send them back to Nuance. </line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.Guidance" alias="jci_mazda_api">
+		<signal name="GuidanceChanged">
+			<doc>
+				<line> This signal is used by NNG to notify the environment that the visual guidance information has changed.</line>
+			</doc>
+			<arg name="DiriconID" type="i">
+				<doc>
+					<line>ID of the next maneuver icon; 0 means unknown</line>
+				</doc>
+			</arg>
+			<arg name="ManeuverDistance" type="i">
+				<doc>
+					<line>Distance of the next maneuver in fixed point representation, the value can be calculated by dividing by 10. For example, a value of 113 should be interpreted as 11.3</line>
+				</doc>
+			</arg>
+			<arg name="ManeuverDistanceUnit" type="i">
+				<doc>
+					<line>ManeuverDistanceUnit = enum( No_Display (0), Meter (1), Mile (2), KiloMeter (3), Yard (4), Feet (5) )</line>
+				</doc>
+			</arg>
+			<arg name="SpeedLimit" type="i">
+				<doc>
+					<line>Current speed limit; undefined if the next argument (SpeedLimitUnit) is No_Display</line>
+				</doc>
+			</arg>
+			<arg name="SpeedLimitUnit" type="i">
+				<doc>
+					<line>SpeedLimitUnit = enum( No_Display (0), Not used (1), MilesPerHour (2), KilometersMeterPerHour (3) )</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID1" type="i">
+				<doc>
+					<line>Icon ID of the lane #1. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID2" type="i">
+				<doc>
+					<line>Icon ID of the lane #2. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID3" type="i">
+				<doc>
+					<line>Icon ID of the lane #3. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID4" type="i">
+				<doc>
+					<line>Icon ID of the lane #4. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID5" type="i">
+				<doc>
+					<line>Icon ID of the lane #5. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID6" type="i">
+				<doc>
+					<line>Icon ID of the lane #6. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID7" type="i">
+				<doc>
+					<line>Icon ID of the lane #7. 0 means no available lane.</line>
+				</doc>
+			</arg>
+			<arg name="LaneIconID8" type="i">
+				<doc>
+					<line>Icon ID of the lane #8. 0 means no available lane.</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.TMCTuner" alias="jci_mazda_api">
+		<signal name="TMCServiceListRequest">
+			<doc>
+				<line> This signal requests the TMC tuner to send the list of available TMC providers' list.</line>
+			</doc>
+		</signal>
+		<signal name="TMCSelectionRequest">
+			<arg name="OperationInstruction" type="i">
+				<doc>
+					<line>OperationInstruction = enum( RDSTMC_operation_stop (0), RDSTMC_operation_start (1) )</line>
+				</doc>
+			</arg>
+			<arg name="TMCSearchMode" type="i">
+				<doc>
+					<line>TMCSearchMode = enum( Automatic (0), Reserved (1) )</line>
+				</doc>
+			</arg>
+			<arg name="CountryCode" type="i">
+				<doc>
+					<line>CountryCode (0-15)</line>
+				</doc>
+			</arg>
+			<arg name="LocationTableNumber" type="i">
+				<doc>
+					<line>LocationTableNumber (0-63)</line>
+				</doc>
+			</arg>
+			<arg name="ServiceIdentifier" type="i">
+				<doc>
+					<line>ServiceIdentifier (0-63)</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+	
+	<interface name="com.NNG.Api.Server.Time" alias="jci_mazda_api">
+		<method name="SetTimeMode">
+			<doc>
+				<line>  This method is used to notify a running NNG system that the user changed the time mode (or the displayed time) </line>
+			</doc>
+			<arg name="Mode" direction="in" type="i">
+				<doc>
+					<line> Mode = enum( TIME_AUTO (0), TIME_MANUAL (1) )</line>
+				</doc>
+			</arg>
+			<arg name="TimeStamp" direction="in" type="t">
+				<doc>
+					<line> TimeStamp: The value of the monotonic system clock (millisecond precision) when the message SetTimeMode was sent out. Will be ignored if Mode is TIME_AUTO.</line>
+				</doc>
+			</arg>
+			<arg name="DisplayedTime" direction="in" type="(nyyyyy)">
+				<doc>
+					<line> DispayedTime: The time that should be displayed (according to the user) when the message SetTimeMode was sent out. The first unsigned 16-bit value represents the year, then the following five bytes correspond to the month, day, hour, minute and second respectively. It will be ignored if Mode is TIME_AUTO.</line>
+				</doc>
+			</arg>
+		</method>
+		<signal name="UpdateTime">
+			<arg name="TimeStamp" type="t">
+				<doc>
+					<line> TimeStamp: The value of the monotonic system clock (millisecond precision) when this signal was sent out.</line>
+				</doc>
+			</arg>
+			<arg name="UTCTime" type="(nyyyyy)">
+				<doc>
+					<line> UTCTime: The UTC time at the moment when this signal was sent out. The first unsigned 16-bit value represents the year, then the following five bytes correspond to the month, day, hour, minute and second respectively.</line>
+				</doc>
+			</arg>
+			<arg name="StandardBias" type="n">
+				<doc>
+					<line> Standard bias in minutes.</line>
+				</doc>
+			</arg>
+			<arg name="DaylightBias" type="n">
+				<doc>
+					<line> Daylight saving bias in minutes.</line>
+				</doc>
+			</arg>
+			<arg name="IsDaylightSaving" type="i">
+				<doc>
+					<line> 1 is DST is currently used, 0 otherwise.</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<method name="GetTime">
+			<doc>
+				<line> "This method returns the same information that UpdateTime provides." </line>
+			</doc>
+			<arg name="TimeStamp" direction="out" type="t">
+				<doc>
+					<line> TimeStamp: The value of the monotonic system clock (millisecond precision) when this signal was sent out.</line>
+				</doc>
+			</arg>
+			<arg name="UTCTime" direction="out" type="(nyyyyy)">
+				<doc>
+					<line> UTCTime: The UTC time at the moment when this signal was sent out. The first unsigned 16-bit value represents the year, then the following five bytes correspond to the month, day, hour, minute and second respectively.</line>
+					<line> If all values are 0, the UTC time is unknown</line>					
+				</doc>
+			</arg>
+			<arg name="StandardBias" direction="out" type="n">
+				<doc>
+					<line> Standard bias in minutes. A value of 10000 indicates that the current timezone is unknown.</line>				
+				</doc>
+			</arg>
+			<arg name="DaylightBias" direction="out" type="n">
+				<doc>
+					<line> Daylight saving bias in minutes.</line>
+				</doc>
+			</arg>
+			<arg name="IsDaylightSaving" direction="out" type="i">
+				<doc>
+					<line> 1 is DST is currently used, 0 otherwise.</line>
+				</doc>
+			</arg>
+		</method>
+		
+	</interface>
+
+	<interface name="com.NNG.Api.Server.NotificationBar" alias="jci_mazda_api">
+		<signal name="Notify">
+			<doc>
+				<line> This signal speficies messages for the notification bar.</line>
+			</doc>
+			<arg name="DiriconID" type="i">
+				<doc>
+					<line>ID of the next maneuver icon; 0 means unknown, or sent from the cockpit screen.</line>
+				</doc>
+			</arg>
+			<arg name="ManeuverDistance" type="i">
+				<doc>
+					<line>Distance of the next maneuver in fixed point representation, the value can be calculated by dividing by 10. For example, a value of 113 should be interpreted as 11.3</line>
+				</doc>
+			</arg>
+			<arg name="ManeuverDistanceUnit" type="i">
+				<doc>
+					<line>ManeuverDistanceUnit: enum( No_Display (0), Meter (1), Mile (2), KiloMeter (3), Yard (4), Feet (5) )</line>
+				</doc>
+			</arg>
+			<arg name="StreetName" type="s">
+				<doc>
+					<line>StreetName: A string specifying the name of the street, intermixed with road shield bitmap files. Any number of bitmap files can be used in the string. The special symbols &lt; and &gt; are used to delimit the filenames, as in this example: Yellow &lt;/tmp/roadshield1.bmp&gt;Bricked &lt;/tmp/roadshield2.bmp&gt;Road. The sequence &lt;&lt; means a literal &lt;; the sequence &gt;&gt; means a literal &gt;.</line>
+				</doc>
+			</arg>
+			<arg name="Priority" type="i">
+				<doc>
+					<line> Level of priority: possible values are MorePrewarn (0) and ApproachNow (1). ApproachNow has higher priority</line>
+				</doc>
+			</arg>
+		</signal>
+		<signal name="ETCNotification">
+			<doc>
+				<line> This signal speficies ETC messages for the notification bar.</line>
+			</doc>
+			<arg name="NotificationID" type="i">
+				<doc>
+					<line>NotificationID = enum( PAYMENT_COMPLETE(0), CARD_MISSING_ON_ACC_ON(1), PRELIMINARY_GATE_ANNOUNCEMENT(2), CARD_EXPIRED(3), CARD_INSERTED(4), CARD_REMOVED(5), CARD_ERROR(6), SYSTEM_ERROR(7) )</line>
+				</doc>
+			</arg>
+			<arg name="NotificationString" type="s">
+				<doc>
+					<line>Localized notification string (mandatory)</line>
+				</doc>
+			</arg>
+			<arg name="NotificationString2" type="s">
+				<doc>
+					<line>Localized notification string(optional)</line>
+				</doc>
+			</arg>
+			<arg name="ShallPlayBeep" type="i">
+				<doc>
+					<line>ShallPlayBeep = enum( BEEP_ON(1), BEEP_OFF(0) )</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+
+	<interface name="com.NNG.Api.Server.Navigate" alias="jci_mazda_api">
+		<signal name="AddressResolutionResult">
+			<doc>
+				<line>  Result of an address resolution operation triggered by JCI's NavigateToAddress signal</line>
+			</doc>
+			<arg name="Result" type="i">
+				<doc>
+					<line>( Address_resolved (0), Address_not_found (1) ) </line>
+				</doc>
+			</arg>
+		</signal>
+
+	</interface>
+
+	
+	<interface name="com.NNG.Api.Server.Favorites" alias="jci_mazda_api">
+		<signal name="FavoriteOperationResult">
+			<doc>
+				<line>  Result of the previous favorite operation triggered by any of JCI's Favorite... signals </line>
+			</doc>
+			<arg name="Result" type="i">
+				<doc>
+					<line> SUCCESS(0), FAVORITES_FULL(1), ID_NOT_FOUND(2), ADDRESS_UNRESOLVED(3), POSITION_UNKNOWN(4) ILLEGAL_HOME_OPERATION (5) NO_DESTINATION (6), USER_INTERRUPT (7), GCOOR_COLLISION (8)</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<method name="GetFavoriteList">
+			<doc>
+				<line> Returns the set of favorites stored at NNG side. At most 50 favorites can be stored</line>
+			</doc>
+			<arg name="StartIndex" direction="in" type="i">
+				<doc>
+					<line>Position from which items are requested from the list. 0 means the first element of the list.</line>
+				</doc>
+			</arg>
+			<arg name="MaxItems" direction="in" type="i">
+				<doc>
+					<line>Maximum items requested by this call.</line>
+				</doc>
+			</arg>
+			<arg name="FavoriteList" direction="out" type="(ia(us))">
+				<doc>
+					<line>
+						Array of structures. Each structure represents a favourite, and contains one unique identifier and the name of the favourite.
+					</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<signal name="FavoritesMenuItemSelected">
+			<doc>
+				<line> The user pressed the Favorite software button on NNG's screen to enter JCI's favorite menu. </line>
+			</doc>
+		</signal>
+		<method name="NavigatedRouteExists">
+			<doc>
+				<line> Informs JCI about the existance of a route </line>
+			</doc>
+			<arg name="Result" direction="out" type="i">
+				<doc>
+					<line> 1 if there is a navigated route, 0 if there isn't.</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="GetFavoritesCount">
+			<doc>
+				<line>GetFavoritesCount = This method returns the total number of favorite items from the list. </line>
+			</doc>
+			<arg name="count" type="i" direction="out"/>
+			<annotation name="async_client" value="true" />
+		</method>
+	</interface>
+	<interface name="com.NNG.Api.Server.VICS" alias="jci_mazda_api">
+		<signal name="VICSFrequencyChange">
+			<doc>
+				<line> Frequency change request </line>
+			</doc>
+			<arg name="Frequency" type="d">
+				<doc>
+					<line>Requested frequency</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+	<interface name="com.NNG.Api.Server.Screen" alias="jci_mazda_api">
+		<signal name="SetID">
+			<doc>
+				<line> NNG informs the OS about the current screen id </line>
+			</doc>
+			<arg name="ScreenId" type="i">
+				<doc>
+					<line>Current screen id</line>
+				</doc>
+				<doc>
+					For the list of IDs, please check the DBUS API pdf documentation
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+</node>

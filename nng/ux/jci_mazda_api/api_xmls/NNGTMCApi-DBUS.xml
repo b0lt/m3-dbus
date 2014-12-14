@@ -1,0 +1,84 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<node name="/com/jci/vbs/Navi">
+	<!-->
+		Version: v1.10-2013.01.14
+	</!-->
+
+	<interface name="com.jci.tds">
+		<signal name="TMC8A">
+			<arg name="Block1" type="q"> </arg>
+			<arg name="Block2" type="q"> </arg>
+			<arg name="Block3" type="q"> </arg>
+			<arg name="Block4" type="q"> </arg>
+		</signal>
+	</interface>
+
+	<interface name="com.jci.vbs.navi.tmc">
+        
+ 
+        <signal name="ServiceListResponse">
+                <doc>
+                        <line> Reply to TMCServiceListRequest </line>
+                </doc>
+
+                <arg name="providerList" type="(yayayayayay)" direction="in" />
+                                
+                <doc>
+                        <line> Array of TMC provider structs (max. 14) (Country Code; Message Geographical Scope; Location Table Number; Service Identifier; Quality) </line>
+                </doc>
+                
+        </signal>
+                
+        <signal name="ResponseToTMCSelection">
+                <doc>
+                        <line> Reply to TMCSelectionRequest </line>
+                </doc>
+               
+                <arg name="rdstmcOperation" type="y" direction="in" />
+               
+                <doc>
+                        <line>rdstmcOperation = enum( rdstmc_operation_stop (0), rdstmc_operation_start (1) )</line>
+                </doc>
+
+                <arg name="tmcSearchMode" type="y" direction="in" />
+               
+                <doc>
+                        <line>tmcSearchMode = enum( Automatic (0), Reserved (1) )</line>
+                </doc>
+
+                <arg name="countryCode" type="y" direction="in" />
+                
+                <doc>
+                        <line>country Code (0-15)</line>
+                </doc>
+
+                <arg name="locationTableNumber" type="y" direction="in" />
+                
+                <doc>
+                        <line>location Table number (0-63)</line>
+                </doc>
+
+                <arg name="serviceIdentifier" type="y" direction="in" />
+                
+                <doc>
+                        <line>service Identifier (0-63)</line>
+                </doc>
+
+                <arg name="quality" type="y" direction="in" />
+                 
+                <doc>
+                        <line>quality (0-100)</line>
+                </doc>
+
+                <arg name="receptionStatus" type="y" direction="in" />
+                  
+                <doc>
+                        <line>reception status = enum( OK (0), Pending (1), NotOK (2) )</line>
+                </doc>
+
+        </signal>
+
+     </interface>
+</node>

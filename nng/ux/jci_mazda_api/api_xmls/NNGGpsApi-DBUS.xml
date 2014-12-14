@@ -1,0 +1,110 @@
+<!DOCTYPE node PUBLIC "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd" "//freedesktop//DTD D-BUS Object Introspection 1.0//EN">
+<node name="/com/jci/lds/data">
+	<!-->
+		Version: v1.09-2012.12.12
+	</!-->
+    <interface name="com.jci.lds.data">
+        <method name="GetPosition">
+            <doc>
+                <line>GetPosition = This method returns the current position. </line>
+            </doc>
+            <arg name="PositionAccuracy" type="i" direction="out" >
+                <doc>
+                    <line> Accuracy = enum(POSITION_UNKNOWN=0x00, POSITION_GPS_3D=0x01, POSITION_GPS_2D=0x02, POSITION_DR=0x03) </line>
+                </doc>
+            </arg>
+            <arg name="UTCtime" type="t" direction="out">
+                <doc>
+                    <line> UNIX timestamp from epoch, 0 means invalid.</line>
+                </doc>
+            </arg>
+            <arg name="Latitude" type="d" direction="out">
+                <doc>
+                    <line> Latitude in degrees. </line>
+                </doc>
+            </arg>
+            <arg name="Longitude" type="d" direction="out">
+                <doc>
+                    <line> Longitude in degrees. </line>
+                </doc>
+            </arg>
+            <arg name="Altitude" type="i" direction="out">
+                <doc>
+                    <line> Altitude in meters (can be negative). </line>
+                </doc>
+            </arg>
+            <arg name="Heading" type="d" direction="out">
+                <doc>
+                    <line> Heading value in degrees, clockwise, zero is south. </line>
+                </doc>
+            </arg>
+            <arg name="Velocity" type="d" direction="out">
+                <doc>
+                    <line> Speed in km/h. </line>
+                </doc>
+            </arg>
+            <arg name="HorizontalAccuracy" type="d" direction="out">
+                <doc>
+                    <line> Horizontal DOP value. </line>
+                </doc>
+            </arg>
+            <arg name="VerticalAccuracy" type="d" direction="out">
+                <doc>
+                    <line> Vertical DOP value. </line>
+                </doc>
+            </arg>
+            <annotation name="async_client" value="true" />
+        </method>
+        
+        <method name="GetLastKnownPosition">
+            <doc>
+                <line> GetLastKnownPosition = This method returns the last known position. Valid only if UTCtime is non-zero.</line>
+            </doc>
+            <arg name="UTCtime" type="t" direction="out">
+                <doc>
+                    <line> UNIX timestamp from epoch, 0 means invalid.</line>
+                </doc>
+            </arg>
+            <arg name="Latitude" type="d"  direction="out">
+                <doc>
+                    <line>Latitude in degrees. </line>
+                </doc>
+            </arg>
+            <arg name="Longitude" type="d" direction="out">
+                <doc>
+                    <line>Longitude in degrees. </line>
+                </doc>
+            </arg>
+            <annotation name="async_client" value="true" />
+        </method>
+
+        <signal name="GPSDiagnostics">
+        <doc>
+                <line>GPSDiagnostics = This signal is sent when a DTC is set or cleared. </line>
+            </doc>
+            <arg name="DTCId" type="y">
+                <doc>
+                   <line> Id of the DTC = enum(DTC_ANT_SHORT=0x11, DTC_ANT_OPEN=0x13, DTC_ANT_OVERCURR=0x1D, DTC_NMEA_FAILURE=0x92) </line>
+                </doc>
+            </arg>
+            <arg name="DTCAction" type="y">
+                <doc>
+                     <line> Setting or clearing of the DTC = enum(DTC_ACTION_SET=0x00, DTC_ACTION_CLEAR=0x01) </line>
+                </doc>
+            </arg>
+        </signal>
+
+        <method name="GetGPSFirmwareVersion">
+            <doc>
+                <line> GetGPSFirmwareVersion = This method returns the firmware version of the used GPS device.</line>
+            </doc>
+            <arg name="FirmwareVersion" type="s" direction="out">
+                <doc>
+                    <line> Firmware version in format STA8088.XXXx, where Xs are digits and x is a lowercase letter. "Unknown ver." means version hasn't been obtained from the GPS yet.</line>
+                </doc>
+            </arg>
+            <annotation name="async_client" value="true" />
+        </method>
+
+    </interface>
+</node>

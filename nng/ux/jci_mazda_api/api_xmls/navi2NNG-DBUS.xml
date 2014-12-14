@@ -1,0 +1,798 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+         "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<node name="/com/jci/navi2NNG">
+	<!-->
+		Version: v1.12-2013.02.01
+	</!-->
+	
+	<!-->
+		Methods/signals for the EmNavi only
+	</!-->
+	<interface name="com.jci.navi2NNG" alias="jci2NNG">
+		<method name="GetVDELang">
+			<doc>
+				<line> This method is used to retrieve the VR language currently used by the OS. </line>
+			</doc>
+			<arg name="language" direction="out" type="s">
+				<doc>
+					<line> The Nuance LLC code of the VR (VDE) language currently in use.  </line>
+				</doc>
+			</arg>
+		</method>
+	
+		<method name="GetTTSLang">
+			<doc>
+				<line> This method returns the LCID of the current TTS language in the OS </line>
+			</doc>
+			<arg name="language" direction="out" type="i">
+				<doc>
+					<line> The LCID of the TTS language currently in use.</line>
+				</doc>
+			</arg>
+		</method>	
+	
+		<signal name="ShutdownRequest">
+			<doc>
+				<line>
+					ShutdownRequest = This signal instructs the navigation engine to close. Note that the engine will only
+					receive this message between its DBusClientStarted and DBusClientStopped signals.
+				</line>
+			</doc>
+		</signal>
+		
+		<signal name="FactoryReset">
+			<doc>
+				<line>
+					This signal instructs the navigation engine to delete the save folder and restart.
+				</line>
+			</doc>
+		</signal>
+		
+		<signal name="ShowNavigation">
+			<doc>
+				<line>ShowNavigation = This signal informs the navigation engine that it is about to get the focus and should start rendering.</line>
+			</doc>
+		</signal>
+
+		<signal name="RequestShowNavigationDenied">
+			<doc>
+				<line> With this signal, JCI acknowledges that it has received NNG's RequestShowNavigation signal, but it cannot yield the focus.</line>
+			</doc>
+		</signal>		
+		
+		<signal name="ClearStack">
+			<doc>
+				<line> This signal should be issued by JCI whenever the user presses the home button </line>
+			</doc>
+		</signal>		
+
+		<signal name="FavoriteLongPress">
+			<doc>
+				<line> This signal is issued by JCI if it detects a long press of the favorite button </line>
+			</doc>
+		</signal>		
+		
+		<signal name="NaviButtonPress">
+			<doc>
+				<line> This signal is issued by JCI if it detects that the navi button has been pressed. </line>
+			</doc>
+		</signal>		
+		
+		<signal name="GuiFocusStatusUpdate">
+			<doc>
+				<line>GuiFocusStatusUpdate = This signal returns the updates for the GUI focus status of the EmNavi app.</line>
+			</doc>
+			<arg name="status" type="i">
+				<doc>
+					<line>enum(GUI_FOCUS_ON(0x00), GUI_FOCUS_OFF(0x01))</line>
+				</doc>
+			</arg>
+		</signal>
+
+		<method name="GetLanguage">
+			<doc>
+				<line>GetLanguage = This method returns the system language to EmNavi. </line>
+			</doc>
+			<arg name="language" type="i" direction="out">
+				<doc>
+					<line>language = the Microsoft LCID of the language that should be used by the navigation engine</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetVIN">
+			<doc>
+				<line> Returns the Vehicle Identification Number of the vehicle as a string. </line>
+			</doc>
+			<arg name="VIN" type="s" direction="out">
+				<doc>
+					<line>The unique VIN of the car</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetRegionAndBranding">
+			<doc>
+				<line> Returns the region and branding information of the vehicle. </line>
+			</doc>
+			<arg name="Region" type="s" direction="out">
+				<doc>
+					<line>Region description</line>
+				</doc>
+			</arg>
+			<arg name="Branding" type="s" direction="out">
+				<doc>
+					<line>Branding description</line>
+				</doc>
+			</arg>	
+			<annotation name="async_client" value="true" />
+		</method>		
+		
+		<method name="GetSpeedRestriction">
+			<doc>
+				<line> This method returns the state of a speed restriction being active or not. </line>
+			</doc>
+			<arg name="SpeedRestriction" type="i" direction="out">
+				<doc>
+					<line>SpeedRestriction=  enum( SPEED_RESTRICTION_OFF=0x00, SPEED_RESTRICTION_ON=0x01 ) </line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+        </method> 
+	
+		<method name="GetTemperatureUnit">
+			<doc>
+				<line> This function returns the unit in which the temperature should be displayed. </line>
+			</doc>
+			<arg name="TempUnit" type="i" direction="out">
+				<doc>
+					<line>TempUnit enum( TEMP_UNIT_CELSIUS=0, TEMP_UNIT_FAHRENHEIT=1 ) </line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+        </method> 
+
+	
+		<method name="GetDayNightMode">
+			<doc>
+				<line>GetDayNightMode = This method returns the day/night mode to EmNavi. </line>
+			</doc>
+			<arg name="mode" type="i" direction="out">
+				<doc>
+					<line>mode = enum( DAYNIGHTMODE_DAY=0x00, DAYNIGHTMODE_NIGHT=0x01, DAYNIGHTMODE_AUTO=0x02 )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetTimeFormat">
+			<doc>
+				<line>GetTimeFormat = This method returns the time format to EmNavi. </line>
+			</doc>
+			<arg name="format" type="i" direction="out">
+				<doc>
+					<line>format = enum( TIMEFORMAT_12H=0x00, TIMEFORMAT_24H=0x01 )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetLengthUnit">
+			<doc>
+				<line>GetLengthUnit = This method returns the length unit to EmNavi. </line>
+			</doc>
+			<arg name="unit" type="i" direction="out">
+				<doc>
+					<line>unit = enum( UNIT_MILES_YARD=0, UNIT_KM=1, UNIT_MILES_FEET=2 )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+
+		<method name="GetPhoneConnectionStatus">
+			<doc>
+				<line> This method tells whether the phone is connected </line>
+			</doc>
+			<arg name="PhoneStatus" type="i" direction="out">
+				<doc>
+					<line>PhoneStatus = enum( PHONE_DISCONNECTED=0x00, PHONE_CONNECTED=0x01 )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+
+		<method name="GetFuelType">
+			<doc>
+				<line> This method returns the type of fuel used in the car.</line>
+			</doc>
+			<arg name="FuelType" type="i" direction="out">
+				<doc>
+					<line>FuelType = enum( Fuel_Unknown (0), Fuel_Gasoline_DISI (1), Fuel_Gasoline_EFI (2), Fuel_Diesel_DI (3), Fuel_Diesel_IDI (4), Fuel_EV_HEV (5), Fuel_NaturalGas_CFI (6), Fuel_NaturealGas_EFI (7), Fuel_FlexibleFuel_CFI (8), Fuel_FlexibleFuel_EFI (9), Fuel_Gasoline_iStop (10), Fuel_Diesel_iStop (11) )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetNetworkConnectionStatus">
+			<doc>
+				<line> This method tells whether network is available .</line>
+			</doc>
+			<arg name="NetworkConnectionStatus" type="i" direction="out">
+				<doc>
+					<line>NetworkConnectionStatus = enum( NETWORK_AVAILABLE=0x00, NETWORK_NOT_AVAILABLE=0x01 )</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+
+		<method name="GetAvailableLayouts">
+			<doc>
+				<line> Returns the list of the keyboard layouts available at JCI side</line>
+			</doc>
+			<arg name="Layouts" direction="out" type="(ia(i))">
+				<doc>
+					<line>
+						List of layouts. All ids must come from the set defined in the method KeyboardLayout in this file.
+					</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="GetKeyboardLayout">
+			<doc>
+				<line> This method tells the currently selected keyboard layout.</line>
+			</doc>
+			<arg name="KeyboardLayout" type="i" direction="out">
+				<doc>
+					<line>KeyboardLayout is one of the following values </line>
+					<line>ABC = 0</line>
+					<line>Arabic = 1</line>
+					<line>Bahasa Malay = 2</line>
+					<line>Bulgarian = 3</line>
+					<line>Chinese Pinyin (Simplified) = 4</line>
+					<line>Chinese Pinyin (Traditional) = 5</line>
+					<line>Croatian = 6</line>
+					<line>Czech = 7</line>
+					<line>Danish = 8</line>
+					<line>Dutch = 9</line>
+					<line>English (ADR) = 10</line>
+					<line>English (UK) = 11</line>
+					<line>English(US) = 12</line>
+					<line>Estonian = 13</line>
+					<line>Finnish = 14</line>
+					<line>French (CA) = 15</line>
+					<line>French (EU) = 16</line>
+					<line>German = 17</line>
+					<line>Greek = 18</line>
+					<line>Hebrew = 19</line>
+					<line>Hungarian = 20</line>
+					<line>Indonesian = 21</line>
+					<line>Italian = 22</line>
+					<line>Japanese (Kana) = 23</line>
+					<line>Latvian = 24</line>
+					<line>Lithuanian = 25</line>
+					<line>Norwegian = 26</line>
+					<line>Polish = 27</line>
+					<line>Portuguese = 28</line>
+					<line>Romanian = 29</line>
+					<line>Russian = 30</line>
+					<line>Serbian (Latin) = 31</line>
+					<line>Slovakian = 32</line>
+					<line>Spanish (Castillian) = 33</line>
+					<line>Spanish (NA) = 34</line>
+					<line>Swedish = 35</line>
+					<line>Thai = 36</line>
+					<line>Turkish = 37</line>					
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+		
+		<method name="GetRecentKeyboardNumber">
+			<doc>
+				<line> Number of keyboards at the top that needs to be marked as recent</line>
+			</doc>
+			<arg name="NumberOfRecentKeyboards" direction="out" type="i">
+				<doc>
+					<line>
+						Number of most recent keyboard
+					</line>
+				</doc>
+			</arg>
+		</method>
+		
+		<method name="GetLocalizedRecentText">
+			<doc>
+				<line> Returns the localized text for "Recent" word </line>
+			</doc>
+			<arg name="RecentText" type="s" direction="out">
+				<doc>
+					<line>Localized text for "Recent" word</line>
+				</doc>
+			</arg>
+		</method>
+
+		<signal name="AudioDone">
+			<doc>
+				<line> This signal informs the navigation engine about a fate of a given audio effect or voice.</line>
+			</doc>
+			<arg name="CallbackId" type="i">
+				<doc>
+					<line> The id of the audio effect in question.</line>
+				</doc>
+			</arg>
+			<arg name="Result" type="i">
+				<doc>
+					<line> Result = enum(AUDIO_SUCCESS=0x00, AUDIO_FAIL=0x01, AUDIO_CANCELLED=0x02, AUDIO_TIMEOUT=0x03) </line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<method name="GetVolumeRequestEnabled">
+			<doc>
+				<line>GetVolumeRequestEnabled = This method returns whether it is allowed for the navi engine to request change of the volume. </line>
+			</doc>
+			<arg name="RequestEnabled" direction="out" type="i">
+				<doc>
+					<line>RequestEnabled = enum( DISABLED=0x00, ENABLED=0x01 )</line>
+				</doc>
+			</arg>
+		</method>
+
+		<method name="GetNavigationVolume">
+			<doc>
+				<line> "This method returns the volume with which JCI plays navigation-related sounds." </line>
+			</doc>
+			<arg name="Volume"  type="i" direction="out">
+				<doc>
+					<line> Volume strength: falls between 0 and 62 inclusively, 0 means the guidance is muted.</line>
+				</doc>
+			</arg>
+		</method>
+		
+		
+		<signal name="SetNavigationVolume">
+			<doc>
+				<line> "This signal informs NNG that guidance volume has been changed" </line>
+			</doc>
+			<arg name="Volume"  type="i">
+				<doc>
+					<line> Volume strength: falls between 0 and 62 inclusively, 0 means the guidance is muted.</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<method name="DialPhoneNumber">
+			<doc>
+				<line>This method triggers the phone application with the phone number to call and the name string. </line>
+			</doc>
+			<arg name="phoneNumber" type="s" direction="in">
+				<doc>
+					<line>phoneNumber = the string for the phone number to call</line>
+				</doc>
+			</arg>
+			<arg name="name" type="s" direction="in">
+				<doc>
+					<line>name = the string name for the contact (POI name)</line>
+				</doc>
+			</arg>
+			<annotation name="async_client" value="true" />
+		</method>
+
+		<signal name="VREvent">
+			<doc>
+				<line> This signal tells NNG that a VUI event occurred. </line>
+			</doc>
+			<arg name="EventId" type="s">
+				<doc>
+					<line> A string identifying the event, e.g., "NavigateToARecentDestination" </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="SelectedListItem">
+			<doc>
+				<line> This signal tells NNG that the user selected a given line on the list. </line>
+			</doc>
+			<arg name="SeletedItem" type="i">
+				<doc>
+					<line> This should fall between 1 and 5 inclusively, depending on whether the user say "Line 1", "Line 2", etc. </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="NavigateToPOI">
+			<doc>
+				<line> This signal tells NNG that the user said something like: Navigate to the nearest hospital, or Navigate to the nearest dentist. </line>
+			</doc>
+			<arg name="PoiCategoryName" type="(ia(s))">
+				<doc>
+					<line> The hypothesized category list, e.g., ("POI_HOSPITAL", "POI_DENTIST"). These strings should constitute a subset of the list that was passed by NNG signal POICategoryList. </line>
+				</doc>
+			</arg>
+		</signal>
+				
+		<signal name="AddWaypointPOI">
+			<doc>
+				<line> This signal tells NNG that the user said something like: Add waypoint, hospital, or Add waypoint, dentist. </line>
+			</doc>
+			<arg name="PoiCategoryName" type="(ia(s))">
+				<doc>
+					<line> The hypothesized category list, e.g., ("hospital", "dentist"). These strings should constitute a subset of the list that was passed by NNG signal POICategoryList. </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="JpjIntermediateHypothesis">
+			<doc>
+				<line> Japanese one shot destination search result</line>
+			</doc>
+			<arg name="JpjHypothesis" type="(uuuuuu)">
+				<doc>
+					<line> A structure of integers describing the japanese hypothesis. </line>
+					<line> It contains the IDs for the partially recognized utterance. </line>
+					<line> The IDs which are not valid will be filled with 9999999. </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="JpjVDEHypothesisList">
+			<doc>
+				<line> Japanese destination search result list</line>
+			</doc>
+			<arg name="JpjHypothesisList" type="(ia(uuuuuu))">
+				<doc>
+					<line> Array of structures of integers describing the japanese hypothesis list. The first integer is the array length </line>
+					<line> It contains the IDs for the partially recognized utterance. </line>
+					<line> The IDs which are not valid will be filled with 9999999. </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="VDEHypothesisList">
+			<doc>
+				<line> One shot destination search result</line>
+			</doc>
+			<arg name="VDEList" type="(ia(uuuu))">
+				<doc>
+					<line> Array of structures of integers describing the hypothesis list. The first integer is the array length</line>
+					<line> First unsigned integer: The state id recognized, or 0, if not applicable (e.g., in France) </line>
+					<line> Second unsigned integer: The city id recognized.</line>
+					<line> Third unsigned integer: The street id recognized.</line>
+					<line> Fourth unsigned integer: The house number recognized.</line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="SimpleHypothesisList">
+			<doc>
+				<line> General hypothesis list for structured VDE</line>
+			</doc>
+			<arg name="IdList" type="(ia(u))">
+				<doc>
+					<line> Array of integers describing the hypothesis list, interpeted as ids. The first integer is the array length</line>
+				</doc>
+			</arg>
+		</signal>
+			
+		<signal name="ModeChanged">
+			<doc>
+				<line> This signal is issued whenever the modality of the VR should be changed. NNG will use this in SetContext </line>
+				<line> unless it has more up-to-date information available about what parameter to use.  </line>
+			</doc>
+			<arg name="Modality" type="i"> 
+				<doc> 
+					<line> This parameter shows which mode was the source of last UI event if any </line> 
+					<line> VUI (0x0) - Context was triggered by VUI</line> 
+					<line> GUI (0x1) - Context was triggered by GUI</line> 
+				</doc> 
+			</arg> 
+		</signal>
+		
+		<signal name="RequestGuidanceInfo">
+			<doc>
+				<line> Requests NNG to send the GuidanceChanged signal</line>
+			</doc>
+		</signal>
+
+			
+		
+		<method name="GetTimeMode">
+			<doc>
+				<line>  This method is used to notify a running NNG system that the user changed the time mode (or the displayed time) </line>
+			</doc>
+			<arg name="Mode" direction="out" type="i">
+				<doc>
+					<line> Mode = enum( TIME_AUTO (0), TIME_MANUAL (1) )</line>
+				</doc>
+			</arg>
+			<arg name="TimeStamp" direction="out" type="t">
+				<doc>
+					<line> TimeStamp: The value of the monotonic system clock (millisecond precision) when the reply to GetTimeMode was sent out. Will be ignored on the receiving side if Mode is TIME_AUTO.</line>
+				</doc>
+			</arg>
+			<arg name="DisplayedTime" direction="out" type="(nyyyyy)">
+				<doc>
+					<line> DispayedTime: The time that should be displayed (according to the user) when the reply to GetTimeMode was sent out. The first unsigned 16-bit value represents the year, then the following five bytes correspond to the month, day, hour, minute and second respectively. It will be ignored on the receiving side if Mode is TIME_AUTO.</line>
+				</doc>
+			</arg>
+		</method>
+		
+		
+		<signal name="NavigateToAddress">
+			<doc>
+				<line> This signal requests the NAVI engine to navigate to an address.</line>
+			</doc>
+			<arg name="Name" type="s">
+				<doc>
+					<line>Name of the navigated POI. </line>
+				</doc>
+			</arg>
+			<arg name="CountryName" type="s">
+				<doc>
+					<line>Country of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StateName" type="s">
+				<doc>
+					<line>State of the address (in the case of US). </line>
+				</doc>
+			</arg>
+			<arg name="CityName" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StreetName" type="s">
+				<doc>
+					<line>Street name and house number of the address. </line>
+				</doc>
+			</arg>
+			<arg name="ZipCode" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="Latitude" type="d">
+				<doc>
+					<line>Latitude in degrees. </line>
+				</doc>
+			</arg>
+			<arg name="Longitude" type="d">
+				<doc>
+					<line>Longitude in degrees. </line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<signal name="DeleteFavorite">
+			<doc>
+				<line> Delete a favourite stored by NNG</line>
+			</doc>
+			<arg name="ID" type="u">
+				<doc>
+					<line> The unique id of the favorite</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<signal name="DeleteAllFavorites">
+			<doc>
+				<line> Delete all the favorites. (This does not affect the home favorite.)</line>
+			</doc>
+		</signal>
+		
+		<signal name="NavigateToFavorite">
+			<doc>
+				<line> Navigate to a favorite</line>
+			</doc>
+			<arg name="ID" type="u">
+				<doc>
+					<line> The unique id of the favorite to navigate to</line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<signal name="RenameFavorite">
+			<doc>
+				<line> Change the name of a favourite stored by NNG</line>
+			</doc>
+			<arg name="ID" type="u">
+				<doc>
+					<line> The unique id of the favorite whose name is to be changed</line>
+				</doc>
+			</arg>
+			<arg name="Name" type="s">
+				<doc>
+					<line> The new name</line>
+				</doc>
+			</arg>
+			
+		</signal>		
+		
+		<signal name="SetHome">
+			<doc>
+				<line> Request the focus and provide the user a way to set the home position.</line>
+			</doc>
+		</signal>
+		
+		
+		<signal name="UnsetHome">
+			<doc>
+				<line> Delete the information associated with the home favorite.</line>
+			</doc>
+		</signal>
+		
+		<signal name="SwapFavorites">
+			<doc>
+				<line> Change the order of the two favorites</line>
+			</doc>
+			<arg name="ID1" type="u">
+				<doc>
+					<line> The unique id of the first favorite</line>
+				</doc>
+			</arg>
+			<arg name="ID2" type="u">
+				<doc>
+					<line> The unique id of the second favorite</line>
+				</doc>
+			</arg>			
+		</signal>	
+
+		
+		<signal name="MoveFavorite">
+			<doc>
+				<line> Move a favorite to the position following another favorite</line>
+			</doc>
+			<arg name="ID1" type="u">
+				<doc>
+					<line> The unique id of the favorite to move</line>
+				</doc>
+			</arg>
+			<arg name="ID2" type="u">
+				<doc>
+					<line> The unique id of the favorite after which the favorite corresponding to ID1 should be inserted.</line>
+				</doc>
+			</arg>			
+		</signal>	
+		
+		
+		<signal name="AddCurrentPositionToFavorites">
+			<doc>
+				<line> Save the current position among the favorites with an empty name.</line>
+			</doc>
+		</signal>
+
+		<signal name="ReplaceFavoriteWithCurrentPosition">
+			<doc>
+				<line> The contents of the given favorite should be discarded, and replaced by the current position.</line>
+			</doc>
+			<arg name="ID" type="u">
+				<doc>
+					<line> The id of the favorite that should be replaced </line>
+				</doc>
+			</arg>
+		</signal>
+		
+		<signal name="AddCurrentDestinationToFavorites">
+			<doc>
+				<line> Save the current destination among the favorites with an empty name.</line>
+			</doc>
+		</signal>
+
+		<signal name="ReplaceFavoriteWithCurrentDestination">
+			<doc>
+				<line> The contents of the given favorite should be discarded, and replaced by the current destination.</line>
+			</doc>
+			<arg name="ID" type="u">
+				<doc>
+					<line> The id of the favorite that should be replaced. </line>
+				</doc>
+			</arg>
+		</signal>
+		
+		
+		<signal name="AddFavorite">
+			<doc>
+				<line> This signal requests the NNG engine to add the address and the name to the favorite list.</line>
+			</doc>
+			<arg name="Name" type="s">
+				<doc>
+					<line>Name of the favorite </line>
+				</doc>
+			</arg>
+			<arg name="CountryName" type="s">
+				<doc>
+					<line>Country of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StateName" type="s">
+				<doc>
+					<line>State of the address (in the case of US). </line>
+				</doc>
+			</arg>
+			<arg name="CityName" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StreetName" type="s">
+				<doc>
+					<line>Street name and house number of the address. </line>
+				</doc>
+			</arg>
+			<arg name="ZipCode" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="Latitude" type="d">
+				<doc>
+					<line>Latitude in degrees. </line>
+				</doc>
+			</arg>
+			<arg name="Longitude" type="d">
+				<doc>
+					<line>Longitude in degrees. </line>
+				</doc>
+			</arg>
+		</signal>
+
+		<signal name="ReplaceFavoriteWithAddress">
+			<doc>
+				<line> This signal requests the NNG engine to add the address and the name to the favorite list in place of another favorite</line>
+			</doc>
+
+			<arg name="ID" type="u">
+				<doc>
+					<line> The id of the favorite that should be replaced. </line>
+				</doc>
+			</arg>
+			
+			<arg name="Name" type="s">
+				<doc>
+					<line>Name of the favorite </line>
+				</doc>
+			</arg>
+			<arg name="CountryName" type="s">
+				<doc>
+					<line>Country of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StateName" type="s">
+				<doc>
+					<line>State of the address (in the case of US). </line>
+				</doc>
+			</arg>
+			<arg name="CityName" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="StreetName" type="s">
+				<doc>
+					<line>Street name and house number of the address. </line>
+				</doc>
+			</arg>
+			<arg name="ZipCode" type="s">
+				<doc>
+					<line>City of the address. </line>
+				</doc>
+			</arg>
+			<arg name="Latitude" type="d">
+				<doc>
+					<line>Latitude in degrees. </line>
+				</doc>
+			</arg>
+			<arg name="Longitude" type="d">
+				<doc>
+					<line>Longitude in degrees. </line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+
+</node>

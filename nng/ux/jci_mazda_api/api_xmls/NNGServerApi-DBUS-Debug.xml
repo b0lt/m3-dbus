@@ -1,0 +1,15 @@
+<!DOCTYPE node PUBLIC "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd" "//freedesktop//DTD D-BUS Object Introspection 1.0//EN">
+<node name="/com/NNG/Api/Server">
+	<!-->
+		Version: v1.12-2013.01.24
+	</!-->
+
+	<interface name="com.NNG.Api.Server.Debug_api" alias="jci_mazda_api">
+		<method name="CreateBugReport">
+			<doc>
+				<line> This method creates a bug report</line>
+			</doc>
+		</method>
+	</interface>
+	
+</node>

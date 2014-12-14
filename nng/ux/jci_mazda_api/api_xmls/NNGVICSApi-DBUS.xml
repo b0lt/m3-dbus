@@ -1,0 +1,22 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+
+<node name="/com/jci/traffic">
+    <interface name="com.jci.traffic">
+        <signal name="VICSFrequencyChangeAck">
+			<doc>
+				<line>Frequency change acknowledge</line>
+			</doc>
+			<arg name="Frequency" type="d">
+				<doc>
+					<line>frequency value requested be NNG</line>
+				</doc>
+			</arg>
+			<arg name="State" type="i">
+				<doc>
+					<line>State = enum( FC_SUCCESS (0), FC_FAILED (1) )</line>
+				</doc>
+			</arg>
+		</signal>
+    </interface>
+</node>

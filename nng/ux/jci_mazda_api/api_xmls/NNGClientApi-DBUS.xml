@@ -1,0 +1,76 @@
+<!DOCTYPE node PUBLIC "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd" "//freedesktop//DTD D-BUS Object Introspection 1.0//EN">
+<node name="/com/NNG/Api/Client">
+	<!-->
+		Version: v1.11-2013.01.22
+	</!-->
+
+	<interface name="com.NNG.Api.Client">
+		<signal name="DBusClientStarted">
+			<doc>
+				<line> "Issued when the navigation engine establishes the DBUS connection. Before this signal is emitted, the navigation engine is not guaranteed to receive any DBUS messages" </line>
+			</doc>
+		</signal>
+
+		<signal name="DBusClientStopped">
+			<doc>
+				<line> "This signal is issued when the navigation engine is about to close down, either before shutting down or restarting. No more DBUS messages will be processed after this point, including the ShutdownRequest signal." </line>
+			</doc>
+		</signal>
+
+		<signal name="ReadyToDie">
+			<doc>
+				<line> "This signal is a response to the ShutdownRequest signal sent by the JCI environment. Naturally, ReadyToDie does not immediately follow the message ShutdownRequest: several seconds are needed before the navigation engine prepares to close appropriately." </line>
+			</doc>
+		</signal>
+
+		<signal name="HeartBeat">
+			<doc>
+				<line> "This signal is sent out periodically (1 second by default)"</line>
+			</doc>
+		</signal>
+		
+		<signal name="SDCardSeemsOK">
+			<doc>
+				<line> "This signal is issued if NNG has finished validating the content"</line>
+			</doc>
+		</signal>
+		
+		<signal name="SDCardProblem">
+			<doc>
+				<line>This signal is issued whenever there seems to be a problem with the SD card</line>
+			</doc>
+			<arg name="Description" type="s">
+				<doc>
+					<line> Informal description of the problem</line>
+				</doc>
+			</arg>
+			<arg name="ProblemType" type="i">
+				<doc>
+					<line> NOT_NAVI (0): The sdcard inserted is not for navigation</line>
+					<line> INVALID_NAVI (1): The SD card looks like an SD card for navigation, (etc. file corruption).</line>
+					<line> MODIFIED_INVALID_NAVI (2): The SD card looks like an SD card for navigation that the user tampered with.</line>
+					<line> LICENSE_PROBLEM (3): The SD card looks like an SD card for navigation, but none of the licenses are valid.</line>	
+					<line> NOT_WRITABLE (4): NNG needs to write the SD card, but it is not writable.</line>						
+				</doc>
+			</arg>
+			<arg name="RestartInfo" type="i">
+				<doc>
+					<line> RESTART_MAY_HELP (0): It is possible that restarting the software will solve the problem (with the same sd card)</line>
+					<line> RESTART_WONT_HELP (1): With this sd card, restart will not solve the problem.</line>
+					<line> RESTART_NOT_NEEDED (2): There is some minor problem with the sd card, but the navigation engine will survive.</line>
+				</doc>
+			</arg>
+		</signal>
+			
+		<signal name="InternalFileError">
+			<doc>
+				<line> "This signal indicates a serious problem on the internal flash disk. NNG will terminate, and there is no use restarting it."</line>
+			</doc>
+			<arg name="Description" type="s">
+				<doc>
+					<line> Informal description of the problem</line>
+				</doc>
+			</arg>
+		</signal>
+	</interface>
+</node>
